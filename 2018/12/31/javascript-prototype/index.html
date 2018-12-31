@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>javascript-prototype | Cjkkkk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1 前言javascript 是具有基于原型链的面向对象编程语言 oop != class oop 也不需要基于class 请先抛弃class关键词 2 在javascript中,对象来自于对象Object comes from Object。你可以使用对象来直接构造一个对象example #1123456var food = &amp;#123;  eat:&quot;i eat !&quot;&amp;#125;var meal">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript-prototype">
+<meta property="og:url" content="http://yoursite.com/2018/12/31/javascript-prototype/index.html">
+<meta property="og:site_name" content="Cjkkkk">
+<meta property="og:description" content="1 前言javascript 是具有基于原型链的面向对象编程语言 oop != class oop 也不需要基于class 请先抛弃class关键词 2 在javascript中,对象来自于对象Object comes from Object。你可以使用对象来直接构造一个对象example #1123456var food = &amp;#123;  eat:&quot;i eat !&quot;&amp;#125;var meal">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-31T07:32:30.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript-prototype">
+<meta name="twitter:description" content="1 前言javascript 是具有基于原型链的面向对象编程语言 oop != class oop 也不需要基于class 请先抛弃class关键词 2 在javascript中,对象来自于对象Object comes from Object。你可以使用对象来直接构造一个对象example #1123456var food = &amp;#123;  eat:&quot;i eat !&quot;&amp;#125;var meal">
+  
+    <link rel="alternate" href="/atom.xml" title="Cjkkkk" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Cjkkkk</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post.md-javascript-prototype" class="article article-type-post.md" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/31/javascript-prototype/" class="article-date">
+  <time datetime="2018-12-31T07:28:14.000Z" itemprop="datePublished">2018-12-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript-prototype
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>javascript 是具有基于<code>原型链</code>的面向对象编程语言</p>
+<p><code>oop</code> != <code>class</code></p>
+<p><code>oop</code> 也不需要基于<code>class</code></p>
+<p>请先抛弃<code>class</code>关键词</p>
+<h2 id="2-在javascript中-对象来自于对象Object-comes-from-Object。你可以使用对象来直接构造一个对象"><a href="#2-在javascript中-对象来自于对象Object-comes-from-Object。你可以使用对象来直接构造一个对象" class="headerlink" title="2 在javascript中,对象来自于对象Object comes from Object。你可以使用对象来直接构造一个对象"></a>2 在javascript中,对象来自于对象<code>Object comes from Object</code>。你可以使用对象来直接构造一个对象</h2><p><code>example #1</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> food = &#123;</span><br><span class="line">  eat:<span class="string">"i eat !"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> meal = <span class="built_in">Object</span>.create(food)</span><br><span class="line"><span class="built_in">console</span>.log(meal.eat) <span class="comment">// "i eat"</span></span><br></pre></td></tr></table></figure></p>
+<p>现在我来解释下这里发生了什么,首先Object.create(source)方法创建了一个新的空对象,然后将新对象的原型设置为source即你传入对象。</p>
+<h3 id="2-1-首先来验证下meal确实是空对象"><a href="#2-1-首先来验证下meal确实是空对象" class="headerlink" title="2.1 首先来验证下meal确实是空对象"></a>2.1 首先来验证下<code>meal确实是空对象</code></h3><p><code>console.log(meal) // {}</code></p>
+<h3 id="2-2-然后我们来验证meal的原型确实是food"><a href="#2-2-然后我们来验证meal的原型确实是food" class="headerlink" title="2.2 然后我们来验证meal的原型确实是food"></a>2.2 然后我们来验证<code>meal的原型确实是food</code></h3><p><code>meal.__proto__ === food //true</code></p>
+<h3 id="2-3-你可能会问-等等-proto-是什么？？？-为什么meal-eat-输出了内容？？？"><a href="#2-3-你可能会问-等等-proto-是什么？？？-为什么meal-eat-输出了内容？？？" class="headerlink" title="2.3 你可能会问:等等!__proto__是什么？？？ 为什么meal.eat 输出了内容？？？"></a>2.3 你可能会问:等等!<code>__proto__</code>是什么？？？ 为什么<code>meal.eat 输出了内容</code>？？？</h3><h4 id="2-3-1-先回答第一个问题-proto-是什么？"><a href="#2-3-1-先回答第一个问题-proto-是什么？" class="headerlink" title="2.3.1 先回答第一个问题:__proto__是什么？"></a>2.3.1 先回答第一个问题:<code>__proto__</code>是什么？</h4><p>在javascript中所有的对象中都有一个内置属性<code>__proto__</code>,指向它的原型对象。<br>在这个例子中<code>meal</code>的原型对象就是<code>food</code><br>所有对象的原型指向形成了链式结构，这就是原型链，而原型链的顶端就是<code>Object.prototype</code></p>
+<p><code>meal.__proto -&gt;food  food.__proto-&gt;Object.prototype</code></p>
+<p><code>Object.prototype</code>的原型是<code>null</code></p>
+<p><code>Object.prototype.__proto__ -&gt; null</code></p>
+<p>知道这个原理之后我们就可以来模拟一下<code>Object.create()</code></p>
+<p><code>example#2</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ourNew</span>(<span class="params">source</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">  obj.__proto__ = source</span><br><span class="line">  <span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> food = &#123;</span><br><span class="line">  eat:<span class="string">"i eat"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> meal = ourNew(food)</span><br><span class="line"><span class="built_in">console</span>.log(meal.eat)<span class="comment">//"i eat"</span></span><br></pre></td></tr></table></figure></p>
+<p>太棒了，我们模拟了一个对象的继承</p>
+<h4 id="2-3-2-再回答第二个问题-为什么meal-eat-输出了内容？"><a href="#2-3-2-再回答第二个问题-为什么meal-eat-输出了内容？" class="headerlink" title="2.3.2 再回答第二个问题:为什么meal.eat 输出了内容？"></a>2.3.2 再回答第二个问题:为什么<code>meal.eat 输出了内容</code>？</h4><p>js中对象属性的查找机制，是从对象本身开始查找，如果查找不到，则顺着<code>原型链</code>继续向上查找，直到找到对应属性后返回，否则返回<code>undefined</code></p>
+<p>即<code>meal.__proto__.__proto__...</code></p>
+<p>当原型链中存在相同属性时候,最先找到的会被返回，而<code>上层的同名属性会被屏蔽</code></p>
+<p><code>example #3</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> food = &#123;</span><br><span class="line">  eat:<span class="string">"i eat !"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> meal = <span class="built_in">Object</span>.create(food)</span><br><span class="line"><span class="built_in">console</span>.log(meal.eat)<span class="comment">//"i eat"</span></span><br><span class="line">meal.eat = <span class="string">"i don't eat"</span></span><br><span class="line"><span class="built_in">console</span>.log(meal.eat)<span class="comment">//"i don't eat"</span></span><br><span class="line"><span class="built_in">console</span>.log(meal.__proto__.eat)<span class="comment">//"i eat" oops! food的eat属性被meal屏蔽了</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="3-构造函数-new-关键词"><a href="#3-构造函数-new-关键词" class="headerlink" title="3 构造函数 new 关键词"></a>3 构造函数 new 关键词</h2><p>在js中我们还可以通过一类特殊的对象 – 函数 来构建对象，也就是我们经常说的构造函数。<br>任何函数只要前面加上关键词<code>new</code>就会被当作是构造函数</p>
+<p><code>example #4</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x</span><br><span class="line">  <span class="keyword">this</span>.y = y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(point)<span class="comment">//&#123;x:1,y:2&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>这其中发生了什么呢？</p>
+<p>1 首先一个对象被创建，对象的<code>_proto_</code>是<code>Point.prototype</code>即构造函数.prototype</p>
+<p>2 将this绑定到这个对象，用参数构造这个对象，即 新创建对象的<code>x</code> 变为传入参数 <code>x</code>，新创建对象的<code>y</code> 变为传入参数的 <code>y</code></p>
+<p>3 如果构造函数没有显式返回一个对象，则返回新创建的对象</p>
+<p> <code>example #5</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x</span><br><span class="line">  <span class="keyword">this</span>.y = y</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">x</span>:<span class="number">100</span>,<span class="attr">y</span>:<span class="number">100</span>&#125;<span class="comment">//显式返回对象 覆盖新建立的对象</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(point)<span class="comment">//&#123;x:100,y:100&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>所以在js中对象直接来自对象，不管你是用object.create() 还是 new function()来创建</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/31/javascript-prototype/" data-id="cjqc2899u0002vouxp5hrhnx2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/31/javascript-arrow-function/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          javascript-arrow-function
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/12/31/javascript-this/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">javascript-this</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/31/javascript-prototype/">javascript-prototype</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/31/javascript-this/">javascript-this</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/31/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Cjkkkk<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

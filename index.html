@@ -62,6 +62,135 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post.md-front-end-101" class="article article-type-post.md" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/31/front-end-101/" class="article-date">
+  <time datetime="2018-12-31T08:31:33.000Z" itemprop="datePublished">2018-12-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/31/front-end-101/">front-end-101</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端101"><a href="#前端101" class="headerlink" title="前端101"></a>前端101</h1><h2 id="0-前端概览"><a href="#0-前端概览" class="headerlink" title="0 前端概览"></a>0 前端概览</h2><p>前端 html / css / js / resource / ….<br>html 描述了网页的骨架/结构<br>css 描述了网页的表现形式/模样<br>js 给网页更多的可能, 动态操作dom/AJAX请求/改变样式/动画/…</p>
+<p><a href="https://segmentfault.com/a/1190000012729188" target="_blank" rel="noopener">前端历史</a></p>
+<h2 id="1-HTML基础"><a href="#1-HTML基础" class="headerlink" title="1 HTML基础"></a>1 HTML基础</h2><p>HTML的发展历史<br><a href="https://zh.wikipedia.org/wiki/HTML" target="_blank" rel="noopener">参考链接</a></p>
+<h3 id="1-1-HTML是什么"><a href="#1-1-HTML是什么" class="headerlink" title="1.1 HTML是什么"></a>1.1 HTML是什么</h3><ul>
+<li>HTML 是用来描述网页的一种语言。</li>
+<li>HTML 指的是超文本标记语言 (Hyper Text Markup Language)</li>
+<li>HTML 不是一种编程语言，而是一种标记语言 (markup language)</li>
+<li>HTML 使用标记标签来描述网页<h3 id="1-2-HTML基本结构"><a href="#1-2-HTML基本结构" class="headerlink" title="1.2 HTML基本结构"></a>1.2 HTML基本结构</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"theme.css"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我的第一个标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我的第一个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>保存为<code>index.html</code>，然后用浏览器打开这个文件就可以看到你写的html文件的展示效果</p>
+<p>HTML中就是使用标签来描述网页的结构,如<code>&lt;p&gt;内容&lt;/p&gt;</code>这是一个表示网页段落的标签。</p>
+<p>标签需要闭合,有的标签需要开始标签与结束标签，如<code>&lt;p&gt;内容&lt;/p&gt;</code> 而有的标签是自闭合的, 如<code>&lt;br/&gt;</code></p>
+<p>lab:<br>打开<code>index.html</code>观察效果<br><a href="https://" target="_blank" rel="noopener">DOCTYPE html的作用？</a></p>
+<h3 id="1-3-常用的标签"><a href="#1-3-常用的标签" class="headerlink" title="1.3 常用的标签"></a>1.3 常用的标签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-4-标签的属性"><a href="#1-4-标签的属性" class="headerlink" title="1.4 标签的属性"></a>1.4 标签的属性</h3><h4 id="1-4-1-属性是什么"><a href="#1-4-1-属性是什么" class="headerlink" title="1.4.1 属性是什么"></a>1.4.1 属性是什么</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"xxxxx"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>标签可以用于属性，用来描述标签的性质<br>比如上面的src属性可以用来表示img标签中显示图片的地址</p>
+<h4 id="1-4-2-一些例子"><a href="#1-4-2-一些例子" class="headerlink" title="1.4.2 一些例子"></a>1.4.2 一些例子</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background:black;width:100px"</span>&gt;</span></span><br><span class="line">    hello world</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>style属性描述了div标签的表现形式，通俗的说就是描述了div标签在页面中张什么样子。可以试着改变100这个值为其他东西，比如600，或者更改black为red。观察效果如何。这将与我们之后提到的css有关</p>
+<h4 id="1-4-3-class-id"><a href="#1-4-3-class-id" class="headerlink" title="1.4.3 class/id"></a>1.4.3 class/id</h4><ul>
+<li>你可以通过给标签添加class属性给你的标签分组</li>
+<li>你可以通过给标签添加id属性给你的标签加唯一的身份标识<br>有什么用呢？<br>针对某些特定的标签做一些事情的时候</li>
+</ul>
+<p>举例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .red &#123;</span></span><br><span class="line"><span class="undefined">        color:red;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .green &#123;</span></span><br><span class="line"><span class="undefined">        color:green;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        #yellow &#123;</span></span><br><span class="line"><span class="undefined">        color:yellow;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我的第一个标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span>我的第1个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"green"</span>&gt;</span>我的第2个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span>我的第3个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"green"</span>&gt;</span>我的第4个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span>我的第5个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"yellow"</span>&gt;</span>我的第6个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>lab:<br>打开<code>classId.html</code><br>请观察这些标签的效果，试着做一些改变看看会发生什么</p>
+<h4 id="1-4-4-自定义属性"><a href="#1-4-4-自定义属性" class="headerlink" title="1.4.4 自定义属性"></a>1.4.4 自定义属性</h4><p>你还可以自定义属性<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-blah</span>=<span class="string">"blah"</span>&gt;</span></span><br><span class="line">    hello world</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这样你可以添加自己对标签的一些额外的描述</p>
+<h3 id="1-5-HTML注释"><a href="#1-5-HTML注释" class="headerlink" title="1.5 HTML注释"></a>1.5 HTML注释</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 在此处写注释 --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>example<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我的第一个标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- &lt;p&gt;我的第一个段落。&lt;/p&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>lab:<br>打开<code>comment.html</code>观察效果<br>观察上述代码的结果</p>
+<h3 id="1-6-HTML链接"><a href="#1-6-HTML链接" class="headerlink" title="1.6 HTML链接"></a>1.6 HTML链接</h3><h4 id="1-6-1-认识-lt-a-gt-lt-a-gt-标签"><a href="#1-6-1-认识-lt-a-gt-lt-a-gt-标签" class="headerlink" title="1.6.1 认识&lt;a&gt;&lt;/a&gt;标签"></a>1.6.1 认识<code>&lt;a&gt;&lt;/a&gt;</code>标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"www.baidu.com"</span>&gt;</span>Link text<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>lab:<br>试着在之前的<code>a.html</code>点击这个链接，观察发生了什么</p>
+<h4 id="1-6-2-页面内跳转"><a href="#1-6-2-页面内跳转" class="headerlink" title="1.6.2 页面内跳转"></a>1.6.2 页面内跳转</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        p &#123;</span></span><br><span class="line"><span class="undefined">        height:200px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#7th"</span>&gt;</span>go to 7th p<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#8th"</span>&gt;</span>go to 8th p<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我的第一个标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我的第1个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我的第2个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我的第3个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我的第4个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我的第5个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我的第6个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">"7th"</span>&gt;</span>我的第7个段落。<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"8th"</span>&gt;</span>我的第8个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>lab:<br>打开<code>anchor.html</code>观察效果</p>
+<h3 id="1-7-HTML的头部"><a href="#1-7-HTML的头部" class="headerlink" title="1.7 HTML的头部"></a>1.7 HTML的头部</h3><p>常用的头部标签<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span> 页面title<span class="tag">&lt;/<span class="name">title</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span>&gt;</span> 设置页面的元数据 比如使用的编码</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/head" target="_blank" rel="noopener">HTML head</a><br>note:<br>关注链接中的相关链接部分</p>
+<h3 id="1-8-更多标签-gt"><a href="#1-8-更多标签-gt" class="headerlink" title="1.8 更多标签-&gt;"></a>1.8 更多标签-&gt;</h3><p><a href="http://www.w3school.com.cn/html/" target="_blank" rel="noopener">w3cschool</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML" target="_blank" rel="noopener">MDN</a><br>请关注表单控件/表格</p>
+<h3 id="1-10-行内元素和块级元素"><a href="#1-10-行内元素和块级元素" class="headerlink" title="1.10 行内元素和块级元素"></a>1.10 行内元素和块级元素</h3><p><a href="https://www.jeffjade.com/2015/06/24/2015-06-24-css-block-inline/" target="_blank" rel="noopener">参考链接</a><br>Note：<br>关注常见的行内元素/块级元素<br>关注行内元素与块级元素的区别<br>lab:<br>打开<code>blockInline.html</code>观察效果<br>尝试给span元素增加高度设置</p>
+<h3 id="1-11-Chrome开发者工具的简单用法"><a href="#1-11-Chrome开发者工具的简单用法" class="headerlink" title="1.11 Chrome开发者工具的简单用法"></a>1.11 Chrome开发者工具的简单用法</h3><h2 id="2-css基础"><a href="#2-css基础" class="headerlink" title="2 css基础"></a>2 css基础</h2><ul>
+<li>有了html你可以很好表达你的页面中需要有什么，你可以说我的页面里需要有一个我的自拍照。</li>
+<li>这很妙，可是你无法很好的表达你的页面中的元素应该长什么样子，比如你的照片多大，放在哪里，加个滤镜？</li>
+<li>又比如这段文字的大小，颜色应该是什么样的？</li>
+<li>其实我们在这之前就已经接触到了css(style属性/style标签)</li>
+<li>但我们需要一个更好的表达我们页面样式的方式来做到更好的复用性/与我们的html分离<h3 id="2-1-css是什么"><a href="#2-1-css是什么" class="headerlink" title="2.1 css是什么"></a>2.1 css是什么</h3>层叠样式表 (Cascading Style Sheets，缩写为 CSS），是一种 样式表 语言，用来描述 HTML 或 XML（包括如 SVG、XHTML 之类的 XML 分支语言）文档的呈现。CSS 描述了在屏幕、纸质、音频等其它媒体上的元素应该如何被渲染的问题。</li>
+</ul>
+<h3 id="2-2-css基础语法"><a href="#2-2-css基础语法" class="headerlink" title="2.2 css基础语法"></a>2.2 css基础语法</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selectorlist</span> &#123;</span><br><span class="line">  <span class="attribute">property</span>: value;</span><br><span class="line">  [more property:value; pairs]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">strong</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-class">.menu-bar</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> &gt; <span class="selector-tag">ul</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-css选择器"><a href="#2-3-css选择器" class="headerlink" title="2.3 css选择器"></a>2.3 css选择器</h3><p>如何写selectorlist<br><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Introduction_to_CSS/Selectors" target="_blank" rel="noopener">选择器</a><br>Note:<br>关注</p>
+<ul>
+<li>简单选择器(元素/class/id选择)</li>
+<li>属性选择器</li>
+<li>伪类和伪元素</li>
+<li>组合器<br><img src="https://i.imgur.com/7VCpKN7.png" alt="组合器"></li>
+</ul>
+<h3 id="2-4-css伪类"><a href="#2-4-css伪类" class="headerlink" title="2.4 css伪类"></a>2.4 css伪类</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference#%E9%80%89%E6%8B%A9%E5%99%A8" target="_blank" rel="noopener">伪类</a></p>
+<h3 id="2-5-css伪元素"><a href="#2-5-css伪元素" class="headerlink" title="2.5 css伪元素"></a>2.5 css伪元素</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference#%E9%80%89%E6%8B%A9%E5%99%A8" target="_blank" rel="noopener">伪类</a></p>
+<h3 id="2-4-css注释"><a href="#2-4-css注释" class="headerlink" title="2.4 css注释"></a>2.4 css注释</h3><p>/**/<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.exciting-text</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line"><span class="comment">/*     content: "&lt;- 让人兴兴兴奋!";  */</span></span><br><span class="line">    <span class="attribute">color</span>: green;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-5-css优先级"><a href="#2-5-css优先级" class="headerlink" title="2.5 css优先级"></a>2.5 css优先级</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance" target="_blank" rel="noopener">继承和优先级</a><br>优先级取决于<br>1 重要性（Importance） ！important优先<br>2 专用性（Specificity） 详细的优先<br>3 源代码次序（Source order） 后面的战胜之前的</p>
+<p>继承规则决定<br>后代元素是否继承祖先元素的某些属性值</p>
+<h3 id="2-6-盒模型"><a href="#2-6-盒模型" class="headerlink" title="2.6 盒模型"></a>2.6 盒模型</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Introduction_to_CSS/Box_model" target="_blank" rel="noopener">盒模型</a><br>Note:<br>content（页面的主要内容）<br>padding (分隔页面与边框的距离)<br>border(边框大小)<br>margin (分离与其他元素)<br>关注 box-sizing<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing" target="_blank" rel="noopener">box-sizing</a></p>
+<h3 id="2-7-css布局-position-flex-grid"><a href="#2-7-css布局-position-flex-grid" class="headerlink" title="2.7 css布局(position/flex/grid)"></a>2.7 css布局(position/flex/grid)</h3><p>兼容性 position &gt; flex &gt; grid<br>简易度 grid = flex &gt; position</p>
+<h4 id="2-7-1-position"><a href="#2-7-1-position" class="headerlink" title="2.7.1 position"></a>2.7.1 position</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position" target="_blank" rel="noopener">position (MDN)</a><br>Note:</p>
+<ul>
+<li>position:static/relative/absoulte/fixed/sticky</li>
+<li>注意absoulte定位<blockquote>
+<p> If there is no such parent, it will default all the way back up to the \<html> element itself meaning it will be placed relatively to the page itself.</html></p>
+</blockquote>
+</li>
+<li>注意文档流的概念</li>
+</ul>
+<p>lab:<br>打开position文件夹下的html文件观察效果</p>
+<h4 id="2-7-2-flex"><a href="#2-7-2-flex" class="headerlink" title="2.7.2 flex"></a>2.7.2 flex</h4><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">flex (css-tricks的一篇文章)</a><br>css-trick有许多比较好的css文章<br>Note</p>
+<ul>
+<li>flex-basis(在其他元素分配剩余空间之前设定默认尺寸)</li>
+</ul>
+<h4 id="2-7-3-grid-补充"><a href="#2-7-3-grid-补充" class="headerlink" title="2.7.3 grid(补充)"></a>2.7.3 grid(补充)</h4><p><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank" rel="noopener">grid (css-tricks的一篇文章)</a></p>
+<h4 id="2-7-4-float定位-补充"><a href="#2-7-4-float定位-补充" class="headerlink" title="2.7.4 float定位(补充)"></a>2.7.4 float定位(补充)</h4><p>lab:<br>打开 <code>float.html</code>查看效果</p>
+<h4 id="2-7-5-高度塌缩-补充"><a href="#2-7-5-高度塌缩-补充" class="headerlink" title="2.7.5 高度塌缩(补充)"></a>2.7.5 高度塌缩(补充)</h4><p><a href="http://wiki.jikexueyuan.com/project/liujinsheng/note/float%E9%80%A0%E6%88%90%E7%9A%84%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7.html" target="_blank" rel="noopener">高度塌缩问题</a></p>
+<p><img src="https://i.imgur.com/WOuIB7T.png" alt=""></p>
+<h4 id="2-7-6-position-和flex冲突吗-补充"><a href="#2-7-6-position-和flex冲突吗-补充" class="headerlink" title="2.7.6 position 和flex冲突吗(补充)"></a>2.7.6 position 和flex冲突吗(补充)</h4><p><a href="https://stackoverflow.com/questions/41033245/does-position-absolute-conflict-with-flexbox" target="_blank" rel="noopener">position 和flex冲突吗</a></p>
+<h3 id="2-8-css-prefix"><a href="#2-8-css-prefix" class="headerlink" title="2.8 css prefix"></a>2.8 css prefix</h3><h4 id="2-8-1-为什么需要前缀？"><a href="#2-8-1-为什么需要前缀？" class="headerlink" title="2.8.1 为什么需要前缀？"></a>2.8.1 为什么需要前缀？</h4><p><a href="http://www.webhek.com/post/vendor-prefixes.html" target="_blank" rel="noopener">参考链接</a></p>
+<ul>
+<li>试验一些还未成为标准的的CSS属性——也许永远不会成为标准</li>
+<li>对新出现的标准的CSS3属性特征做实验性的实现</li>
+<li>对CSS3中一些新属性做等效语义的个性实现</li>
+</ul>
+<p><code>Android</code>: <code>-webkit-</code><br><code>Chrome</code>: <code>-webkit-</code><br><code>Safari</code>: <code>-webkit-</code><br><code>iOS</code>: <code>-webkit-</code><br><code>Firefox</code>: <code>-moz-</code><br><code>Internet Explorer</code>: <code>-ms-</code><br><code>Opera</code>: <code>-o-</code></p>
+<h4 id="2-8-2-如何加前缀？"><a href="#2-8-2-如何加前缀？" class="headerlink" title="2.8.2 如何加前缀？"></a>2.8.2 如何加前缀？</h4><p><a href="https://autoprefixer.github.io/" target="_blank" rel="noopener">autoprefix工具</a></p>
+<p>lab:<br>打开<code>prefix.css</code>并将其中内容复制到autoprefix工具中查看结果</p>
+<h3 id="2-9-css预处理-stylus-sass-less…"><a href="#2-9-css预处理-stylus-sass-less…" class="headerlink" title="2.9 css预处理(stylus/sass/less…)"></a>2.9 css预处理(stylus/sass/less…)</h3><p><a href="https://zhuanlan.zhihu.com/p/23382462" target="_blank" rel="noopener">预处理器的好处以及简单的对比</a><br><a href="http://stylus-lang.com/" target="_blank" rel="noopener">stylus如何使用？</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/31/front-end-101/" data-id="cjqc2fjtq00045guxije7gk9d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning-material/">learning material</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post.md-javascript-arrow-function" class="article article-type-post.md" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/31/javascript-arrow-function/" class="article-date">
@@ -101,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/javascript-arrow-function/" data-id="cjqc2899s0001voux8di7za9u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/javascript-arrow-function/" data-id="cjqc2fjtm00015guxw25xex9q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -166,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/javascript-prototype/" data-id="cjqc2899u0002vouxp5hrhnx2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/javascript-prototype/" data-id="cjqc2fjtn00025guxx759xqsb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -223,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/javascript-this/" data-id="cjqc2899x0004vouxd4hulfwu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/javascript-this/" data-id="cjqc2fju1000a5gux0233bu36" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -270,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/hello-world/" data-id="cjqc2899c0000vouxcxv06owk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/hello-world/" data-id="cjqc2fjti00005guxxjyz33qg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -293,7 +422,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning-material/">learning material</a></li></ul>
     </div>
   </div>
 
@@ -303,7 +432,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a>
+      <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/learning-material/" style="font-size: 10px;">learning material</a>
     </div>
   </div>
 
@@ -323,6 +452,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/31/front-end-101/">front-end-101</a>
+          </li>
         
           <li>
             <a href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>

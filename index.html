@@ -62,6 +62,109 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post.md-haskell-knowledge-mind" class="article article-type-post.md" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/01/haskell-knowledge-mind/" class="article-date">
+  <time datetime="2019-01-01T15:30:02.000Z" itemprop="datePublished">2019-01-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/01/haskell-knowledge-mind/">haskell-knowledge-mind</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="chapter1"><a href="#chapter1" class="headerlink" title="chapter1"></a>chapter1</h2><ul>
+<li>重要的概念 Important Concept<ul>
+<li>函数式 functional</li>
+<li>纯净 pure</li>
+<li>惰性 lazy</li>
+<li>严格类型 statically typed</li>
+<li>抽象 abstraction</li>
+</ul>
+</li>
+<li>基本数据类型 basic type<ul>
+<li>Int</li>
+<li>Integer</li>
+<li>Double</li>
+<li>Float</li>
+<li>Bool</li>
+<li>Char</li>
+<li>String</li>
+</ul>
+</li>
+<li>模式匹配 pattern matching</li>
+<li>守卫 guards</li>
+<li>组 pair</li>
+<li>列表 List</li>
+</ul>
+<h2 id="chapter-2"><a href="#chapter-2" class="headerlink" title="chapter 2"></a>chapter 2</h2><ul>
+<li><p>代数数据类型 Algebraic data type</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">AlgDataType</span> = <span class="type">Constr1</span> <span class="type">Type11</span> <span class="type">Type12</span></span></span><br><span class="line">                 | <span class="type">Constr2</span> <span class="type">Type21</span></span><br><span class="line">                 | <span class="type">Constr3</span> <span class="type">Type31</span> <span class="type">Type32</span> <span class="type">Type33</span></span><br><span class="line">                 | <span class="type">Constr4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>x@pat</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">baz :: Person -&gt; String</span><br><span class="line">baz p@(Person n _ _) = &quot;The name field of (&quot; ++ show p ++ &quot;) is &quot; ++ n</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>case</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">case</span> <span class="string">"HELLO"</span> <span class="keyword">of</span></span><br><span class="line">    _ -&gt; <span class="number">7</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>递归数据类型 recursive data types</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Tree</span> = <span class="type">Leaf</span> <span class="type">Char</span></span></span><br><span class="line">    | <span class="type">Node</span> <span class="type">Tree</span> <span class="type">Int</span> <span class="type">Tree</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="chapter-3"><a href="#chapter-3" class="headerlink" title="chapter 3"></a>chapter 3</h2><ul>
+<li><p>多态 Polymorphism</p>
+<ul>
+<li><p>多态数据 Polymorphic data types</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">List</span> t = <span class="type">E</span> | <span class="type">C</span> t (<span class="type">List</span> <span class="title">t</span>)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多态函数 Polymorphic functions</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">filterList</span> :: (t -&gt; <span class="type">Bool</span>) -&gt; <span class="type">List</span> t -&gt; <span class="type">List</span> t</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>标准库 prelude</p>
+<ul>
+<li>map / filter /fold</li>
+<li>Maybe</li>
+</ul>
+</li>
+<li>完整和部分函数 Total and partial functions<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">head</span> [] <span class="comment">-- 抛出错误 无法处理空列表</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="chapter-4"><a href="#chapter-4" class="headerlink" title="chapter 4"></a>chapter 4</h2><ul>
+<li><p>匿名函数 anoymous functions</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\x-&gt; x &gt; <span class="number">100</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数组合 functions composition</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+<span class="number">3</span>) . (+<span class="number">2</span>) $ <span class="number">2</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/01/haskell-knowledge-mind/" data-id="cjqdx53ey0003acux6hiulzff" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Haskell/">Haskell</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post.md-how-https-works" class="article article-type-post.md" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/31/how-https-works/" class="article-date">
@@ -111,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/how-https-works/" data-id="cjqc2rgp7000904ux0g5x1jw7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/how-https-works/" data-id="cjqdx53f30008acux4t2359o6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Network-Basic/">Network Basic</a></li></ul>
@@ -195,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/backend-101/" data-id="cjqc2j1cg000704uxulzvt5mz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/backend-101/" data-id="cjqdx53ei0000acux2fb05e01" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning-material/">learning material</a></li></ul>
@@ -324,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/front-end-101/" data-id="cjqc2elz6000204uxix0dcgwc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/front-end-101/" data-id="cjqdx53f00004acuxwnmoqzfr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning-material/">learning material</a></li></ul>
@@ -375,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/javascript-arrow-function/" data-id="cjqc0crjt000004uxqlxv8re9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/javascript-arrow-function/" data-id="cjqdx53f40009acuxcx7djfiz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -440,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/javascript-prototype/" data-id="cjqc0569w0004msuxvqsxp4qm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/javascript-prototype/" data-id="cjqdx53fb000dacuxgpagq4zf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -497,7 +600,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/javascript-this/" data-id="cjqbzsh510001msux73bevizu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/javascript-this/" data-id="cjqdx53fa000cacuxeptc6kbv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -544,7 +647,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/hello-world/" data-id="cjqbzsh4n0000msuxudc8l26b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/hello-world/" data-id="cjqdx53f20006acux0rrt5wao" class="article-share-link">Share</a>
       
       
     </footer>
@@ -567,7 +670,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network-Basic/">Network Basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning-material/">learning material</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Haskell/">Haskell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network-Basic/">Network Basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning-material/">learning material</a></li></ul>
     </div>
   </div>
 
@@ -577,7 +680,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Network-Basic/" style="font-size: 10px;">Network Basic</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/learning-material/" style="font-size: 15px;">learning material</a>
+      <a href="/tags/Haskell/" style="font-size: 10px;">Haskell</a> <a href="/tags/Network-Basic/" style="font-size: 10px;">Network Basic</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/learning-material/" style="font-size: 15px;">learning material</a>
     </div>
   </div>
 
@@ -586,7 +689,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
     </div>
   </div>
 
@@ -597,6 +700,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/01/haskell-knowledge-mind/">haskell-knowledge-mind</a>
+          </li>
         
           <li>
             <a href="/2018/12/31/how-https-works/">how-https-works</a>
@@ -614,10 +721,6 @@
             <a href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
           </li>
         
-          <li>
-            <a href="/2018/12/31/javascript-prototype/">javascript-prototype</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -630,7 +733,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 Cjkkkk<br>
+      &copy; 2019 Cjkkkk<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

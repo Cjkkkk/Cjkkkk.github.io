@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Cjkkkk">
 <meta property="og:description" content="chapter1 重要的概念 Important Concept 函数式 functional 纯净 pure 惰性 lazy 严格类型 statically typed 抽象 abstraction   基本数据类型 basic type Int Integer Double Float Bool Char String   模式匹配 pattern matching 守卫 guards 组 p">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-01T16:03:01.509Z">
+<meta property="og:updated_time" content="2019-01-03T17:42:31.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="haskell-knowledge-mind">
 <meta name="twitter:description" content="chapter1 重要的概念 Important Concept 函数式 functional 纯净 pure 惰性 lazy 严格类型 statically typed 抽象 abstraction   基本数据类型 basic type Int Integer Double Float Bool Char String   模式匹配 pattern matching 守卫 guards 组 p">
@@ -150,7 +150,54 @@
 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\x-&gt; x &gt; <span class="number">100</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>函数组合 functions composition</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+<span class="number">3</span>) . (+<span class="number">2</span>) $ <span class="number">2</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+<span class="number">3</span>) . (+<span class="number">2</span>) $ <span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>科里化 curry</p>
+<ul>
+<li>函数只接受一个参数</li>
+<li>function arrow 是左结合的</li>
+<li>function application 是右结合的</li>
+</ul>
+</li>
+</ul>
+<h2 id="chapter-5"><a href="#chapter-5" class="headerlink" title="chapter 5"></a>chapter 5</h2><ul>
+<li>Parametricity</li>
+<li><p>type class</p>
+<ul>
+<li><p>example</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Eq</span> a <span class="keyword">where</span></span></span><br><span class="line">    (==) :: a -&gt; a -&gt; <span class="type">Bool</span></span><br><span class="line">    (/=) :: a -&gt; a -&gt; <span class="type">Bool</span></span><br><span class="line">    x /= y = not (x == y)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Foo</span> = <span class="type">F</span> <span class="type">Int</span> | <span class="type">G</span> <span class="type">Char</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Eq</span> <span class="type">Foo</span> <span class="keyword">where</span></span></span><br><span class="line">    (<span class="type">F</span> i1) == (<span class="type">F</span> i2) = i1 == i2</span><br><span class="line">    (<span class="type">G</span> c1) == (<span class="type">G</span> c2) = c1 == c2</span><br><span class="line">    _ == _ = <span class="type">False</span></span><br><span class="line">    foo1 /= foo2 = not (foo1 == foo2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>common type class</p>
+<ul>
+<li>Eq</li>
+<li>Show</li>
+<li>Ord</li>
+<li>Num</li>
+<li>Read</li>
+</ul>
+</li>
+<li>Type classes and Java interfaces</li>
+</ul>
+</li>
+</ul>
+<h2 id="chapter-6"><a href="#chapter-6" class="headerlink" title="chapter 6"></a>chapter 6</h2><ul>
+<li>严格求值 Strict evaluation<ul>
+<li>easy to predit</li>
+</ul>
+</li>
+<li>副作用 side effect<ul>
+<li>time sensitive -&gt; Lazy forces pure</li>
+</ul>
+</li>
+<li>惰性求值 Lazy evaluation<ul>
+<li>when some expression is given as an argument to a function, it is simply packaged up as an unevaluated expression (called a “thunk”</li>
+</ul>
+</li>
+<li>匹配导致求值 Pattern matching drives evaluation<ul>
+<li>Expressions are only evaluated when pattern-matched</li>
+<li>…only as far as necessary for the match to proceed, and no farther!</li>
+</ul>
+</li>
 </ul>
 
       

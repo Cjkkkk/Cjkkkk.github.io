@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-03T17:42:31.091Z</updated>
+  <updated>2019-03-10T10:28:11.916Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>rendering of 3D image: overview</title>
+    <link href="http://yoursite.com/2019/03/10/rendering-of-3D-image-overview/"/>
+    <id>http://yoursite.com/2019/03/10/rendering-of-3D-image-overview/</id>
+    <published>2019-03-10T10:27:45.000Z</published>
+    <updated>2019-03-10T10:28:11.916Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="Computer Graphics" scheme="http://yoursite.com/tags/Computer-Graphics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>numpy-basic</title>
+    <link href="http://yoursite.com/2019/01/08/numpy-basic/"/>
+    <id>http://yoursite.com/2019/01/08/numpy-basic/</id>
+    <published>2019-01-08T03:06:09.000Z</published>
+    <updated>2019-01-08T03:06:36.253Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>haskell-knowledge-mind</title>
@@ -69,7 +109,7 @@
     <link href="http://yoursite.com/2018/12/31/backend-101/"/>
     <id>http://yoursite.com/2018/12/31/backend-101/</id>
     <published>2018-12-31T08:33:34.000Z</published>
-    <updated>2018-12-31T08:35:00.105Z</updated>
+    <updated>2019-03-10T11:33:15.126Z</updated>
     
     <summary type="html">
     
@@ -117,7 +157,7 @@
     <link href="http://yoursite.com/2018/12/31/javascript-arrow-function/"/>
     <id>http://yoursite.com/2018/12/31/javascript-arrow-function/</id>
     <published>2018-12-31T07:34:08.000Z</published>
-    <updated>2018-12-31T07:42:55.233Z</updated>
+    <updated>2019-03-10T11:18:49.536Z</updated>
     
     <summary type="html">
     
@@ -141,7 +181,7 @@
     <link href="http://yoursite.com/2018/12/31/javascript-prototype/"/>
     <id>http://yoursite.com/2018/12/31/javascript-prototype/</id>
     <published>2018-12-31T07:28:14.000Z</published>
-    <updated>2018-12-31T07:32:30.706Z</updated>
+    <updated>2019-03-10T11:15:39.463Z</updated>
     
     <summary type="html">
     

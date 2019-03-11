@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>haskell-knowledge-mind · Cjkkkk&#39;s Studio</title>
+    <title>about · Cjkkkk&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,7 +203,7 @@
 </head>
 
     
-        <body class="post-body">
+        <body class="about-body">
     
     
 <header class="header">
@@ -211,15 +211,6 @@
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/">Cjkkkk&#39;s Studio.</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">haskell-knowledge-mind</a>
-            </div>
-    </div>
     
     <a class="home-link" href="/">Cjkkkk's Studio.</a>
 </header>
@@ -238,67 +229,23 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/about-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            haskell-knowledge-mind
-            <!-- 404 -->
+            about
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                    <div class="post-intro-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Haskell">Haskell</a>
-    
-</div>
-                
-                
-                    <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">391</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/01/01</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -399,165 +346,11 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
+            <!-- 不可以删除，否则会调用post的layout  -->
+<main class="main about-page">
     <article class="article-entry">
-        <h2 id="chapter1"><a href="#chapter1" class="headerlink" title="chapter1"></a>chapter1</h2><ul>
-<li>重要的概念 Important Concept<ul>
-<li>函数式 functional</li>
-<li>纯净 pure</li>
-<li>惰性 lazy</li>
-<li>严格类型 statically typed</li>
-<li>抽象 abstraction</li>
-</ul>
-</li>
-<li>基本数据类型 basic type<ul>
-<li>Int</li>
-<li>Integer</li>
-<li>Double</li>
-<li>Float</li>
-<li>Bool</li>
-<li>Char</li>
-<li>String</li>
-</ul>
-</li>
-<li>模式匹配 pattern matching</li>
-<li>守卫 guards</li>
-<li>组 pair</li>
-<li>列表 List</li>
-</ul>
-<h2 id="chapter-2"><a href="#chapter-2" class="headerlink" title="chapter 2"></a>chapter 2</h2><ul>
-<li><p>代数数据类型 Algebraic data type</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">AlgDataType</span> = <span class="type">Constr1</span> <span class="type">Type11</span> <span class="type">Type12</span></span></span><br><span class="line">                 | <span class="type">Constr2</span> <span class="type">Type21</span></span><br><span class="line">                 | <span class="type">Constr3</span> <span class="type">Type31</span> <span class="type">Type32</span> <span class="type">Type33</span></span><br><span class="line">                 | <span class="type">Constr4</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>x@pat</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">baz :: Person -&gt; String</span><br><span class="line">baz p@(Person n _ _) = &quot;The name field of (&quot; ++ show p ++ &quot;) is &quot; ++ n</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>case</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">case</span> <span class="string">"HELLO"</span> <span class="keyword">of</span></span><br><span class="line">    _ -&gt; <span class="number">7</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>递归数据类型 recursive data types</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Tree</span> = <span class="type">Leaf</span> <span class="type">Char</span></span></span><br><span class="line">    | <span class="type">Node</span> <span class="type">Tree</span> <span class="type">Int</span> <span class="type">Tree</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="chapter-3"><a href="#chapter-3" class="headerlink" title="chapter 3"></a>chapter 3</h2><ul>
-<li><p>多态 Polymorphism</p>
-<ul>
-<li><p>多态数据 Polymorphic data types</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">List</span> t = <span class="type">E</span> | <span class="type">C</span> t (<span class="type">List</span> <span class="title">t</span>)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多态函数 Polymorphic functions</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">filterList</span> :: (t -&gt; <span class="type">Bool</span>) -&gt; <span class="type">List</span> t -&gt; <span class="type">List</span> t</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>标准库 prelude</p>
-<ul>
-<li>map / filter /fold</li>
-<li>Maybe</li>
-</ul>
-</li>
-<li>完整和部分函数 Total and partial functions<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">head</span> [] <span class="comment">-- 抛出错误 无法处理空列表</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="chapter-4"><a href="#chapter-4" class="headerlink" title="chapter 4"></a>chapter 4</h2><ul>
-<li><p>匿名函数 anoymous functions</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\x-&gt; x &gt; <span class="number">100</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>函数组合 functions composition</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+<span class="number">3</span>) . (+<span class="number">2</span>) $ <span class="number">2</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>科里化 curry</p>
-<ul>
-<li>函数只接受一个参数</li>
-<li>function arrow 是左结合的</li>
-<li>function application 是右结合的</li>
-</ul>
-</li>
-</ul>
-<h2 id="chapter-5"><a href="#chapter-5" class="headerlink" title="chapter 5"></a>chapter 5</h2><ul>
-<li>Parametricity</li>
-<li><p>type class</p>
-<ul>
-<li><p>example</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Eq</span> a <span class="keyword">where</span></span></span><br><span class="line">    (==) :: a -&gt; a -&gt; <span class="type">Bool</span></span><br><span class="line">    (/=) :: a -&gt; a -&gt; <span class="type">Bool</span></span><br><span class="line">    x /= y = not (x == y)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Foo</span> = <span class="type">F</span> <span class="type">Int</span> | <span class="type">G</span> <span class="type">Char</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Eq</span> <span class="type">Foo</span> <span class="keyword">where</span></span></span><br><span class="line">    (<span class="type">F</span> i1) == (<span class="type">F</span> i2) = i1 == i2</span><br><span class="line">    (<span class="type">G</span> c1) == (<span class="type">G</span> c2) = c1 == c2</span><br><span class="line">    _ == _ = <span class="type">False</span></span><br><span class="line">    foo1 /= foo2 = not (foo1 == foo2)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>common type class</p>
-<ul>
-<li>Eq</li>
-<li>Show</li>
-<li>Ord</li>
-<li>Num</li>
-<li>Read</li>
-</ul>
-</li>
-<li>Type classes and Java interfaces</li>
-</ul>
-</li>
-</ul>
-<h2 id="chapter-6"><a href="#chapter-6" class="headerlink" title="chapter 6"></a>chapter 6</h2><ul>
-<li>严格求值 Strict evaluation<ul>
-<li>easy to predit</li>
-</ul>
-</li>
-<li>副作用 side effect<ul>
-<li>time sensitive -&gt; Lazy forces pure</li>
-</ul>
-</li>
-<li>惰性求值 Lazy evaluation<ul>
-<li>when some expression is given as an argument to a function, it is simply packaged up as an unevaluated expression (called a “thunk”</li>
-</ul>
-</li>
-<li>匹配导致求值 Pattern matching drives evaluation<ul>
-<li>Expressions are only evaluated when pattern-matched</li>
-<li>…only as far as necessary for the match to proceed, and no farther!</li>
-</ul>
-</li>
-</ul>
-
+        
     </article>
-    <!-- license  -->
-    
-        <div class="license-wrapper">
-            <p>原文作者：<a href="http://yoursite.com">Cjkkkk</a>
-            </p><p>原文链接：<a href="http://yoursite.com/2019/01/01/haskell-knowledge-mind/">http://yoursite.com/2019/01/01/haskell-knowledge-mind/</a>
-            </p><p>发表日期：<a href="http://yoursite.com/2019/01/01/haskell-knowledge-mind/">January 1st 2019, 11:30:02 pm</a>
-            </p><p>更新日期：<a href="http://yoursite.com/2019/01/01/haskell-knowledge-mind/">January 4th 2019, 1:42:31 am</a>
-            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
-        </div>
-    
-    <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2019/01/08/numpy-basic/" title="numpy-basic">
-                    <div class="nextTitle">numpy-basic</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href="/2018/12/31/how-https-works/" title="how-https-works">
-                    <div class="prevTitle">how-https-works</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
-    
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -642,24 +435,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter1"><span class="toc-number">1.</span> <span class="toc-text">chapter1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter-2"><span class="toc-number">2.</span> <span class="toc-text">chapter 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter-3"><span class="toc-number">3.</span> <span class="toc-text">chapter 3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter-4"><span class="toc-number">4.</span> <span class="toc-text">chapter 4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter-5"><span class="toc-number">5.</span> <span class="toc-text">chapter 5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter-6"><span class="toc-number">6.</span> <span class="toc-text">chapter 6</span></a></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -966,8 +741,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

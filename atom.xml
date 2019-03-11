@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-10T10:28:11.916Z</updated>
+  <updated>2019-03-10T13:36:50.808Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,21 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>rendering of 3D image: overview</title>
+    <title>光线模拟 Light Simulator</title>
     <link href="http://yoursite.com/2019/03/10/rendering-of-3D-image-overview/"/>
     <id>http://yoursite.com/2019/03/10/rendering-of-3D-image-overview/</id>
     <published>2019-03-10T10:27:45.000Z</published>
-    <updated>2019-03-10T10:28:11.916Z</updated>
+    <updated>2019-03-10T13:36:50.808Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
     
     </summary>
     

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Cjkkkk">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Cjkkkk">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>backend-end-101 · Cjkkkk&#39;s Studio</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin="">
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin="">
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Cjkkkk&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">backend-end-101</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Cjkkkk's Studio.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            backend-end-101
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="learning material">learning material</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.9k</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/12/31</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="后端101"><a href="#后端101" class="headerlink" title="后端101"></a>后端101</h1><h2 id="1-聊一下什么是后端"><a href="#1-聊一下什么是后端" class="headerlink" title="1 聊一下什么是后端"></a>1 聊一下什么是后端</h2><p><img src="https://i.imgur.com/nDmrjnb.png" alt=""><br>后端的主要作用就是<strong>处理</strong>并<strong>响应</strong>前端发来的请求<br>一个例子:<br>前端: 查看一下当前用户列表，并告诉我男女比<br>后端: 从数据库中查找用户列表，并计算男女比，将结果返回</p>
+<p>问题:</p>
+<ul>
+<li>前端如何发送请求到后端</li>
+<li>后端如何解析请求</li>
+<li>…</li>
+</ul>
+<h3 id="1-1-谈一下网络请求"><a href="#1-1-谈一下网络请求" class="headerlink" title="1.1 谈一下网络请求"></a>1.1 谈一下网络请求</h3><p>网络请求本质上就是发送方准备好了一堆01这样的二进制数据，然后通过你家的网线传输了出去，在中间各种路由器/交换机/服务器转发后到达了接收方的手中。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>这个发送方可以是你的浏览器，当你在Chrome的地址栏敲下 <code>http://www.baidu.com</code>并按下回车的时候，你的浏览器首先发送了一个请求到<strong>DNS服务器</strong>查询了这个域名对应的ip(DNS的原理大家动手查查)。<br>然后它尝试与这个ip指向的服务器建立一个TCP连接(TCP的3次握手，4次挥手大家再动手查查)，建立了<strong>TCP连接</strong>之后呢，你的浏览器发送了一个http请求。</p>
+<p>百度的服务器接受到这个http请求之后，将需要显示给你的HTML文本放在了一个http响应中，返回给你。浏览器接收到这个响应之后，拿出了HTML文本后，根据需要可能还会请求CSS/JS/图片等等资源，请求形式和之前浏览器请求<code>http://www.baidu.com</code>类似,这次可能请求的是<code>http://www.baidu.com/css/index.css</code>。最后浏览器解析出了一个你看到的百度网页的样子。</p>
+<ul>
+<li>什么是TCP连接/什么是http请求？我们接下来看看OSI 7层协议</li>
+</ul>
+<p><a href="http://jm.taobao.org/2017/06/08/20170608/" target="_blank" rel="noopener">tcp握手讲解</a></p>
+<h3 id="1-2-OSI-7层协议"><a href="#1-2-OSI-7层协议" class="headerlink" title="1.2 OSI 7层协议"></a>1.2 OSI 7层协议</h3><ul>
+<li><p>啥是协议?<br><strong>协议是经过合作各方同意的一个统一标准</strong><br>同理网络协议就是一个经过商讨后得出的规定网络之间如何进行通信的标准</p>
+</li>
+<li><p>什么是OSI 7层协议<br>OSI 7层协议是一个比较抽象的模型，(因为实际上数据包就是一堆二进制代码，没有层这个概念)，但它的核心思想很具体。<strong>就是规定网络传输过程中数据包的二进制数据的格式/内容以及传输方式</strong>。</p>
+<p>  而之所以分成7层是因为需要将每一个通信模块分离，每一个通信模块之间只提供接口，而不关心内部的实现，以这种方式进行设计，只要接口没变，内部的实现方式可以随意改变，使得每一个通信模块可以独立设计，也可以很方便的利用其他模块提供的接口进行新的模块设计。</p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/Q76fQpZ.png" alt=""></p>
+<p>除了物理层外<strong>从上往下</strong>每一层都会在原有的数据包上加上特定的帧头(就是包含特定信息的二进制数据)</p>
+<p>比如网络层帧头，其中包含了目的地网络地址，用于指示沿途的路由器，这一串二进制流的目的地是哪里，路由器查询自己的网络地址表，决定再发给更靠近目的地的下一跳路由器。</p>
+<p>之前提到的<strong>HTTP协议/DNS协议</strong>就是一个位于应用层的协议，而<strong>TCP协议</strong>则是位于传输层的一个协议。<strong>HTTP协议</strong>主要是确定了发送的数据包的内容应该是什么样的格式，而<strong>TCP协议</strong>主要是帮助你进行一个可靠的传输。</p>
+<p>可想而知由应用程序发出的一个网络请求沿着应用层向下每层都添加了特定的帧头，最后形成一个完整的请求包。</p>
+<p>http请求就是使用http协议的一个网络请求。</p>
+<ul>
+<li>什么叫使用http协议呢？接下来关注一下传输层及其以上的部分</li>
+</ul>
+<h2 id="2-关注一下传输层及其以上的部分"><a href="#2-关注一下传输层及其以上的部分" class="headerlink" title="2 关注一下传输层及其以上的部分"></a>2 关注一下传输层及其以上的部分</h2><h3 id="2-1-我们为啥需要在TCP协议之上建立HTTP等协议"><a href="#2-1-我们为啥需要在TCP协议之上建立HTTP等协议" class="headerlink" title="2.1 我们为啥需要在TCP协议之上建立HTTP等协议?"></a>2.1 我们为啥需要在TCP协议之上建立HTTP等协议?</h3><p>其实吧, 抛开HTTP协议, TCP连接也可以很好的工作, 我们也可以愉快的传输数据。<br>但是我们传输的数据没有一个统一的标准,即大家应该如何来解析你发来的数据呢?<br>你发送了一堆二进制,它确实是数据,但接受方假如不知道如何解析你发来的数据,他就无法知道是按照UTF-8编码模式来解析你的请求,还是当作一堆数字,还是说你想传递的是一张图片呢?<br>我们不得而知, 这堆数据不能叫信息,而是垃圾。<br>通信中的双方似乎讲的不是一种语言。</p>
+<h3 id="2-2-HTTP协议来了"><a href="#2-2-HTTP协议来了" class="headerlink" title="2.2 HTTP协议来了"></a>2.2 HTTP协议来了</h3><p>所以吧 我们就想在TCP协议之上写一个应用层协议来告诉通信中的双方应该如何解析发送来的数据，也就有了HTTP这一些的协议</p>
+<h3 id="2-3-补充一下"><a href="#2-3-补充一下" class="headerlink" title="2.3 补充一下"></a>2.3 补充一下</h3><p>你不仅可以建立在TCP协议之上 你还可以建立在UDP等其他协议上<br>(传输层协议不只有TCP，还有比如UDP，DNS协议就是建立在UDP协议之上的)</p>
+<h3 id="2-4-那我们自定义协议写一个简单的客户端与服务端吧"><a href="#2-4-那我们自定义协议写一个简单的客户端与服务端吧" class="headerlink" title="2.4 那我们自定义协议写一个简单的客户端与服务端吧"></a>2.4 那我们自定义协议写一个简单的客户端与服务端吧</h3><p>好吧,既然如此那就让我们来看一个建立在TCP协议之上的一个<strong>自定义协议</strong>的服务端和客户端, 我叫它NP协议吧(naive protocol)</p>
+<h3 id="2-5-我们要先知道下socket"><a href="#2-5-我们要先知道下socket" class="headerlink" title="2.5 我们要先知道下socket"></a>2.5 我们要先知道下socket</h3><p>在TCP连接中有两个端点,都用主机的IP地址加上主机上的端口号作为端点的表示，而我们通常将这种端点就叫做套接字（socket）。它是TCP连接中<strong>端</strong>的抽象，是操作系统提供的操作协议栈的一种接口。<br><img src="https://i.imgur.com/VuBrRzu.png" alt=""></p>
+<p>其实socket也提供了建立在UDP协议上的接口(但这都是后话了)<br>我们利用socket可以在TCP协议上直接发送数据，或者说定义一个新的协议。</p>
+<h3 id="2-6-一个自定义协议的例子"><a href="#2-6-一个自定义协议的例子" class="headerlink" title="2.6 一个自定义协议的例子"></a>2.6 一个自定义协议的例子</h3><p>例子使用c语言<br>包含一个客户端与服务端，两者基于socket自定义协议通信<br><strong>代码见内训资料贴压缩包</strong></p>
+<h2 id="3-HTTP"><a href="#3-HTTP" class="headerlink" title="3 HTTP"></a>3 HTTP</h2><ul>
+<li><p>那把刚才的<strong>自定义协议</strong>换成<strong>HTTP协议</strong>就是我们经常在用的HTTP server的协议基础啦~<br>你们常用的ftp server就是把<strong>自定义协议</strong> 换成ftp协议啦<br>还有其他的一些协议大家自己了解下吧<br>(DNS/SSH/HTTPS/…)</p>
+</li>
+<li><p>HTTP协议长什么样呢？<br>简单来说HTTP协议<br><a href="http://www.ruanyifeng.com/blog/2016/08/http.html" target="_blank" rel="noopener">HTTP 协议入门</a></p>
+</li>
+</ul>
+<h3 id="3-1-一个简单的HTTP服务"><a href="#3-1-一个简单的HTTP服务" class="headerlink" title="3.1 一个简单的HTTP服务"></a>3.1 一个简单的HTTP服务</h3><p>假设大家装好了python3<br>那么尝试在一个目录下运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m http.server -p 8000</span><br></pre></td></tr></table></figure></p>
+<p>然后打开8000端口</p>
+<h3 id="3-2-用Node-js的http模块写一个简单的服务器"><a href="#3-2-用Node-js的http模块写一个简单的服务器" class="headerlink" title="3.2 用Node.js的http模块写一个简单的服务器"></a>3.2 用Node.js的http模块写一个简单的服务器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> requestHandler = <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(request.url)</span><br><span class="line">  <span class="keyword">if</span>(request.url === <span class="string">"/hello"</span>)&#123;</span><br><span class="line">    response.end(<span class="string">'in /hello'</span>)</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(request.url === <span class="string">"/user"</span>)&#123;</span><br><span class="line">    response.end(<span class="string">'in /user'</span>)</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    response.end(<span class="string">'Hello Node.js Server!'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(requestHandler)</span><br><span class="line"></span><br><span class="line">server.listen(port, (err) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'something bad happened'</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`server is listening on <span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://yoursite.com">Cjkkkk</a>
+            </p><p>原文链接：<a href="http://yoursite.com/2018/12/31/backend-101/">http://yoursite.com/2018/12/31/backend-101/</a>
+            </p><p>发表日期：<a href="http://yoursite.com/2018/12/31/backend-101/">December 31st 2018, 4:33:34 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2018/12/31/backend-101/">March 10th 2019, 7:33:15 pm</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2018/12/31/how-https-works/" title="how-https-works">
+                    <div class="nextTitle">how-https-works</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2018/12/31/front-end-101/" title="front-end-101">
+                    <div class="prevTitle">front-end-101</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:shanbinke@gmail.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/cjkkkk" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#后端101"><span class="toc-number">1.</span> <span class="toc-text">后端101</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-聊一下什么是后端"><span class="toc-number">1.1.</span> <span class="toc-text">1 聊一下什么是后端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-谈一下网络请求"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 谈一下网络请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">1.1.2.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-OSI-7层协议"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.2 OSI 7层协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-关注一下传输层及其以上的部分"><span class="toc-number">1.2.</span> <span class="toc-text">2 关注一下传输层及其以上的部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-我们为啥需要在TCP协议之上建立HTTP等协议"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 我们为啥需要在TCP协议之上建立HTTP等协议?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-HTTP协议来了"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 HTTP协议来了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-补充一下"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 补充一下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-那我们自定义协议写一个简单的客户端与服务端吧"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 那我们自定义协议写一个简单的客户端与服务端吧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-我们要先知道下socket"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 我们要先知道下socket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-一个自定义协议的例子"><span class="toc-number">1.2.6.</span> <span class="toc-text">2.6 一个自定义协议的例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-HTTP"><span class="toc-number">1.3.</span> <span class="toc-text">3 HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-一个简单的HTTP服务"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 一个简单的HTTP服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-用Node-js的http模块写一个简单的服务器"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 用Node.js的http模块写一个简单的服务器</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 10
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光线模拟 Light Simulator</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/numpy-basic/">numpy-basic</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span><a class="archive-post-title" href="/2019/01/01/haskell-knowledge-mind/">haskell-knowledge-mind</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2018/12/31/hello-world/">Hello World</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/front-end-101/">front-end-101</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-prototype/">javascript-prototype</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
+    
+        <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
+    
+        <span class="sidebar-tag-name" data-tags="Network Basic"><span class="iconfont-archer">&#xe606;</span>Network Basic</span>
+    
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
+    
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Cjkkkk"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

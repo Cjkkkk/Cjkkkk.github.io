@@ -420,7 +420,7 @@ height:50vh;
 <p>即<code>meal.__proto__.__proto__...</code></p>
 <p>当原型链中存在相同属性时候,最先找到的会被返回，而<code>上层的同名属性会被屏蔽</code></p>
 <p><code>example #3</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> food = &#123;</span><br><span class="line">  eat:<span class="string">"i eat !"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> meal = <span class="built_in">Object</span>.create(food)</span><br><span class="line"><span class="built_in">console</span>.log(meal.eat)<span class="comment">//"i eat"</span></span><br><span class="line">meal.eat = <span class="string">"i don't eat"</span></span><br><span class="line"><span class="built_in">console</span>.log(meal.eat)<span class="comment">//"i don't eat"</span></span><br><span class="line"><span class="built_in">console</span>.log(meal.__proto__.eat)<span class="comment">//"i eat" oops! food的eat属性被meal屏蔽了</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="3-构造函数-new-关键词"><a href="#3-构造函数-new-关键词" class="headerlink" title="3 构造函数 new 关键词"></a>3 构造函数 new 关键词</h2><p>在js中我们还可以通过一类特殊的对象 – 函数 来构建对象，也就是我们经常说的构造函数。<br>任何函数只要前面加上关键词<code>new</code>就会被当作是构造函数</p>
+<h2 id="3-构造函数-new-关键词"><a href="#3-构造函数-new-关键词" class="headerlink" title="3 构造函数 new 关键词"></a>3 构造函数 new 关键词</h2><p>在js中我们还可以通过一类特殊的对象 — 函数 来构建对象，也就是我们经常说的构造函数。<br>任何函数只要前面加上关键词<code>new</code>就会被当作是构造函数</p>
 <p><code>example #4</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x</span><br><span class="line">  <span class="keyword">this</span>.y = y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(point)<span class="comment">//&#123;x:1,y:2&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>这其中发生了什么呢？</p>
 <p>1 首先一个对象被创建，对象的<code>_proto_</code>是<code>Point.prototype</code>即构造函数.prototype</p>
@@ -698,12 +698,6 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 11
@@ -751,12 +745,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
         </li>
     
     
@@ -789,11 +783,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
         </li>
     
@@ -802,20 +791,25 @@ top:50vh;
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-prototype/">javascript-prototype</a>
         </li>
     
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
+        </li>
+    
     </ul></div>
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
+    
         <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
     
-        <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
+        <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
     
         <span class="sidebar-tag-name" data-tags="Network Basic"><span class="iconfont-archer">&#xe606;</span>Network Basic</span>
     
         <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
-    
-        <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     

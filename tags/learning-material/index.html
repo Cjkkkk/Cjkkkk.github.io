@@ -623,9 +623,14 @@ HTML 使用标记标签来描述网页1.2 HTML基本结构123456789...
     
     
     
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 10
+        Total : 11
         </div>
         <!-- search  -->
         
@@ -641,12 +646,41 @@ HTML 使用标记标签来描述网页1.2 HTML基本结构123456789...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href="/2019/03/11/Monte-Carlo/">Monte Carlo</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光线模拟 Light Simulator</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/numpy-basic/">numpy-basic</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span><a class="archive-post-title" href="/2019/01/01/haskell-knowledge-mind/">haskell-mind-map</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
         </li>
     
     
@@ -669,41 +703,12 @@ HTML 使用标记标签来描述网页1.2 HTML基本结构123456789...
     
         </ul>
     
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/01</span><a class="archive-post-title" href="/2019/01/01/haskell-knowledge-mind/">haskell-mind-map</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/front-end-101/">front-end-101</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-prototype/">javascript-prototype</a>
         </li>
     
     
@@ -716,22 +721,27 @@ HTML 使用标记标签来描述网页1.2 HTML基本结构123456789...
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
         </li>
     
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-prototype/">javascript-prototype</a>
+        </li>
+    
     </ul></div>
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+    
         <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
-    
-        <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
-    
-        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Network Basic"><span class="iconfont-archer">&#xe606;</span>Network Basic</span>
     
-        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
-        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+        <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
+    
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -799,7 +809,22 @@ jsonContent:
     </div>
     <!-- async load share.js -->
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

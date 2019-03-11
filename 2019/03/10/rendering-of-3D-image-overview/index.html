@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">584</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">654</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -402,7 +402,9 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <h1 id="light-effects"><a href="#light-effects" class="headerlink" title="light effects"></a>light effects</h1><h2 id="反射-Reflection"><a href="#反射-Reflection" class="headerlink" title="反射 Reflection"></a>反射 Reflection</h2><ul>
-<li>view-dependent<h2 id="高光-Glossy"><a href="#高光-Glossy" class="headerlink" title="高光 Glossy"></a>高光 Glossy</h2></li>
+<li>view-dependent</li>
+</ul>
+<h2 id="高光-Glossy"><a href="#高光-Glossy" class="headerlink" title="高光 Glossy"></a>高光 Glossy</h2><ul>
 <li>perfectly reflective (like a mirror) nor perfectly diffuse</li>
 <li>微面 microfacet<br>In computer graphics we often like to describe rough surfaces, using the image of a surface made of lots of microfacet, where each one of these micro facets is orientated in a slightly different direction and act on its own as a perfect mirror</li>
 <li>粗糙程度 roughness<br>仍然是镜面反射，但是物体表面是粗糙的，导致反射方向不一致</li>
@@ -423,7 +425,7 @@ height:50vh;
 <h2 id="焦散-Caustics"><a href="#焦散-Caustics" class="headerlink" title="焦散 Caustics"></a>焦散 Caustics</h2><h2 id="柔阴影-soft-shadows"><a href="#柔阴影-soft-shadows" class="headerlink" title="柔阴影 soft shadows"></a>柔阴影 soft shadows</h2><ul>
 <li>与物体表面材质无关</li>
 </ul>
-<h1 id="Light-Transport-and-Shading"><a href="#Light-Transport-and-Shading" class="headerlink" title="Light Transport and Shading"></a>Light Transport and Shading</h1><p>The appearance of objects, only depends on the way light interacts with matter and travels trough space</p>
+<h1 id="Light-Transport"><a href="#Light-Transport" class="headerlink" title="Light Transport"></a>Light Transport</h1><p>The appearance of objects, only depends on the way light interacts with matter and travels trough space</p>
 <p>light effect可以被分为两种</p>
 <ul>
 <li>物体表面如何与光线交互 shading<ul>
@@ -438,14 +440,18 @@ height:50vh;
 </ul>
 </li>
 </ul>
-<h2 id="global-illumination"><a href="#global-illumination" class="headerlink" title="global illumination"></a>global illumination</h2><p>模拟直接光照与间接关照</p>
+<h2 id="全局光照-global-illumination"><a href="#全局光照-global-illumination" class="headerlink" title="全局光照 global illumination"></a>全局光照 global illumination</h2><p>模拟直接光照与间接关照</p>
 <ul>
 <li>只模拟直接光照<br>With direct lighting you only need to find the intersection between the primary or camera or eye rays (the rays traced from the camera) and the geometry in the scene, and then cast a ray from each one of these intersections to the lights in the scene (this ray is called a shadow ray)</li>
-<li>间接光照<br>Many alternative to ray tracing for simulating indirect lighting exist (point cloud based, photon maps, virtual point lights, shadow maps, etc. Radiosity is another method to compute global illumination. It’s not very much used anymore these days but was very popular in the 80s early 90s); </li>
+<li>间接光照<br>Many alternative to ray tracing for simulating indirect lighting exist (point cloud based, photon maps, virtual point lights, shadow maps, etc.<br>Radiosity is another method to compute global illumination. It’s not very much used anymore these days but was very popular in the 80s early 90s); </li>
 </ul>
 <h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><ul>
 <li>产生大量的噪音 Noise<br>  直接使用ray tracing计算间接光照有时候反而导致noise</li>
-<li>难以模拟焦散 Caustics<br>  从光源出发才是最自然的<br>  <img src="http://www.scratchapixel.com/images/upload/rendering-3d-scene-overview/caustics2.png?" alt=""><br>  无法从P点得知光线的来源<h2 id="Blinn’s-Law-and-Moore’s-law"><a href="#Blinn’s-Law-and-Moore’s-law" class="headerlink" title="Blinn’s Law and Moore’s law"></a>Blinn’s Law and Moore’s law</h2></li>
+<li>难以模拟焦散 Caustics<br>  从光源出发才是最自然的<br>  <img src="http://www.scratchapixel.com/images/upload/rendering-3d-scene-overview/caustics2.png?" alt=""><br>  无法从P点得知光线的来源</li>
+</ul>
+<h2 id="Blinn’s-Law-and-Moore’s-law"><a href="#Blinn’s-Law-and-Moore’s-law" class="headerlink" title="Blinn’s Law and Moore’s law"></a>Blinn’s Law and Moore’s law</h2><ul>
+<li>Moore’s law</li>
+<li>Blinn’s law</li>
 </ul>
 <h2 id="how-many-sencondary-rays-is-needed"><a href="#how-many-sencondary-rays-is-needed" class="headerlink" title="how many sencondary rays is needed ?"></a>how many sencondary rays is needed ?</h2><ul>
 <li>mirror needs 1 ray </li>
@@ -453,21 +459,28 @@ height:50vh;
 <li>diffuse needs many rays</li>
 </ul>
 <h2 id="unidirectional"><a href="#unidirectional" class="headerlink" title="unidirectional"></a>unidirectional</h2><p>只从eye出发追踪到light source<br>而不从light source出发</p>
+<h2 id="bidirectional"><a href="#bidirectional" class="headerlink" title="bidirectional"></a>bidirectional</h2><p>从eye出发发射光线到光源的同时，从光源逆向光线</p>
+<h1 id="shading"><a href="#shading" class="headerlink" title="shading"></a>shading</h1><h2 id="反射率-albedo"><a href="#反射率-albedo" class="headerlink" title="反射率 albedo"></a>反射率 albedo</h2><p>物体的颜色显然不是仅仅取决于落到物体上的光照强弱，还与物体本身反射率有关</p>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
-            <p>原文作者：<a href="http://yoursite.com">Cjkkkk</a>
-            </p><p>原文链接：<a href="http://yoursite.com/2019/03/10/rendering-of-3D-image-overview/">http://yoursite.com/2019/03/10/rendering-of-3D-image-overview/</a>
-            </p><p>发表日期：<a href="http://yoursite.com/2019/03/10/rendering-of-3D-image-overview/">March 10th 2019, 6:27:45 pm</a>
-            </p><p>更新日期：<a href="http://yoursite.com/2019/03/10/rendering-of-3D-image-overview/">March 10th 2019, 9:36:50 pm</a>
+            <p>原文作者：<a href="http://cjkkkk.github.io">Cjkkkk</a>
+            </p><p>原文链接：<a href="http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/">http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/</a>
+            </p><p>发表日期：<a href="http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/">March 10th 2019, 6:27:45 pm</a>
+            </p><p>更新日期：<a href="http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/">March 11th 2019, 6:18:31 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2019/03/11/Monte-Carlo/" title="Monte Carlo">
+                    <div class="nextTitle">Monte Carlo</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -584,7 +597,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#light-effects"><span class="toc-number">1.</span> <span class="toc-text">light effects</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#反射-Reflection"><span class="toc-number">1.1.</span> <span class="toc-text">反射 Reflection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高光-Glossy"><span class="toc-number">1.2.</span> <span class="toc-text">高光 Glossy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漫反射-Diffuse-Reflection"><span class="toc-number">1.3.</span> <span class="toc-text">漫反射 Diffuse Reflection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#透明-Transparency"><span class="toc-number">1.4.</span> <span class="toc-text">透明 Transparency</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子表面射散-Subsurface-Scattering"><span class="toc-number">1.5.</span> <span class="toc-text">子表面射散 Subsurface Scattering</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#焦散-Caustics"><span class="toc-number">1.6.</span> <span class="toc-text">焦散 Caustics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#柔阴影-soft-shadows"><span class="toc-number">1.7.</span> <span class="toc-text">柔阴影 soft shadows</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Light-Transport-and-Shading"><span class="toc-number">2.</span> <span class="toc-text">Light Transport and Shading</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#global-illumination"><span class="toc-number">2.1.</span> <span class="toc-text">global illumination</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problem"><span class="toc-number">2.2.</span> <span class="toc-text">problem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Blinn’s-Law-and-Moore’s-law"><span class="toc-number">2.3.</span> <span class="toc-text">Blinn’s Law and Moore’s law</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#how-many-sencondary-rays-is-needed"><span class="toc-number">2.4.</span> <span class="toc-text">how many sencondary rays is needed ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unidirectional"><span class="toc-number">2.5.</span> <span class="toc-text">unidirectional</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#light-effects"><span class="toc-number">1.</span> <span class="toc-text">light effects</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#反射-Reflection"><span class="toc-number">1.1.</span> <span class="toc-text">反射 Reflection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高光-Glossy"><span class="toc-number">1.2.</span> <span class="toc-text">高光 Glossy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漫反射-Diffuse-Reflection"><span class="toc-number">1.3.</span> <span class="toc-text">漫反射 Diffuse Reflection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#透明-Transparency"><span class="toc-number">1.4.</span> <span class="toc-text">透明 Transparency</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子表面射散-Subsurface-Scattering"><span class="toc-number">1.5.</span> <span class="toc-text">子表面射散 Subsurface Scattering</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#焦散-Caustics"><span class="toc-number">1.6.</span> <span class="toc-text">焦散 Caustics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#柔阴影-soft-shadows"><span class="toc-number">1.7.</span> <span class="toc-text">柔阴影 soft shadows</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Light-Transport"><span class="toc-number">2.</span> <span class="toc-text">Light Transport</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#全局光照-global-illumination"><span class="toc-number">2.1.</span> <span class="toc-text">全局光照 global illumination</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problem"><span class="toc-number">2.2.</span> <span class="toc-text">problem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Blinn’s-Law-and-Moore’s-law"><span class="toc-number">2.3.</span> <span class="toc-text">Blinn’s Law and Moore’s law</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#how-many-sencondary-rays-is-needed"><span class="toc-number">2.4.</span> <span class="toc-text">how many sencondary rays is needed ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unidirectional"><span class="toc-number">2.5.</span> <span class="toc-text">unidirectional</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bidirectional"><span class="toc-number">2.6.</span> <span class="toc-text">bidirectional</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#shading"><span class="toc-number">3.</span> <span class="toc-text">shading</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#反射率-albedo"><span class="toc-number">3.1.</span> <span class="toc-text">反射率 albedo</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -719,9 +732,14 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 10
+        Total : 11
         </div>
         <!-- search  -->
         
@@ -737,12 +755,41 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href="/2019/03/11/Monte-Carlo/">Monte Carlo</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光线模拟 Light Simulator</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/numpy-basic/">numpy-basic</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span><a class="archive-post-title" href="/2019/01/01/haskell-knowledge-mind/">haskell-mind-map</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
         </li>
     
     
@@ -765,41 +812,12 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/01</span><a class="archive-post-title" href="/2019/01/01/haskell-knowledge-mind/">haskell-mind-map</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/front-end-101/">front-end-101</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-prototype/">javascript-prototype</a>
         </li>
     
     
@@ -812,22 +830,27 @@ top:50vh;
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
         </li>
     
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-prototype/">javascript-prototype</a>
+        </li>
+    
     </ul></div>
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+    
         <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
-    
-        <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
-    
-        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Network Basic"><span class="iconfont-archer">&#xe606;</span>Network Basic</span>
     
-        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
-        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
+        <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
+    
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -897,7 +920,22 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
 
 

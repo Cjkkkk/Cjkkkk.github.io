@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2019-03-10T13:36:50.808Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://cjkkkk.github.io/"/>
+  <updated>2019-03-11T12:16:59.151Z</updated>
+  <id>http://cjkkkk.github.io/</id>
   
   <author>
     <name>Cjkkkk</name>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>光线模拟 Light Simulator</title>
-    <link href="http://yoursite.com/2019/03/10/rendering-of-3D-image-overview/"/>
-    <id>http://yoursite.com/2019/03/10/rendering-of-3D-image-overview/</id>
-    <published>2019-03-10T10:27:45.000Z</published>
-    <updated>2019-03-10T13:36:50.808Z</updated>
+    <title>Monte Carlo</title>
+    <link href="http://cjkkkk.github.io/2019/03/11/Monte-Carlo/"/>
+    <id>http://cjkkkk.github.io/2019/03/11/Monte-Carlo/</id>
+    <published>2019-03-11T10:20:12.000Z</published>
+    <updated>2019-03-11T12:16:59.151Z</updated>
     
     <summary type="html">
     
@@ -36,16 +36,40 @@
     </summary>
     
     
-      <category term="Computer Graphics" scheme="http://yoursite.com/tags/Computer-Graphics/"/>
+      <category term="Computer Graphics" scheme="http://cjkkkk.github.io/tags/Computer-Graphics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>光线模拟 Light Simulator</title>
+    <link href="http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/"/>
+    <id>http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/</id>
+    <published>2019-03-10T10:27:45.000Z</published>
+    <updated>2019-03-11T10:18:31.972Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Computer Graphics" scheme="http://cjkkkk.github.io/tags/Computer-Graphics/"/>
     
   </entry>
   
   <entry>
     <title>numpy-basic</title>
-    <link href="http://yoursite.com/2019/01/08/numpy-basic/"/>
-    <id>http://yoursite.com/2019/01/08/numpy-basic/</id>
+    <link href="http://cjkkkk.github.io/2019/01/08/numpy-basic/"/>
+    <id>http://cjkkkk.github.io/2019/01/08/numpy-basic/</id>
     <published>2019-01-08T03:06:09.000Z</published>
-    <updated>2019-01-08T03:06:36.253Z</updated>
+    <updated>2019-03-11T10:20:49.768Z</updated>
     
     <summary type="html">
     
@@ -60,14 +84,14 @@
     </summary>
     
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://cjkkkk.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>haskell-mind-map</title>
-    <link href="http://yoursite.com/2019/01/01/haskell-knowledge-mind/"/>
-    <id>http://yoursite.com/2019/01/01/haskell-knowledge-mind/</id>
+    <link href="http://cjkkkk.github.io/2019/01/01/haskell-knowledge-mind/"/>
+    <id>http://cjkkkk.github.io/2019/01/01/haskell-knowledge-mind/</id>
     <published>2019-01-01T15:30:02.000Z</published>
     <updated>2019-03-11T05:03:20.073Z</updated>
     
@@ -84,14 +108,14 @@
     </summary>
     
     
-      <category term="Haskell" scheme="http://yoursite.com/tags/Haskell/"/>
+      <category term="Haskell" scheme="http://cjkkkk.github.io/tags/Haskell/"/>
     
   </entry>
   
   <entry>
     <title>how-https-works</title>
-    <link href="http://yoursite.com/2018/12/31/how-https-works/"/>
-    <id>http://yoursite.com/2018/12/31/how-https-works/</id>
+    <link href="http://cjkkkk.github.io/2018/12/31/how-https-works/"/>
+    <id>http://cjkkkk.github.io/2018/12/31/how-https-works/</id>
     <published>2018-12-31T08:41:33.000Z</published>
     <updated>2018-12-31T08:43:54.243Z</updated>
     
@@ -108,14 +132,14 @@
     </summary>
     
     
-      <category term="Network Basic" scheme="http://yoursite.com/tags/Network-Basic/"/>
+      <category term="Network Basic" scheme="http://cjkkkk.github.io/tags/Network-Basic/"/>
     
   </entry>
   
   <entry>
     <title>backend-end-101</title>
-    <link href="http://yoursite.com/2018/12/31/backend-101/"/>
-    <id>http://yoursite.com/2018/12/31/backend-101/</id>
+    <link href="http://cjkkkk.github.io/2018/12/31/backend-101/"/>
+    <id>http://cjkkkk.github.io/2018/12/31/backend-101/</id>
     <published>2018-12-31T08:33:34.000Z</published>
     <updated>2019-03-10T11:33:15.126Z</updated>
     
@@ -132,14 +156,14 @@
     </summary>
     
     
-      <category term="learning material" scheme="http://yoursite.com/tags/learning-material/"/>
+      <category term="learning material" scheme="http://cjkkkk.github.io/tags/learning-material/"/>
     
   </entry>
   
   <entry>
     <title>front-end-101</title>
-    <link href="http://yoursite.com/2018/12/31/front-end-101/"/>
-    <id>http://yoursite.com/2018/12/31/front-end-101/</id>
+    <link href="http://cjkkkk.github.io/2018/12/31/front-end-101/"/>
+    <id>http://cjkkkk.github.io/2018/12/31/front-end-101/</id>
     <published>2018-12-31T08:31:33.000Z</published>
     <updated>2018-12-31T08:32:11.533Z</updated>
     
@@ -156,14 +180,14 @@
     </summary>
     
     
-      <category term="learning material" scheme="http://yoursite.com/tags/learning-material/"/>
+      <category term="learning material" scheme="http://cjkkkk.github.io/tags/learning-material/"/>
     
   </entry>
   
   <entry>
     <title>javascript-arrow-function</title>
-    <link href="http://yoursite.com/2018/12/31/javascript-arrow-function/"/>
-    <id>http://yoursite.com/2018/12/31/javascript-arrow-function/</id>
+    <link href="http://cjkkkk.github.io/2018/12/31/javascript-arrow-function/"/>
+    <id>http://cjkkkk.github.io/2018/12/31/javascript-arrow-function/</id>
     <published>2018-12-31T07:34:08.000Z</published>
     <updated>2019-03-10T11:18:49.536Z</updated>
     
@@ -180,14 +204,14 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://cjkkkk.github.io/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>javascript-prototype</title>
-    <link href="http://yoursite.com/2018/12/31/javascript-prototype/"/>
-    <id>http://yoursite.com/2018/12/31/javascript-prototype/</id>
+    <link href="http://cjkkkk.github.io/2018/12/31/javascript-prototype/"/>
+    <id>http://cjkkkk.github.io/2018/12/31/javascript-prototype/</id>
     <published>2018-12-31T07:28:14.000Z</published>
     <updated>2019-03-10T11:15:39.463Z</updated>
     
@@ -204,14 +228,14 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://cjkkkk.github.io/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>javascript-this</title>
-    <link href="http://yoursite.com/2018/12/31/javascript-this/"/>
-    <id>http://yoursite.com/2018/12/31/javascript-this/</id>
+    <link href="http://cjkkkk.github.io/2018/12/31/javascript-this/"/>
+    <id>http://cjkkkk.github.io/2018/12/31/javascript-this/</id>
     <published>2018-12-31T07:18:09.000Z</published>
     <updated>2018-12-31T07:23:55.395Z</updated>
     
@@ -228,14 +252,14 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://cjkkkk.github.io/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/12/31/hello-world/"/>
-    <id>http://yoursite.com/2018/12/31/hello-world/</id>
+    <link href="http://cjkkkk.github.io/2018/12/31/hello-world/"/>
+    <id>http://cjkkkk.github.io/2018/12/31/hello-world/</id>
     <published>2018-12-31T06:51:40.746Z</published>
     <updated>2018-12-31T06:51:40.746Z</updated>
     

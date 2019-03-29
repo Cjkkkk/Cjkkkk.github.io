@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-03-11T16:06:31.421Z</updated>
+  <updated>2019-03-13T11:13:32.565Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,102 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>四元数 quaternion</title>
+    <link href="http://cjkkkk.github.io/2019/03/13/quaternion/"/>
+    <id>http://cjkkkk.github.io/2019/03/13/quaternion/</id>
+    <published>2019-03-13T05:23:13.000Z</published>
+    <updated>2019-03-13T11:13:32.565Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Computer Graphics" scheme="http://cjkkkk.github.io/tags/Computer-Graphics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>c++ algorithm</title>
+    <link href="http://cjkkkk.github.io/2019/03/13/c-algorithm/"/>
+    <id>http://cjkkkk.github.io/2019/03/13/c-algorithm/</id>
+    <published>2019-03-12T16:53:28.000Z</published>
+    <updated>2019-03-12T16:54:50.262Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>generic</title>
+    <link href="http://cjkkkk.github.io/2019/03/12/generics/"/>
+    <id>http://cjkkkk.github.io/2019/03/12/generics/</id>
+    <published>2019-03-12T11:42:09.000Z</published>
+    <updated>2019-03-13T04:36:37.895Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>c++ string</title>
+    <link href="http://cjkkkk.github.io/2019/03/12/c-string/"/>
+    <id>http://cjkkkk.github.io/2019/03/12/c-string/</id>
+    <published>2019-03-12T10:24:33.000Z</published>
+    <updated>2019-03-12T11:21:32.221Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>Monte Carlo</title>

@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">16</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">271</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -402,7 +402,28 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>为了面试苦学c++ orz… 记录下STL中的algorithm模块</p>
-
+<h1 id="STL三大组件"><a href="#STL三大组件" class="headerlink" title="STL三大组件"></a>STL三大组件</h1><ul>
+<li>Iterator</li>
+<li>algorithm</li>
+<li>container</li>
+</ul>
+<p>核心思想: 数据结构与算法分离，为各种数据结构提供统一的算法。</p>
+<h1 id="一些函数"><a href="#一些函数" class="headerlink" title="一些函数"></a>一些函数</h1><p><a href="https://en.cppreference.com/w/cpp/algorithm" target="_blank" rel="noopener">algorithm函数列表</a></p>
+<h2 id="all-of-count-if"><a href="#all-of-count-if" class="headerlink" title="all_of/count_if"></a>all_of/count_if</h2><ul>
+<li>all_of</li>
+<li>count_if</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// all_of</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::all_of(s.begin(), s.end(), [](<span class="keyword">int</span> x) &#123; <span class="keyword">return</span> x &gt; <span class="number">0</span>;&#125;) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    <span class="comment">// count_if</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::count_if(s.begin(), s.end(), [](<span class="keyword">int</span> x) &#123; <span class="keyword">return</span> x &gt; <span class="number">1</span>;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h2><p>copy(iterator s_begin, iterator s_end, iterator t_begin)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="comment">// copy</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; s2;</span><br><span class="line">    <span class="built_in">std</span>::copy(s.begin(), s.end(),  <span class="built_in">std</span>::back_inserter(s2));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for-each-transform"><a href="#for-each-transform" class="headerlink" title="for_each/transform"></a>for_each/transform</h2><ul>
+<li>for_each</li>
+<li>transform(iterator t_begin, iterator t_end, iterator s_begin, function)</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="comment">// for_each</span></span><br><span class="line">    <span class="built_in">std</span>::for_each(s.begin(), s.end(), [](<span class="keyword">int</span> &amp;x) &#123; x = x * x;&#125;);</span><br><span class="line">    <span class="comment">// transform</span></span><br><span class="line">    <span class="built_in">std</span>::transform(s.begin(), s.end(), s.begin(), [](<span class="keyword">int</span> x) -&gt; <span class="keyword">int</span> &#123;<span class="keyword">return</span> x + <span class="number">1</span>;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="iter-swap"><a href="#iter-swap" class="headerlink" title="iter_swap"></a>iter_swap</h2><p>iter_swap(iterator, iterator)</p>
+<h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><p>sort(iterator, iteratot, function)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Interval</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> start;</span><br><span class="line">    <span class="keyword">int</span> end;</span><br><span class="line">    Interval(<span class="keyword">int</span> a, <span class="keyword">int</span> b):start(a), end(b)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    sort(intervals.begin(),</span><br><span class="line">                intervals.end(),</span><br><span class="line">                [](<span class="keyword">const</span> Interval&amp; x, <span class="keyword">const</span> Interval&amp; y)&#123;</span><br><span class="line">                    <span class="keyword">return</span> x.end &lt; y.end;</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- license  -->
     
@@ -410,7 +431,7 @@ height:50vh;
             <p>原文作者：<a href="http://cjkkkk.github.io">Cjkkkk</a>
             </p><p>原文链接：<a href="http://cjkkkk.github.io/2019/03/13/c-algorithm/">http://cjkkkk.github.io/2019/03/13/c-algorithm/</a>
             </p><p>发表日期：<a href="http://cjkkkk.github.io/2019/03/13/c-algorithm/">March 13th 2019, 12:53:28 am</a>
-            </p><p>更新日期：<a href="http://cjkkkk.github.io/2019/03/13/c-algorithm/">March 13th 2019, 12:54:50 am</a>
+            </p><p>更新日期：<a href="http://cjkkkk.github.io/2019/03/13/c-algorithm/">March 18th 2019, 4:49:26 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -427,8 +448,8 @@ height:50vh;
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/03/12/generics/" title="generic">
-                    <div class="prevTitle">generic</div>
+                <a href="/2019/03/12/generics/" title="c++ generic">
+                    <div class="prevTitle">c++ generic</div>
                 </a>
             
         </li>
@@ -538,7 +559,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#STL三大组件"><span class="toc-number">1.</span> <span class="toc-text">STL三大组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些函数"><span class="toc-number">2.</span> <span class="toc-text">一些函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#all-of-count-if"><span class="toc-number">2.1.</span> <span class="toc-text">all_of/count_if</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#copy"><span class="toc-number">2.2.</span> <span class="toc-text">copy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for-each-transform"><span class="toc-number">2.3.</span> <span class="toc-text">for_each/transform</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iter-swap"><span class="toc-number">2.4.</span> <span class="toc-text">iter_swap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sort"><span class="toc-number">2.5.</span> <span class="toc-text">sort</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -736,9 +757,91 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 15
+        Total : 19
         </div>
         <!-- search  -->
         
@@ -754,6 +857,26 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href="/2019/03/22/BRDF/">BRDF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/16</span><a class="archive-post-title" href="/2019/03/16/key-point/">视觉中的特征点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span><a class="archive-post-title" href="/2019/03/15/c-standard/">c++特性</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/13</span><a class="archive-post-title" href="/2019/03/13/camera-calibration-using-chessboard/">相机标定 camera calibration</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/13</span><a class="archive-post-title" href="/2019/03/13/quaternion/">四元数 quaternion</a>
         </li>
     
@@ -764,7 +887,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/generics/">generic</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/generics/">c++ generic</a>
         </li>
     
     
@@ -779,7 +902,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光线模拟 Light Simulator</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光模拟 Light Simulator</a>
         </li>
     
     
@@ -803,11 +926,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
         </li>
     
@@ -818,12 +936,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
         </li>
     
     
@@ -841,17 +964,21 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="computer graphics"><span class="iconfont-archer">&#xe606;</span>computer graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+    
         <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
     
         <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
     
-        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+        <span class="sidebar-tag-name" data-tags="computer vision"><span class="iconfont-archer">&#xe606;</span>computer vision</span>
+    
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
     
         <span class="sidebar-tag-name" data-tags="Network Basic"><span class="iconfont-archer">&#xe606;</span>Network Basic</span>
-    
-        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     

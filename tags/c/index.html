@@ -346,13 +346,41 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/03/15/c-standard/">
+            
+                <span>c++特性</span>
+        </a>
+        <div class="abstract-content">
+            记录c++各个标准的一些特性
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/15</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="c++">c++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/03/13/c-algorithm/">
             
                 <span>c++ algorithm</span>
         </a>
         <div class="abstract-content">
-            为了面试苦学c++ orz… 记录下STL中的algorithm模块
-
+            c++ STL algorithm
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -378,13 +406,10 @@
     <article class="index-post">
         <a class="abstract-title" href="/2019/03/12/generics/">
             
-                <span>generic</span>
+                <span>c++ generic</span>
         </a>
         <div class="abstract-content">
-            c++中的模板以函数模板为例1234template&lt;T&gt;T sub(T a, T b)&#123;    return a - b;&#125;
-函数模板定义了函数的通用公式，减少为不同类型相同功能写重复代码123int sub(int a, int b);float sub(float a, float b);...
-编译器如何检查类型以上文中的sub函数为例，如果我们传入不支持减法的类型，编译器能检查出错误吗？比如如果尝试使用1string s = sub("AA", "BB");
-我们都知道字符串是不支持减法的(不考虑操作符重载)，那么编译器如何在编译期发现这个错误呢...
+            c++模板编程
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -413,18 +438,7 @@
                 <span>c++ string</span>
         </a>
         <div class="abstract-content">
-            最近准备Google面试，写图形学项目发现自己c++菜的一逼…于是准备记录一些c++的学习笔记orz
-const char* vs. std::string定义
-string 是c++的class,变量内存空间存放字符序列
-const char* 只是一个指向存放字符序列的内存区域的指针，变量内存空间只存放指针
-
-拷贝明显可以看出拷贝const char*只需要拷贝指针， 而拷贝string需要复制整个内存区域
-互相转换
-const char* 可以被隐式转换为 string
-从指针指向的地方开始复制字符
-
-
-string需要使用c_str() 来转换为const char*,同时这意味...
+            c++字符串的一点记录
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -715,9 +729,91 @@ string需要使用c_str() 来转换为const char*,同时这意味...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 15
+        Total : 19
         </div>
         <!-- search  -->
         
@@ -733,6 +829,26 @@ string需要使用c_str() 来转换为const char*,同时这意味...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href="/2019/03/22/BRDF/">BRDF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/16</span><a class="archive-post-title" href="/2019/03/16/key-point/">视觉中的特征点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span><a class="archive-post-title" href="/2019/03/15/c-standard/">c++特性</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/13</span><a class="archive-post-title" href="/2019/03/13/camera-calibration-using-chessboard/">相机标定 camera calibration</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/13</span><a class="archive-post-title" href="/2019/03/13/quaternion/">四元数 quaternion</a>
         </li>
     
@@ -743,7 +859,7 @@ string需要使用c_str() 来转换为const char*,同时这意味...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/generics/">generic</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/generics/">c++ generic</a>
         </li>
     
     
@@ -758,7 +874,7 @@ string需要使用c_str() 来转换为const char*,同时这意味...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光线模拟 Light Simulator</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光模拟 Light Simulator</a>
         </li>
     
     
@@ -782,11 +898,6 @@ string需要使用c_str() 来转换为const char*,同时这意味...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
         </li>
     
@@ -797,12 +908,17 @@ string需要使用c_str() 来转换为const char*,同时这意味...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
         </li>
     
     
@@ -820,17 +936,21 @@ string需要使用c_str() 来转换为const char*,同时这意味...
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="computer graphics"><span class="iconfont-archer">&#xe606;</span>computer graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+    
         <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
     
         <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
     
-        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+        <span class="sidebar-tag-name" data-tags="computer vision"><span class="iconfont-archer">&#xe606;</span>computer vision</span>
+    
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
     
         <span class="sidebar-tag-name" data-tags="Network Basic"><span class="iconfont-archer">&#xe606;</span>Network Basic</span>
-    
-        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-03-13T11:13:32.565Z</updated>
+  <updated>2019-03-22T12:21:51.837Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -17,11 +17,107 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>BRDF</title>
+    <link href="http://cjkkkk.github.io/2019/03/22/BRDF/"/>
+    <id>http://cjkkkk.github.io/2019/03/22/BRDF/</id>
+    <published>2019-03-22T12:12:04.000Z</published>
+    <updated>2019-03-22T12:21:51.837Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="computer graphics" scheme="http://cjkkkk.github.io/tags/computer-graphics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>视觉中的特征点</title>
+    <link href="http://cjkkkk.github.io/2019/03/16/key-point/"/>
+    <id>http://cjkkkk.github.io/2019/03/16/key-point/</id>
+    <published>2019-03-15T16:04:52.000Z</published>
+    <updated>2019-03-15T16:41:08.826Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="computer vision" scheme="http://cjkkkk.github.io/tags/computer-vision/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>c++特性</title>
+    <link href="http://cjkkkk.github.io/2019/03/15/c-standard/"/>
+    <id>http://cjkkkk.github.io/2019/03/15/c-standard/</id>
+    <published>2019-03-14T16:51:11.000Z</published>
+    <updated>2019-03-27T02:15:54.222Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>相机标定 camera calibration</title>
+    <link href="http://cjkkkk.github.io/2019/03/13/camera-calibration-using-chessboard/"/>
+    <id>http://cjkkkk.github.io/2019/03/13/camera-calibration-using-chessboard/</id>
+    <published>2019-03-13T14:29:30.000Z</published>
+    <updated>2019-03-14T16:13:27.149Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="computer vision" scheme="http://cjkkkk.github.io/tags/computer-vision/"/>
+    
+  </entry>
+  
+  <entry>
     <title>四元数 quaternion</title>
     <link href="http://cjkkkk.github.io/2019/03/13/quaternion/"/>
     <id>http://cjkkkk.github.io/2019/03/13/quaternion/</id>
     <published>2019-03-13T05:23:13.000Z</published>
-    <updated>2019-03-13T11:13:32.565Z</updated>
+    <updated>2019-03-14T16:12:39.976Z</updated>
     
     <summary type="html">
     
@@ -45,7 +141,7 @@
     <link href="http://cjkkkk.github.io/2019/03/13/c-algorithm/"/>
     <id>http://cjkkkk.github.io/2019/03/13/c-algorithm/</id>
     <published>2019-03-12T16:53:28.000Z</published>
-    <updated>2019-03-12T16:54:50.262Z</updated>
+    <updated>2019-03-18T08:49:26.794Z</updated>
     
     <summary type="html">
     
@@ -65,11 +161,11 @@
   </entry>
   
   <entry>
-    <title>generic</title>
+    <title>c++ generic</title>
     <link href="http://cjkkkk.github.io/2019/03/12/generics/"/>
     <id>http://cjkkkk.github.io/2019/03/12/generics/</id>
     <published>2019-03-12T11:42:09.000Z</published>
-    <updated>2019-03-13T04:36:37.895Z</updated>
+    <updated>2019-03-14T16:29:52.641Z</updated>
     
     <summary type="html">
     
@@ -93,7 +189,7 @@
     <link href="http://cjkkkk.github.io/2019/03/12/c-string/"/>
     <id>http://cjkkkk.github.io/2019/03/12/c-string/</id>
     <published>2019-03-12T10:24:33.000Z</published>
-    <updated>2019-03-12T11:21:32.221Z</updated>
+    <updated>2019-03-15T16:07:07.128Z</updated>
     
     <summary type="html">
     
@@ -117,7 +213,7 @@
     <link href="http://cjkkkk.github.io/2019/03/11/Monte-Carlo/"/>
     <id>http://cjkkkk.github.io/2019/03/11/Monte-Carlo/</id>
     <published>2019-03-11T10:20:12.000Z</published>
-    <updated>2019-03-11T16:06:31.421Z</updated>
+    <updated>2019-03-14T16:26:50.931Z</updated>
     
     <summary type="html">
     
@@ -137,11 +233,11 @@
   </entry>
   
   <entry>
-    <title>光线模拟 Light Simulator</title>
+    <title>光模拟 Light Simulator</title>
     <link href="http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/"/>
     <id>http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/</id>
     <published>2019-03-10T10:27:45.000Z</published>
-    <updated>2019-03-11T15:54:17.621Z</updated>
+    <updated>2019-03-29T08:25:17.934Z</updated>
     
     <summary type="html">
     
@@ -189,7 +285,7 @@
     <link href="http://cjkkkk.github.io/2019/01/01/haskell-knowledge-mind/"/>
     <id>http://cjkkkk.github.io/2019/01/01/haskell-knowledge-mind/</id>
     <published>2019-01-01T15:30:02.000Z</published>
-    <updated>2019-03-11T05:03:20.073Z</updated>
+    <updated>2019-03-14T16:15:26.076Z</updated>
     
     <summary type="html">
     
@@ -213,7 +309,7 @@
     <link href="http://cjkkkk.github.io/2018/12/31/how-https-works/"/>
     <id>http://cjkkkk.github.io/2018/12/31/how-https-works/</id>
     <published>2018-12-31T08:41:33.000Z</published>
-    <updated>2018-12-31T08:43:54.243Z</updated>
+    <updated>2019-03-14T16:27:20.997Z</updated>
     
     <summary type="html">
     
@@ -237,7 +333,7 @@
     <link href="http://cjkkkk.github.io/2018/12/31/backend-101/"/>
     <id>http://cjkkkk.github.io/2018/12/31/backend-101/</id>
     <published>2018-12-31T08:33:34.000Z</published>
-    <updated>2019-03-10T11:33:15.126Z</updated>
+    <updated>2019-03-14T16:29:16.402Z</updated>
     
     <summary type="html">
     
@@ -261,7 +357,7 @@
     <link href="http://cjkkkk.github.io/2018/12/31/front-end-101/"/>
     <id>http://cjkkkk.github.io/2018/12/31/front-end-101/</id>
     <published>2018-12-31T08:31:33.000Z</published>
-    <updated>2018-12-31T08:32:11.533Z</updated>
+    <updated>2019-03-14T16:29:03.696Z</updated>
     
     <summary type="html">
     
@@ -285,7 +381,7 @@
     <link href="http://cjkkkk.github.io/2018/12/31/javascript-arrow-function/"/>
     <id>http://cjkkkk.github.io/2018/12/31/javascript-arrow-function/</id>
     <published>2018-12-31T07:34:08.000Z</published>
-    <updated>2019-03-10T11:18:49.536Z</updated>
+    <updated>2019-03-14T16:27:43.570Z</updated>
     
     <summary type="html">
     
@@ -309,7 +405,7 @@
     <link href="http://cjkkkk.github.io/2018/12/31/javascript-prototype/"/>
     <id>http://cjkkkk.github.io/2018/12/31/javascript-prototype/</id>
     <published>2018-12-31T07:28:14.000Z</published>
-    <updated>2019-03-10T11:15:39.463Z</updated>
+    <updated>2019-03-14T16:28:05.940Z</updated>
     
     <summary type="html">
     
@@ -333,7 +429,7 @@
     <link href="http://cjkkkk.github.io/2018/12/31/javascript-this/"/>
     <id>http://cjkkkk.github.io/2018/12/31/javascript-this/</id>
     <published>2018-12-31T07:18:09.000Z</published>
-    <updated>2018-12-31T07:23:55.395Z</updated>
+    <updated>2019-03-14T16:28:15.675Z</updated>
     
     <summary type="html">
     
@@ -357,7 +453,7 @@
     <link href="http://cjkkkk.github.io/2018/12/30/hello-world/"/>
     <id>http://cjkkkk.github.io/2018/12/30/hello-world/</id>
     <published>2018-12-30T08:31:33.000Z</published>
-    <updated>2019-03-11T16:09:11.486Z</updated>
+    <updated>2019-03-14T16:28:47.390Z</updated>
     
     <summary type="html">
     

@@ -351,7 +351,7 @@
                 <span>how-https-works</span>
         </a>
         <div class="abstract-content">
-            HTTPS是如何工作的[翻译]原文链接HTTPS is simply your standard HTTP protocol slathered with a generous layer of delicious SSL/TLS encryption goodness.HTTPS其实只是具有SSL / TLS加密优势的标准HTTP协议Unless something goes horribly wrong (and it can), it prevents people like the infamous Eve from viewing or modifying the reques...
+            https工作原理
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -380,15 +380,7 @@
                 <span>backend-end-101</span>
         </a>
         <div class="abstract-content">
-            后端1011 聊一下什么是后端后端的主要作用就是处理并响应前端发来的请求一个例子:前端: 查看一下当前用户列表，并告诉我男女比后端: 从数据库中查找用户列表，并计算男女比，将结果返回
-问题:
-
-前端如何发送请求到后端
-后端如何解析请求
-…
-
-1.1 谈一下网络请求网络请求本质上就是发送方准备好了一堆01这样的二进制数据，然后通过你家的网线传输了出去，在中间各种路由器/交换机/服务器转发后到达了接收方的手中。
-例子这个发送方可以是你的浏览器，当你在Chrome的地址栏敲下 http://www.baidu.com并按下回车的时候，你的浏览器首先发送了一个请求到DNS服务器查询了这个域名对应...
+            后端学习资料
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -417,14 +409,7 @@
                 <span>front-end-101</span>
         </a>
         <div class="abstract-content">
-            前端1010 前端概览前端 html / css / js / resource / ….html 描述了网页的骨架/结构css 描述了网页的表现形式/模样js 给网页更多的可能, 动态操作dom/AJAX请求/改变样式/动画/…
-前端历史
-1 HTML基础HTML的发展历史参考链接
-1.1 HTML是什么
-HTML 是用来描述网页的一种语言。
-HTML 指的是超文本标记语言 (Hyper Text Markup Language)
-HTML 不是一种编程语言，而是一种标记语言 (markup language)
-HTML 使用标记标签来描述网页1.2 HTML基本结构123456789...
+            前端学习资料
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -453,10 +438,7 @@ HTML 使用标记标签来描述网页1.2 HTML基本结构123456789...
                 <span>javascript-arrow-function</span>
         </a>
         <div class="abstract-content">
-            1 前言请先看 -&gt; 如何理解this关键词
-ES6中引入了一种无法使用4种this绑定规则的特殊函数类型,箭头函数(arrow function)箭头函数根据外层作用域来决定this(有词法作用域的味道)
-2 例子看下面的两个例子
-example #112345678910function x()&#123;    this.a = 3//利用obj调用时候 this指向obj    function y()&#123;        this.a = 2//this指向全局对象了    &#125;    y()&#125;var obj = &#123;&#125;x.app...
+            javascript的ES6中的箭头函数
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -485,12 +467,7 @@ example #112345678910function x()&#123;    this.a = 3//利用obj调用时候 thi
                 <span>javascript-prototype</span>
         </a>
         <div class="abstract-content">
-            1 前言javascript 是具有基于原型链的面向对象编程语言
-oop != class
-oop 也不需要基于class
-请先抛弃class关键词
-2 在javascript中,对象来自于对象Object comes from Object。你可以使用对象来直接构造一个对象example #1123456var food = &#123;  eat:"i eat !"&#125;var meal = Object.create(food)console.log(meal.eat) // "i eat"
-现在我来解释下这里发生了什么,首先Object.create(source)方法创建...
+            基于原型链的OOP(组合还是继承)
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -519,11 +496,7 @@ oop 也不需要基于class
                 <span>javascript-this</span>
         </a>
         <div class="abstract-content">
-            1 前言：this 是javascript中一个重要的关键词 根据函数执行时候上下文的不同this代表的含义也不同
-2 为什么使用thisthis提供了优雅的方式来隐式的传递一个对象的引用
-this是在运行时候绑定的，并不是在编写的时候绑定的，它的上下文取决于函数调用时的条件。
-this绑定规则有4种3 绑定机制3.1 不带任何修饰的函数调用 -默认绑定没有任何修饰，即没有使用apply/call，也没有显式的对象包含 比如 object.somefunction()
-12345678a = 1function fun()&#123;  console.log(this.a)&#125;...
+            this黑魔法
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -552,11 +525,7 @@ this绑定规则有4种3 绑定机制3.1 不带任何修饰的函数调用 -默�
                 <span>Hello World</span>
         </a>
         <div class="abstract-content">
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new "My New Post"
-More info: Writing
-Run server1$ hexo server
-More...
+            hello world
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -841,9 +810,91 @@ More...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 15
+        Total : 19
         </div>
         <!-- search  -->
         
@@ -859,6 +910,26 @@ More...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href="/2019/03/22/BRDF/">BRDF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/16</span><a class="archive-post-title" href="/2019/03/16/key-point/">视觉中的特征点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span><a class="archive-post-title" href="/2019/03/15/c-standard/">c++特性</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/13</span><a class="archive-post-title" href="/2019/03/13/camera-calibration-using-chessboard/">相机标定 camera calibration</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/13</span><a class="archive-post-title" href="/2019/03/13/quaternion/">四元数 quaternion</a>
         </li>
     
@@ -869,7 +940,7 @@ More...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/generics/">generic</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/generics/">c++ generic</a>
         </li>
     
     
@@ -884,7 +955,7 @@ More...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光线模拟 Light Simulator</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光模拟 Light Simulator</a>
         </li>
     
     
@@ -908,11 +979,6 @@ More...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
         </li>
     
@@ -923,12 +989,17 @@ More...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
         </li>
     
     
@@ -946,17 +1017,21 @@ More...
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="computer graphics"><span class="iconfont-archer">&#xe606;</span>computer graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+    
         <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
     
         <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
     
-        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+        <span class="sidebar-tag-name" data-tags="computer vision"><span class="iconfont-archer">&#xe606;</span>computer vision</span>
+    
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
     
         <span class="sidebar-tag-name" data-tags="Network Basic"><span class="iconfont-archer">&#xe606;</span>Network Basic</span>
-    
-        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     

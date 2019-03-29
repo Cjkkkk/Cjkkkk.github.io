@@ -346,32 +346,131 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/03/22/BRDF/">
+            
+                <span>BRDF</span>
+        </a>
+        <div class="abstract-content">
+            参考原文
+基于经验的模型Phong$I_{Phong} = K_aI_a + K_d(n·l) I_d + K_s(r·v)^\alpha I_s$n法线，l入射向量，r反射向量，v观察向量，I代表光强，K代表物体颜射或者反射系数，a代表环境，s代表高光，d代表漫反射,$\alpha$代表粗糙程度,值越小越粗糙。
+blinn Phong(改进版本)$I_{Phong} = K_aI_a + K_d(n·l) I_d + K_s(n·h)^\alpha I_s$h为半角(half angle)代表入射向量与观察向量的一半
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="computer graphics">computer graphics</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/03/16/key-point/">
+            
+                <span>视觉中的特征点</span>
+        </a>
+        <div class="abstract-content">
+            特征点介绍
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="computer vision">computer vision</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/03/15/c-standard/">
+            
+                <span>c++特性</span>
+        </a>
+        <div class="abstract-content">
+            记录c++各个标准的一些特性
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/15</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="c++">c++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/03/13/camera-calibration-using-chessboard/">
+            
+                <span>相机标定 camera calibration</span>
+        </a>
+        <div class="abstract-content">
+            内参/外参 坐标系转换
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/13</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="computer vision">computer vision</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/03/13/quaternion/">
             
                 <span>四元数 quaternion</span>
         </a>
         <div class="abstract-content">
-            复数与向量/矩阵的联系$z = a + bi$
-可以看作复平面的向量
-向量形式
- \left[
- \begin{matrix}
-   a\\
-   b
-  \end{matrix}
-  \right] \tag{1}矩阵形式
- \left[
- \begin{matrix}
-   a & -b\\
-   b & a
-  \end{matrix}
-  \right] \tag{2}向量$v$逆时针旋转$\theta$
-
- \left[
- \begin{matrix}
-   cos(\theta) & -sin(\theta)\\
-   sin(\theta) & cos(\theta)
-  ...
+            用四元数表示旋转
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -400,8 +499,7 @@
                 <span>c++ algorithm</span>
         </a>
         <div class="abstract-content">
-            为了面试苦学c++ orz… 记录下STL中的algorithm模块
-
+            c++ STL algorithm
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -427,13 +525,10 @@
     <article class="index-post">
         <a class="abstract-title" href="/2019/03/12/generics/">
             
-                <span>generic</span>
+                <span>c++ generic</span>
         </a>
         <div class="abstract-content">
-            c++中的模板以函数模板为例1234template&lt;T&gt;T sub(T a, T b)&#123;    return a - b;&#125;
-函数模板定义了函数的通用公式，减少为不同类型相同功能写重复代码123int sub(int a, int b);float sub(float a, float b);...
-编译器如何检查类型以上文中的sub函数为例，如果我们传入不支持减法的类型，编译器能检查出错误吗？比如如果尝试使用1string s = sub("AA", "BB");
-我们都知道字符串是不支持减法的(不考虑操作符重载)，那么编译器如何在编译期发现这个错误呢...
+            c++模板编程
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -462,18 +557,7 @@
                 <span>c++ string</span>
         </a>
         <div class="abstract-content">
-            最近准备Google面试，写图形学项目发现自己c++菜的一逼…于是准备记录一些c++的学习笔记orz
-const char* vs. std::string定义
-string 是c++的class,变量内存空间存放字符序列
-const char* 只是一个指向存放字符序列的内存区域的指针，变量内存空间只存放指针
-
-拷贝明显可以看出拷贝const char*只需要拷贝指针， 而拷贝string需要复制整个内存区域
-互相转换
-const char* 可以被隐式转换为 string
-从指针指向的地方开始复制字符
-
-
-string需要使用c_str() 来转换为const char*,同时这意味...
+            c++字符串的一点记录
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -502,10 +586,7 @@ string需要使用c_str() 来转换为const char*,同时这意味...
                 <span>Monte Carlo</span>
         </a>
         <div class="abstract-content">
-            什么是Monte Carlo Method简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分(原函数不是初等原函数比如${e^{x^2}}$)等问题答案的一系列统计学的方法集合。
-Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:
-
-The Monte Carlo method is a numerical method of solving mathematical problems by random sampling (or by the simulation of random v...
+            蒙特卡洛方法
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -531,15 +612,10 @@ The Monte Carlo method is a numerical method of solving mathematical problems by
     <article class="index-post">
         <a class="abstract-title" href="/2019/03/10/rendering-of-3D-image-overview/">
             
-                <span>光线模拟 Light Simulator</span>
+                <span>光模拟 Light Simulator</span>
         </a>
         <div class="abstract-content">
-            light effects反射 Reflection
-view-dependent光线强弱与视线的角度有关
-
-高光 Glossy
-perfectly reflective (like a mirror) nor perfectly diffuse
-微面 microfacetIn computer graphics we often like to describe rough surfaces, using the image of a surface made of lots of microfacet, where each one of these micro facets is ...
+            常见的光的效果与模拟思路
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -557,92 +633,11 @@ perfectly reflective (like a mirror) nor perfectly diffuse
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/08/numpy-basic/">
-            
-                <span>numpy-basic</span>
-        </a>
-        <div class="abstract-content">
-            // todo
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Python">Python</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/01/haskell-knowledge-mind/">
-            
-                <span>haskell-mind-map</span>
-        </a>
-        <div class="abstract-content">
-            chapter1
-重要的概念 Important Concept
-函数式 functional
-纯净 pure
-惰性 lazy
-严格类型 statically typed
-抽象 abstraction
-
-
-基本数据类型 basic type
-Int
-Integer
-Double
-Float
-Bool
-Char
-String
-
-
-模式匹配 pattern matching
-守卫 guards
-组 pair
-列表 List
-
-chapter 2
-代数数据类型 Algebraic data type
-1234data AlgDataType = Constr1 Type11 Type12   ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/01</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Haskell">Haskell</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/">NEXT &#62;</a>
+    </nav>
     
 </main>
             <!-- profile -->
@@ -915,9 +910,91 @@ chapter 2
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 15
+        Total : 19
         </div>
         <!-- search  -->
         
@@ -933,6 +1010,26 @@ chapter 2
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href="/2019/03/22/BRDF/">BRDF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/16</span><a class="archive-post-title" href="/2019/03/16/key-point/">视觉中的特征点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span><a class="archive-post-title" href="/2019/03/15/c-standard/">c++特性</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/13</span><a class="archive-post-title" href="/2019/03/13/camera-calibration-using-chessboard/">相机标定 camera calibration</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/13</span><a class="archive-post-title" href="/2019/03/13/quaternion/">四元数 quaternion</a>
         </li>
     
@@ -943,7 +1040,7 @@ chapter 2
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/generics/">generic</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/generics/">c++ generic</a>
         </li>
     
     
@@ -958,7 +1055,7 @@ chapter 2
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光线模拟 Light Simulator</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光模拟 Light Simulator</a>
         </li>
     
     
@@ -982,11 +1079,6 @@ chapter 2
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
         </li>
     
@@ -997,12 +1089,17 @@ chapter 2
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
         </li>
     
     
@@ -1020,17 +1117,21 @@ chapter 2
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="computer graphics"><span class="iconfont-archer">&#xe606;</span>computer graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+    
         <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
     
         <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
     
-        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+        <span class="sidebar-tag-name" data-tags="computer vision"><span class="iconfont-archer">&#xe606;</span>computer vision</span>
+    
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
     
         <span class="sidebar-tag-name" data-tags="Network Basic"><span class="iconfont-archer">&#xe606;</span>Network Basic</span>
-    
-        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     

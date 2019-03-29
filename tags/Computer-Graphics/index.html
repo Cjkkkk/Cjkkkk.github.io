@@ -351,27 +351,7 @@
                 <span>四元数 quaternion</span>
         </a>
         <div class="abstract-content">
-            复数与向量/矩阵的联系$z = a + bi$
-可以看作复平面的向量
-向量形式
- \left[
- \begin{matrix}
-   a\\
-   b
-  \end{matrix}
-  \right] \tag{1}矩阵形式
- \left[
- \begin{matrix}
-   a & -b\\
-   b & a
-  \end{matrix}
-  \right] \tag{2}向量$v$逆时针旋转$\theta$
-
- \left[
- \begin{matrix}
-   cos(\theta) & -sin(\theta)\\
-   sin(\theta) & cos(\theta)
-  ...
+            用四元数表示旋转
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -400,10 +380,7 @@
                 <span>Monte Carlo</span>
         </a>
         <div class="abstract-content">
-            什么是Monte Carlo Method简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分(原函数不是初等原函数比如${e^{x^2}}$)等问题答案的一系列统计学的方法集合。
-Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:
-
-The Monte Carlo method is a numerical method of solving mathematical problems by random sampling (or by the simulation of random v...
+            蒙特卡洛方法
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -429,15 +406,10 @@ The Monte Carlo method is a numerical method of solving mathematical problems by
     <article class="index-post">
         <a class="abstract-title" href="/2019/03/10/rendering-of-3D-image-overview/">
             
-                <span>光线模拟 Light Simulator</span>
+                <span>光模拟 Light Simulator</span>
         </a>
         <div class="abstract-content">
-            light effects反射 Reflection
-view-dependent光线强弱与视线的角度有关
-
-高光 Glossy
-perfectly reflective (like a mirror) nor perfectly diffuse
-微面 microfacetIn computer graphics we often like to describe rough surfaces, using the image of a surface made of lots of microfacet, where each one of these micro facets is ...
+            常见的光的效果与模拟思路
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -728,9 +700,91 @@ perfectly reflective (like a mirror) nor perfectly diffuse
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 15
+        Total : 19
         </div>
         <!-- search  -->
         
@@ -746,6 +800,26 @@ perfectly reflective (like a mirror) nor perfectly diffuse
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href="/2019/03/22/BRDF/">BRDF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/16</span><a class="archive-post-title" href="/2019/03/16/key-point/">视觉中的特征点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span><a class="archive-post-title" href="/2019/03/15/c-standard/">c++特性</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/13</span><a class="archive-post-title" href="/2019/03/13/camera-calibration-using-chessboard/">相机标定 camera calibration</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/13</span><a class="archive-post-title" href="/2019/03/13/quaternion/">四元数 quaternion</a>
         </li>
     
@@ -756,7 +830,7 @@ perfectly reflective (like a mirror) nor perfectly diffuse
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/generics/">generic</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/generics/">c++ generic</a>
         </li>
     
     
@@ -771,7 +845,7 @@ perfectly reflective (like a mirror) nor perfectly diffuse
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光线模拟 Light Simulator</a>
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href="/2019/03/10/rendering-of-3D-image-overview/">光模拟 Light Simulator</a>
         </li>
     
     
@@ -795,11 +869,6 @@ perfectly reflective (like a mirror) nor perfectly diffuse
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
         </li>
     
@@ -810,12 +879,17 @@ perfectly reflective (like a mirror) nor perfectly diffuse
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
         </li>
     
     
@@ -833,17 +907,21 @@ perfectly reflective (like a mirror) nor perfectly diffuse
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="computer graphics"><span class="iconfont-archer">&#xe606;</span>computer graphics</span>
+    
+        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+    
         <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
     
         <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
     
-        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+        <span class="sidebar-tag-name" data-tags="computer vision"><span class="iconfont-archer">&#xe606;</span>computer vision</span>
+    
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
     
         <span class="sidebar-tag-name" data-tags="Network Basic"><span class="iconfont-archer">&#xe606;</span>Network Basic</span>
-    
-        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     

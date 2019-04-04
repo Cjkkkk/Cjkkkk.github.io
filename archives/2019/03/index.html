@@ -351,10 +351,7 @@
                 <span>BRDF</span>
         </a>
         <div class="abstract-content">
-            参考原文
-基于经验的模型Phong$I_{Phong} = K_aI_a + K_d(n·l) I_d + K_s(r·v)^\alpha I_s$n法线，l入射向量，r反射向量，v观察向量，I代表光强，K代表物体颜射或者反射系数，a代表环境，s代表高光，d代表漫反射,$\alpha$代表粗糙程度,值越小越粗糙。
-blinn Phong(改进版本)$I_{Phong} = K_aI_a + K_d(n·l) I_d + K_s(n·h)^\alpha I_s$h为半角(half angle)代表入射向量与观察向量的一半
-
+            BRDF模型
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -988,9 +985,14 @@ blinn Phong(改进版本)$I_{Phong} = K_aI_a + K_d(n·l) I_d + K_s(n·h)^\alpha 
     
     
     
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 19
+        Total : 20
         </div>
         <!-- search  -->
         
@@ -1003,6 +1005,11 @@ blinn Phong(改进版本)$I_{Phong} = K_aI_a + K_d(n·l) I_d + K_s(n·h)^\alpha 
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href="/2019/04/05/patchmatch/">patchmatch算法</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1090,12 +1097,12 @@ blinn Phong(改进版本)$I_{Phong} = K_aI_a + K_d(n·l) I_d + K_s(n·h)^\alpha 
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
         </li>
     
     
@@ -1117,15 +1124,15 @@ blinn Phong(改进版本)$I_{Phong} = K_aI_a + K_d(n·l) I_d + K_s(n·h)^\alpha 
     
         <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
     
-        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
-    
         <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
+    
+        <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
     
         <span class="sidebar-tag-name" data-tags="computer vision"><span class="iconfont-archer">&#xe606;</span>computer vision</span>
     
-        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
-    
         <span class="sidebar-tag-name" data-tags="Haskell"><span class="iconfont-archer">&#xe606;</span>Haskell</span>
+    
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="Network Basic"><span class="iconfont-archer">&#xe606;</span>Network Basic</span>
     
@@ -1197,22 +1204,7 @@ jsonContent:
     </div>
     <!-- async load share.js -->
      
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+    </body>
 </html>
 
 

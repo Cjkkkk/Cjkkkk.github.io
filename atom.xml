@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-03-22T12:21:51.837Z</updated>
+  <updated>2019-04-04T17:39:58.031Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>patchmatch算法</title>
+    <link href="http://cjkkkk.github.io/2019/04/05/patchmatch/"/>
+    <id>http://cjkkkk.github.io/2019/04/05/patchmatch/</id>
+    <published>2019-04-04T17:36:49.000Z</published>
+    <updated>2019-04-04T17:39:58.031Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Computer Graphics" scheme="http://cjkkkk.github.io/tags/Computer-Graphics/"/>
+    
+  </entry>
+  
+  <entry>
     <title>BRDF</title>
     <link href="http://cjkkkk.github.io/2019/03/22/BRDF/"/>
     <id>http://cjkkkk.github.io/2019/03/22/BRDF/</id>
     <published>2019-03-22T12:12:04.000Z</published>
-    <updated>2019-03-22T12:21:51.837Z</updated>
+    <updated>2019-04-04T17:38:21.355Z</updated>
     
     <summary type="html">
     

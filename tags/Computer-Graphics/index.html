@@ -351,26 +351,7 @@
                 <span>PBR</span>
         </a>
         <div class="abstract-content">
-            PBR的一些小总结, 为了保持篇幅的简短，忽略了辐射度量学的基本知识。
-参考链接
-
-learnopengl
-
-1 PBR模型主要的三个特征
-能量守恒
-微平面模型
-物理模型
-
-2 物体表面颜色可以看作 环境光 ambient + 漫反射 diffuse + 镜面反射 specular
-
-镜面反射是光线在物体表面反射出去的光线
-漫反射是光线进入物体内部,在内部散射后反射出物体表面的光线
-环境光就是考虑没有直接射到物体表面
-
-2.1 终极渲染模型$L(p, w_0) = \int f_r(p, w_0, w_i) L(p, w_i) n * w_i dw_i$
-符号含义:
-
-$f_r$ 为BR...
+            PBR基础知识整理
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -883,7 +864,7 @@ $f_r$ 为BR...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
         </li>
     
     
@@ -893,7 +874,7 @@ $f_r$ 为BR...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/how-https-works/">how-https-works</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/backend-101/">backend-end-101</a>
         </li>
     
     
@@ -903,12 +884,12 @@ $f_r$ 为BR...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-this/">javascript-this</a>
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href="/2018/12/31/javascript-arrow-function/">javascript-arrow-function</a>
         </li>
     
     
@@ -921,11 +902,11 @@ $f_r$ 为BR...
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="computer graphics"><span class="iconfont-archer">&#xe606;</span>computer graphics</span>
-    
         <span class="sidebar-tag-name" data-tags="Computer Graphics"><span class="iconfont-archer">&#xe606;</span>Computer Graphics</span>
     
         <span class="sidebar-tag-name" data-tags="learning material"><span class="iconfont-archer">&#xe606;</span>learning material</span>
+    
+        <span class="sidebar-tag-name" data-tags="computer graphics"><span class="iconfont-archer">&#xe606;</span>computer graphics</span>
     
         <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
     
@@ -1024,7 +1005,28 @@ jsonContent:
 </html>
 
 
-ndefined')
+
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Cjkkkk"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
         {
             console.warn('jquery load from jsdelivr failed, will load local script')
             document.write('<script src="/lib/jquery.min.js">\x3C/script>')

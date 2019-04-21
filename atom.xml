@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-04-04T17:39:58.031Z</updated>
+  <updated>2019-04-21T04:47:53.675Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PBR</title>
+    <link href="http://cjkkkk.github.io/2019/04/21/PBR/"/>
+    <id>http://cjkkkk.github.io/2019/04/21/PBR/</id>
+    <published>2019-04-21T04:43:52.000Z</published>
+    <updated>2019-04-21T04:47:53.675Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="computer graphics" scheme="http://cjkkkk.github.io/tags/computer-graphics/"/>
+    
+  </entry>
   
   <entry>
     <title>patchmatch算法</title>
@@ -469,28 +493,6 @@
     
     
       <category term="javascript" scheme="http://cjkkkk.github.io/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://cjkkkk.github.io/2018/12/30/hello-world/"/>
-    <id>http://cjkkkk.github.io/2018/12/30/hello-world/</id>
-    <published>2018-12-30T08:31:33.000Z</published>
-    <updated>2019-03-14T16:28:47.390Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
     
   </entry>
   

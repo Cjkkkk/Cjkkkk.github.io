@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-04-21T05:01:50.741Z</updated>
+  <updated>2019-05-01T09:13:54.922Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -17,21 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>GC</title>
+    <link href="http://cjkkkk.github.io/2019/05/01/GC/"/>
+    <id>http://cjkkkk.github.io/2019/05/01/GC/</id>
+    <published>2019-05-01T08:37:08.000Z</published>
+    <updated>2019-05-01T09:13:54.922Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Reference-Counting-Details&quot;&gt;&lt;a href=&quot;#Reference-Counting-Details&quot; class=&quot;headerlink&quot; title=&quot;Reference Counting Details&quot;&gt;&lt;/a&gt;Reference Counting Details&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;When creating an object, set its refcount&lt;br&gt;to 0.&lt;/li&gt;
+&lt;li&gt;When creating a reference to an object,&lt;br&gt;increment its refcount.&lt;/li&gt;
+&lt;li&gt;When removing a reference from an object:&lt;/li&gt;
+&lt;li&gt;Decrement its refcount.&lt;/li&gt;
+&lt;li&gt;If its refcount is zero:&lt;ul&gt;
+&lt;li&gt;Remove all outgoing references from that object.&lt;/li&gt;
+&lt;li&gt;Reclaim the memory for that object.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>PBR</title>
     <link href="http://cjkkkk.github.io/2019/04/21/PBR/"/>
     <id>http://cjkkkk.github.io/2019/04/21/PBR/</id>
     <published>2019-04-21T04:43:52.000Z</published>
-    <updated>2019-04-21T05:01:50.741Z</updated>
+    <updated>2019-05-01T09:12:09.589Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;p&gt;PBR的一些小总结, 为了保持篇幅的简短，忽略了辐射度量学的基本知识。&lt;/p&gt;
     
     </summary>
     
@@ -45,17 +62,11 @@
     <link href="http://cjkkkk.github.io/2019/04/05/patchmatch/"/>
     <id>http://cjkkkk.github.io/2019/04/05/patchmatch/</id>
     <published>2019-04-04T17:36:49.000Z</published>
-    <updated>2019-04-04T17:39:58.031Z</updated>
+    <updated>2019-05-01T09:16:05.832Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h2 id=&quot;核心思想&quot;&gt;&lt;a href=&quot;#核心思想&quot; class=&quot;headerlink&quot; title=&quot;核心思想&quot;&gt;&lt;/a&gt;核心思想&lt;/h2&gt;&lt;p&gt;random sampling and data coherence&lt;/p&gt;
     
     </summary>
     
@@ -69,17 +80,12 @@
     <link href="http://cjkkkk.github.io/2019/03/22/BRDF/"/>
     <id>http://cjkkkk.github.io/2019/03/22/BRDF/</id>
     <published>2019-03-22T12:12:04.000Z</published>
-    <updated>2019-04-04T17:38:21.355Z</updated>
+    <updated>2019-05-01T09:13:03.344Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21376124&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考原文&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;基于经验的模型&quot;&gt;&lt;a href=&quot;#基于经验的模型&quot; class=&quot;headerlink&quot; title=&quot;基于经验的模型&quot;&gt;&lt;/a&gt;基于经验的模型&lt;/h1&gt;&lt;h2 id=&quot;Phong&quot;&gt;&lt;a href=&quot;#Phong&quot; class=&quot;headerlink&quot; title=&quot;Phong&quot;&gt;&lt;/a&gt;Phong&lt;/h2&gt;&lt;p&gt;$I_{Phong} = K_aI_a + K_d(n·l) I_d + K_s(r·v)^\alpha I_s$&lt;br&gt;n法线，l入射向量，r反射向量，v观察向量，I代表光强，K代表物体颜射或者反射系数，a代表环境，s代表高光，d代表漫反射,$\alpha$代表粗糙程度,值越小越粗糙。&lt;/p&gt;
     
     </summary>
     
@@ -93,17 +99,11 @@
     <link href="http://cjkkkk.github.io/2019/03/16/key-point/"/>
     <id>http://cjkkkk.github.io/2019/03/16/key-point/</id>
     <published>2019-03-15T16:04:52.000Z</published>
-    <updated>2019-03-15T16:41:08.826Z</updated>
+    <updated>2019-05-01T09:14:56.589Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h1 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h1&gt;&lt;p&gt;特征点是图像中具有一定特点的/可识别的像素点&lt;/p&gt;
     
     </summary>
     
@@ -117,17 +117,12 @@
     <link href="http://cjkkkk.github.io/2019/03/15/c-standard/"/>
     <id>http://cjkkkk.github.io/2019/03/15/c-standard/</id>
     <published>2019-03-14T16:51:11.000Z</published>
-    <updated>2019-04-21T04:58:24.492Z</updated>
+    <updated>2019-05-01T09:13:17.063Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h1 id=&quot;c-11&quot;&gt;&lt;a href=&quot;#c-11&quot; class=&quot;headerlink&quot; title=&quot;c++ 11&quot;&gt;&lt;/a&gt;c++ 11&lt;/h1&gt;&lt;h2 id=&quot;Lambda-expressions&quot;&gt;&lt;a href=&quot;#Lambda-expressions&quot; class=&quot;headerlink&quot; title=&quot;Lambda expressions&quot;&gt;&lt;/a&gt;Lambda expressions&lt;/h2&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// []() -&amp;gt; T &amp;#123;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;auto&lt;/span&gt; g = [](&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; x)&amp;#123;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; x * x;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;cout&lt;/span&gt; &amp;lt;&amp;lt; g(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// 9&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;作为predict&lt;br&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;vector&lt;/span&gt;&amp;lt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&amp;gt; s = &amp;#123;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;cout&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::all_of(s.begin(), s.end(), [](&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; x) &amp;#123; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; x &amp;gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&amp;#125;) &amp;lt;&amp;lt; &lt;span class=&quot;string&quot;&gt;&quot;\n&quot;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
     
     </summary>
     
@@ -141,17 +136,15 @@
     <link href="http://cjkkkk.github.io/2019/03/13/camera-calibration-using-chessboard/"/>
     <id>http://cjkkkk.github.io/2019/03/13/camera-calibration-using-chessboard/</id>
     <published>2019-03-13T14:29:30.000Z</published>
-    <updated>2019-03-14T16:13:27.149Z</updated>
+    <updated>2019-05-01T09:13:40.077Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h1 id=&quot;认识几个坐标系&quot;&gt;&lt;a href=&quot;#认识几个坐标系&quot; class=&quot;headerlink&quot; title=&quot;认识几个坐标系&quot;&gt;&lt;/a&gt;认识几个坐标系&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;世界坐标系&lt;br&gt;  物体在真实世界中的位置&lt;/li&gt;
+&lt;li&gt;相机坐标系&lt;br&gt;  物体在以相机为原点的坐标系中的位置&lt;/li&gt;
+&lt;li&gt;成像坐标系&lt;br&gt;  在二维成像平面的位置&lt;/li&gt;
+&lt;li&gt;像素坐标系&lt;br&gt;  在实际数字相片中的坐标
     
     </summary>
     
@@ -165,17 +158,11 @@
     <link href="http://cjkkkk.github.io/2019/03/13/quaternion/"/>
     <id>http://cjkkkk.github.io/2019/03/13/quaternion/</id>
     <published>2019-03-13T05:23:13.000Z</published>
-    <updated>2019-03-14T16:12:39.976Z</updated>
+    <updated>2019-05-01T09:15:10.905Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h1 id=&quot;3D旋转公式&quot;&gt;&lt;a href=&quot;#3D旋转公式&quot; class=&quot;headerlink&quot; title=&quot;3D旋转公式&quot;&gt;&lt;/a&gt;3D旋转公式&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/assets/1.PNG&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;code&gt;Rodrigues&amp;#39;s Rotation Formula&lt;/code&gt; 3D旋转公式&lt;br&gt;$v^{‘} = cos(\theta)v + ( 1 - cos(\theta))(u\cdot v)u + sin(\theta)(u\times v)$&lt;br&gt;
     
     </summary>
     
@@ -189,17 +176,11 @@
     <link href="http://cjkkkk.github.io/2019/03/13/c-algorithm/"/>
     <id>http://cjkkkk.github.io/2019/03/13/c-algorithm/</id>
     <published>2019-03-12T16:53:28.000Z</published>
-    <updated>2019-03-18T08:49:26.794Z</updated>
+    <updated>2019-05-01T09:13:09.262Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;p&gt;为了面试苦学c++ orz… 记录下STL中的algorithm模块&lt;/p&gt;
     
     </summary>
     
@@ -213,17 +194,12 @@
     <link href="http://cjkkkk.github.io/2019/03/12/generics/"/>
     <id>http://cjkkkk.github.io/2019/03/12/generics/</id>
     <published>2019-03-12T11:42:09.000Z</published>
-    <updated>2019-03-14T16:29:52.641Z</updated>
+    <updated>2019-05-01T09:14:11.073Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h1 id=&quot;c-中的模板&quot;&gt;&lt;a href=&quot;#c-中的模板&quot; class=&quot;headerlink&quot; title=&quot;c++中的模板&quot;&gt;&lt;/a&gt;c++中的模板&lt;/h1&gt;&lt;p&gt;以函数模板为例&lt;br&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;template&lt;/span&gt;&amp;lt;T&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;T &lt;span class=&quot;title&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(T a, T b)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a - b;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;函数模板定义了函数的通用公式，减少为不同类型相同功能写重复代码&lt;br&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; a, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; b)&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; a, &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; b)&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
     
     </summary>
     
@@ -237,17 +213,11 @@
     <link href="http://cjkkkk.github.io/2019/03/12/c-string/"/>
     <id>http://cjkkkk.github.io/2019/03/12/c-string/</id>
     <published>2019-03-12T10:24:33.000Z</published>
-    <updated>2019-03-15T16:07:07.128Z</updated>
+    <updated>2019-05-01T09:13:21.218Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;p&gt;最近准备Google面试，写图形学项目发现自己c++菜的一逼…于是准备记录一些c++的学习笔记orz&lt;br&gt;
     
     </summary>
     
@@ -261,17 +231,14 @@
     <link href="http://cjkkkk.github.io/2019/03/11/Monte-Carlo/"/>
     <id>http://cjkkkk.github.io/2019/03/11/Monte-Carlo/</id>
     <published>2019-03-11T10:20:12.000Z</published>
-    <updated>2019-03-14T16:26:50.931Z</updated>
+    <updated>2019-05-01T09:15:00.782Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h2 id=&quot;什么是Monte-Carlo-Method&quot;&gt;&lt;a href=&quot;#什么是Monte-Carlo-Method&quot; class=&quot;headerlink&quot; title=&quot;什么是Monte Carlo Method&quot;&gt;&lt;/a&gt;什么是Monte Carlo Method&lt;/h2&gt;&lt;p&gt;简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分(原函数不是初等原函数比如${e^{x^2}}$)等问题答案的一系列统计学的方法集合。&lt;/p&gt;
+&lt;p&gt;Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Monte Carlo method is a numerical method of solving mathematical problems by random sampling (or by the simulation of random variables).&lt;br&gt;
     
     </summary>
     
@@ -285,17 +252,17 @@
     <link href="http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/"/>
     <id>http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/</id>
     <published>2019-03-10T10:27:45.000Z</published>
-    <updated>2019-03-29T08:25:17.934Z</updated>
+    <updated>2019-05-01T09:15:17.114Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h1 id=&quot;先导&quot;&gt;&lt;a href=&quot;#先导&quot; class=&quot;headerlink&quot; title=&quot;先导&quot;&gt;&lt;/a&gt;先导&lt;/h1&gt;&lt;h2 id=&quot;光与物体表面的作用&quot;&gt;&lt;a href=&quot;#光与物体表面的作用&quot; class=&quot;headerlink&quot; title=&quot;光与物体表面的作用&quot;&gt;&lt;/a&gt;光与物体表面的作用&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;吸收&lt;/li&gt;
+&lt;li&gt;反射&lt;/li&gt;
+&lt;li&gt;投射&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;光在界面的反射和折射是光与物质极化和电子相互作用的结果，才有介电常数和折射率这一说。&lt;/p&gt;
+&lt;p&gt;分清界面透过率和整体透过率。界面透过率小，反射率就大。通过界面的光，吸收越大，整体透过率就越小。&lt;br&gt;
     
     </summary>
     
@@ -309,17 +276,11 @@
     <link href="http://cjkkkk.github.io/2019/01/08/numpy-basic/"/>
     <id>http://cjkkkk.github.io/2019/01/08/numpy-basic/</id>
     <published>2019-01-08T03:06:09.000Z</published>
-    <updated>2019-03-11T10:20:49.768Z</updated>
+    <updated>2019-05-01T09:15:05.213Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;p&gt;// todo
     
     </summary>
     
@@ -333,17 +294,33 @@
     <link href="http://cjkkkk.github.io/2019/01/01/haskell-knowledge-mind/"/>
     <id>http://cjkkkk.github.io/2019/01/01/haskell-knowledge-mind/</id>
     <published>2019-01-01T15:30:02.000Z</published>
-    <updated>2019-03-14T16:15:26.076Z</updated>
+    <updated>2019-05-01T09:14:18.660Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h2 id=&quot;chapter1&quot;&gt;&lt;a href=&quot;#chapter1&quot; class=&quot;headerlink&quot; title=&quot;chapter1&quot;&gt;&lt;/a&gt;chapter1&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;重要的概念 Important Concept&lt;ul&gt;
+&lt;li&gt;函数式 functional&lt;/li&gt;
+&lt;li&gt;纯净 pure&lt;/li&gt;
+&lt;li&gt;惰性 lazy&lt;/li&gt;
+&lt;li&gt;严格类型 statically typed&lt;/li&gt;
+&lt;li&gt;抽象 abstraction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;基本数据类型 basic type&lt;ul&gt;
+&lt;li&gt;Int&lt;/li&gt;
+&lt;li&gt;Integer&lt;/li&gt;
+&lt;li&gt;Double&lt;/li&gt;
+&lt;li&gt;Float&lt;/li&gt;
+&lt;li&gt;Bool&lt;/li&gt;
+&lt;li&gt;Char&lt;/li&gt;
+&lt;li&gt;String&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;模式匹配 pattern matching&lt;/li&gt;
+&lt;li&gt;守卫 guards&lt;/li&gt;
+&lt;li&gt;组 pair&lt;/li&gt;
+&lt;li&gt;列表 List
     
     </summary>
     
@@ -357,17 +334,11 @@
     <link href="http://cjkkkk.github.io/2018/12/31/how-https-works/"/>
     <id>http://cjkkkk.github.io/2018/12/31/how-https-works/</id>
     <published>2018-12-31T08:41:33.000Z</published>
-    <updated>2019-03-14T16:27:20.997Z</updated>
+    <updated>2019-05-01T09:14:33.042Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h1 id=&quot;HTTPS是如何工作的-翻译&quot;&gt;&lt;a href=&quot;#HTTPS是如何工作的-翻译&quot; class=&quot;headerlink&quot; title=&quot;HTTPS是如何工作的[翻译]&quot;&gt;&lt;/a&gt;HTTPS是如何工作的[翻译]&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://robertheaton.com/2014/03/27/how-does-https-actually-work/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文链接&lt;/a&gt;&lt;br&gt;HTTPS is simply your standard HTTP protocol slathered with a generous layer of delicious SSL/TLS encryption goodness.&lt;br&gt;HTTPS其实只是具有SSL / TLS加密优势的标准HTTP协议&lt;br&gt;Unless something goes horribly wrong (and it can), it prevents people like the infamous Eve from viewing or modifying the requests that make up your browsing experience;&lt;br&gt;除非某些事情发生了非常严重的错误(这是有可能发生的),HTTPS协议能保护使用者免于遭受第三人(infamous eve)篡改或者监视你的浏览请求(http request)&lt;br&gt;
     
     </summary>
     
@@ -381,17 +352,11 @@
     <link href="http://cjkkkk.github.io/2018/12/31/backend-101/"/>
     <id>http://cjkkkk.github.io/2018/12/31/backend-101/</id>
     <published>2018-12-31T08:33:34.000Z</published>
-    <updated>2019-03-14T16:29:16.402Z</updated>
+    <updated>2019-05-01T09:12:56.901Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h1 id=&quot;后端101&quot;&gt;&lt;a href=&quot;#后端101&quot; class=&quot;headerlink&quot; title=&quot;后端101&quot;&gt;&lt;/a&gt;后端101&lt;/h1&gt;&lt;h2 id=&quot;1-聊一下什么是后端&quot;&gt;&lt;a href=&quot;#1-聊一下什么是后端&quot; class=&quot;headerlink&quot; title=&quot;1 聊一下什么是后端&quot;&gt;&lt;/a&gt;1 聊一下什么是后端&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/nDmrjnb.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;后端的主要作用就是&lt;strong&gt;处理&lt;/strong&gt;并&lt;strong&gt;响应&lt;/strong&gt;前端发来的请求&lt;br&gt;一个例子:&lt;br&gt;前端: 查看一下当前用户列表，并告诉我男女比&lt;br&gt;后端: 从数据库中查找用户列表，并计算男女比，将结果返回&lt;br&gt;
     
     </summary>
     
@@ -405,17 +370,11 @@
     <link href="http://cjkkkk.github.io/2018/12/31/front-end-101/"/>
     <id>http://cjkkkk.github.io/2018/12/31/front-end-101/</id>
     <published>2018-12-31T08:31:33.000Z</published>
-    <updated>2019-03-14T16:29:03.696Z</updated>
+    <updated>2019-05-01T09:13:44.931Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h1 id=&quot;前端101&quot;&gt;&lt;a href=&quot;#前端101&quot; class=&quot;headerlink&quot; title=&quot;前端101&quot;&gt;&lt;/a&gt;前端101&lt;/h1&gt;&lt;h2 id=&quot;0-前端概览&quot;&gt;&lt;a href=&quot;#0-前端概览&quot; class=&quot;headerlink&quot; title=&quot;0 前端概览&quot;&gt;&lt;/a&gt;0 前端概览&lt;/h2&gt;&lt;p&gt;前端 html / css / js / resource / ….&lt;br&gt;html 描述了网页的骨架/结构&lt;br&gt;css 描述了网页的表现形式/模样&lt;br&gt;js 给网页更多的可能, 动态操作dom/AJAX请求/改变样式/动画/…&lt;br&gt;
     
     </summary>
     
@@ -429,17 +388,12 @@
     <link href="http://cjkkkk.github.io/2018/12/31/javascript-arrow-function/"/>
     <id>http://cjkkkk.github.io/2018/12/31/javascript-arrow-function/</id>
     <published>2018-12-31T07:34:08.000Z</published>
-    <updated>2019-03-14T16:27:43.570Z</updated>
+    <updated>2019-05-01T09:14:39.644Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h2 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1 前言&quot;&gt;&lt;/a&gt;1 前言&lt;/h2&gt;&lt;p&gt;请先看 -&amp;gt; &lt;a href=&quot;/2018/12/31/javascript-this/&quot;&gt;如何理解this关键词&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ES6中引入了一种无法使用4种this绑定规则的特殊函数类型,箭头函数(arrow function)&lt;br&gt;箭头函数根据外层作用域来决定this(有词法作用域的味道)&lt;br&gt;
     
     </summary>
     
@@ -453,41 +407,14 @@
     <link href="http://cjkkkk.github.io/2018/12/31/javascript-prototype/"/>
     <id>http://cjkkkk.github.io/2018/12/31/javascript-prototype/</id>
     <published>2018-12-31T07:28:14.000Z</published>
-    <updated>2019-03-14T16:28:05.940Z</updated>
+    <updated>2019-05-01T09:14:43.837Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="http://cjkkkk.github.io/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript-this</title>
-    <link href="http://cjkkkk.github.io/2018/12/31/javascript-this/"/>
-    <id>http://cjkkkk.github.io/2018/12/31/javascript-this/</id>
-    <published>2018-12-31T07:18:09.000Z</published>
-    <updated>2019-03-14T16:28:15.675Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
+      &lt;h2 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1 前言&quot;&gt;&lt;/a&gt;1 前言&lt;/h2&gt;&lt;p&gt;javascript 是具有基于&lt;code&gt;原型链&lt;/code&gt;的面向对象编程语言&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;oop&lt;/code&gt; != &lt;code&gt;class&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;oop&lt;/code&gt; 也不需要基于&lt;code&gt;class&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;请先抛弃&lt;code&gt;class&lt;/code&gt;关键词&lt;br&gt;
     
     </summary>
     

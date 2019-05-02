@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Cjkkkk">
 <meta property="og:description" content="PBR的一些小总结, 为了保持篇幅的简短，忽略了辐射度量学的基本知识。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-01T09:12:09.589Z">
+<meta property="og:updated_time" content="2019-05-01T09:44:05.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PBR">
 <meta name="twitter:description" content="PBR的一些小总结, 为了保持篇幅的简短，忽略了辐射度量学的基本知识。">
@@ -373,7 +373,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-01 17:12:09" itemprop="dateModified" datetime="2019-05-01T17:12:09+08:00">2019-05-01</time>
+                <time title="修改时间：2019-05-01 17:44:05" itemprop="dateModified" datetime="2019-05-01T17:44:05+08:00">2019-05-01</time>
               
             
           </span>
@@ -439,9 +439,11 @@
 <li>不同的光源(点光源/线光源/面光源…)的时候还要考虑光线在传播过程中随着路径的长度的衰减</li>
 </ul>
 <p>总结:<br>即 使用半球平面内所有方向的光线贡献求和作为出射辐射率</p>
-<h3 id="2-2-BRDF"><a href="#2-2-BRDF" class="headerlink" title="2.2 BRDF"></a>2.2 BRDF</h3><p>$fr = kd f<em>{lambert} + ks f</em>{cook-torrance}$</p>
-<ul>
-<li>$kd$为漫反射比例</li>
+<h3 id="2-2-BRDF"><a href="#2-2-BRDF" class="headerlink" title="2.2 BRDF"></a>2.2 BRDF</h3><ul>
+<li><p>$fr = kd f_l + ks f_c$</p>
+</li>
+<li><p>$kd$为漫反射比例</p>
+</li>
 <li>$ks$为镜面反射比例</li>
 <li>$f_{lambert}=\frac{C}{PI}$ C为基础反射率</li>
 <li>$f_{cook-torrance}=\frac{DFG}{4 (nw_i) (nw_0)}$<ul>
@@ -587,7 +589,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -624,7 +626,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -643,6 +647,32 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Cjkkkk" title="GitHub &rarr; https://github.com/Cjkkkk" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:656569648@qq.com" title="E-Mail &rarr; mailto:656569648@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
           
 
           
@@ -669,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-PBR模型主要的三个特征"><span class="nav-number">1.</span> <span class="nav-text">1 PBR模型主要的三个特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-物体表面颜色"><span class="nav-number">2.</span> <span class="nav-text">2 物体表面颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-终极渲染模型"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 终极渲染模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-BRDF"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 BRDF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-金属与非金属"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 金属与非金属</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-基础反射率F0"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 基础反射率F0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-如何用统一的公式描述三种材质的基础反射率"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 如何用统一的公式描述三种材质的基础反射率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-如何描述PBR材质"><span class="nav-number">3.</span> <span class="nav-text">3 如何描述PBR材质</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-PBR模型主要的三个特征"><span class="nav-text">1 PBR模型主要的三个特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-物体表面颜色"><span class="nav-text">2 物体表面颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-终极渲染模型"><span class="nav-text">2.1 终极渲染模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-BRDF"><span class="nav-text">2.2 BRDF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-金属与非金属"><span class="nav-text">2.3 金属与非金属</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-基础反射率F0"><span class="nav-text">2.4 基础反射率F0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-如何用统一的公式描述三种材质的基础反射率"><span class="nav-text">2.5 如何用统一的公式描述三种材质的基础反射率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-如何描述PBR材质"><span class="nav-text">3 如何描述PBR材质</span></a></li></ol></div>
             
 
           </div>

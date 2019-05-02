@@ -100,20 +100,20 @@
 
 
 
-  <meta name="description" content="核心思想random sampling and data coherence">
+  <meta name="description" content="1 核心思想random sampling and data coherence">
 <meta name="keywords" content="Computer Graphics">
 <meta property="og:type" content="article">
 <meta property="og:title" content="patchmatch算法">
 <meta property="og:url" content="http://cjkkkk.github.io/2019/04/05/patchmatch/index.html">
 <meta property="og:site_name" content="Cjkkkk">
-<meta property="og:description" content="核心思想random sampling and data coherence">
+<meta property="og:description" content="1 核心思想random sampling and data coherence">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://i.imgur.com/TAnm9ti.png">
-<meta property="og:updated_time" content="2019-05-01T09:16:05.832Z">
+<meta property="og:image" content="http://cjkkkk.github.io/images/TAnm9ti.png">
+<meta property="og:updated_time" content="2019-05-01T09:47:29.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="patchmatch算法">
-<meta name="twitter:description" content="核心思想random sampling and data coherence">
-<meta name="twitter:image" content="https://i.imgur.com/TAnm9ti.png">
+<meta name="twitter:description" content="1 核心思想random sampling and data coherence">
+<meta name="twitter:image" content="http://cjkkkk.github.io/images/TAnm9ti.png">
 
 
 
@@ -375,7 +375,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-01 17:16:05" itemprop="dateModified" datetime="2019-05-01T17:16:05+08:00">2019-05-01</time>
+                <time title="修改时间：2019-05-01 17:47:29" itemprop="dateModified" datetime="2019-05-01T17:47:29+08:00">2019-05-01</time>
               
             
           </span>
@@ -409,41 +409,41 @@
       
 
       
-        <h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p>random sampling and data coherence</p>
+        <h2 id="1-核心思想"><a href="#1-核心思想" class="headerlink" title="1 核心思想"></a>1 核心思想</h2><p>random sampling and data coherence</p>
  <a id="more"></a>
-<h2 id="算法目的"><a href="#算法目的" class="headerlink" title="算法目的"></a>算法目的</h2><p>quickly finding approximate nearest neighbor matches between image patches</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定两张图像A B, 对图像A中的每个patch，找到图像B中与之匹配度最高的patch.</p>
-<h3 id="一些定义"><a href="#一些定义" class="headerlink" title="一些定义"></a>一些定义</h3><ul>
+<h2 id="2-算法目的"><a href="#2-算法目的" class="headerlink" title="2 算法目的"></a>2 算法目的</h2><p>quickly finding approximate nearest neighbor matches between image patches</p>
+<h2 id="3-问题描述"><a href="#3-问题描述" class="headerlink" title="3 问题描述"></a>3 问题描述</h2><p>给定两张图像A B, 对图像A中的每个patch，找到图像B中与之匹配度最高的patch.</p>
+<h3 id="3-1-一些定义"><a href="#3-1-一些定义" class="headerlink" title="3.1 一些定义"></a>3.1 一些定义</h3><ul>
 <li>NNF(nearest-neighbor field)<br>定义NNF为$f: A \rightarrow R^2$，假如图像A中的patch a与图像B中的patch b对应, $f(a) = b - a$, patch的坐标使用patch中心的坐标代替，同时需要定义距离函数$D$。</li>
 </ul>
-<h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><p>问题简化为:为图像A中的每个patch a计算f(a)的值</p>
-<h3 id="initialization-初始化"><a href="#initialization-初始化" class="headerlink" title="initialization 初始化"></a>initialization 初始化</h3><p>为图像A中的每一个patch a赋值随机的f(a)<br>(在图像B中进行独立的均与采样(independent uniform sampling))</p>
+<h2 id="4-算法步骤"><a href="#4-算法步骤" class="headerlink" title="4 算法步骤"></a>4 算法步骤</h2><p>问题简化为:为图像A中的每个patch a计算f(a)的值</p>
+<h3 id="4-1-initialization-初始化"><a href="#4-1-initialization-初始化" class="headerlink" title="4.1 initialization 初始化"></a>4.1 initialization 初始化</h3><p>为图像A中的每一个patch a赋值随机的f(a)<br>(在图像B中进行独立的均与采样(independent uniform sampling))</p>
 <ul>
 <li>或者使用prior information</li>
 <li>迭代<br>接下来的需要对每个像素迭代进行propagation和random search来改进f(a)的值, 遍历像素的顺序为从左到右，从上到下，且不是所有像素都完成propagation后进行random search，而是对每一个像素进行完propagation后立刻进行random search。</li>
 </ul>
-<h3 id="propagation-传播"><a href="#propagation-传播" class="headerlink" title="propagation 传播"></a>propagation 传播</h3><p>利用$f(x-1, y)$和$f(x, y-1)$的值来改进$f(x, y)$<br>$f(x, y)$的新值是$min(D(f(x,y)), D(f(x-1, y)), D(x, y-1))$对应的$(x,y)$</p>
+<h3 id="4-2-propagation-传播"><a href="#4-2-propagation-传播" class="headerlink" title="4.2 propagation 传播"></a>4.2 propagation 传播</h3><p>利用$f(x-1, y)$和$f(x, y-1)$的值来改进$f(x, y)$<br>$f(x, y)$的新值是$min(D(f(x,y)), D(f(x-1, y)), D(x, y-1))$对应的$(x,y)$</p>
 <ul>
 <li>$D$为距离函数</li>
 <li>在偶数次迭代可以使用从右往左,从下往上的顺序迭代</li>
 </ul>
-<h3 id="random-search-随机搜索"><a href="#random-search-随机搜索" class="headerlink" title="random search 随机搜索"></a>random search 随机搜索</h3><p>$u_i = v_0 +wa^iR_i$<br>$v_0 = f(x, y)$,$R_i$为$[-1,1]\times[-1,1]$,$w$为搜索窗口大小,$a_i$为每次搜索窗口衰减的比例<br>即以f(x, y)为中心的window进行搜索</p>
+<h3 id="4-3-random-search-随机搜索"><a href="#4-3-random-search-随机搜索" class="headerlink" title="4.3 random search 随机搜索"></a>4.3 random search 随机搜索</h3><p>$u_i = v_0 +wa^iR_i$<br>$v_0 = f(x, y)$,$R_i$为$[-1,1]\times[-1,1]$,$w$为搜索窗口大小,$a_i$为每次搜索窗口衰减的比例<br>即以f(x, y)为中心的window进行搜索</p>
 <ul>
 <li>停止条件即搜索半径小于等于1个像素:$wa^i &lt; 1$</li>
 </ul>
-<h2 id="一幅图说明"><a href="#一幅图说明" class="headerlink" title="一幅图说明"></a>一幅图说明</h2><p><img src="https://i.imgur.com/TAnm9ti.png" alt=""><br>约定: 下文称f(a)为a的offset</p>
+<h2 id="5-一幅图说明"><a href="#5-一幅图说明" class="headerlink" title="5 一幅图说明"></a>5 一幅图说明</h2><p><img src="/images/TAnm9ti.png" alt=""><br>约定: 下文称f(a)为a的offset</p>
 <p>需要搜索A图像中蓝色patch的offset, 红色patch是蓝色的left patch, 绿色patch是蓝色patch的up patch。</p>
 <p>在( a )initialization中可以看到A图中3个颜色的patch被赋予了B图中随机的offset。</p>
 <p>在( b )proagation中检查红色patch和绿色patch在B图中的offset是否比蓝色patch的offset更加match,可以看到红色的ofset更加match,于是更新蓝色patch的offset。</p>
 <p>在( c ) random search中，以( b )中更新的offset为中心的window进行随机搜索。</p>
 <p>重复( b )( c )步骤直到收敛。</p>
-<h2 id="GPU实现"><a href="#GPU实现" class="headerlink" title="GPU实现"></a>GPU实现</h2><p>思路: propagation和random search阶段并行。</p>
+<h2 id="6-GPU实现"><a href="#6-GPU实现" class="headerlink" title="6 GPU实现"></a>6 GPU实现</h2><p>思路: propagation和random search阶段并行。</p>
 <p>矛盾: propagation之前的CPU version是以scanline的形式进行，这意味着propagation是有先后顺序。</p>
 <p>解决方案: jump flood scheme</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>假设图像A B都是M像素，考虑所有像素都被初始化到错误的offset的概率为$(1-1/M)^M$, 则至少有一个像素被初始化到正确的offset的概率为$1 - (1-1/M)^M$<br>M很大的时候近似为$1 - 1/e$。</p>
+<h2 id="7-分析"><a href="#7-分析" class="headerlink" title="7 分析"></a>7 分析</h2><p>假设图像A B都是M像素，考虑所有像素都被初始化到错误的offset的概率为$(1-1/M)^M$, 则至少有一个像素被初始化到正确的offset的概率为$1 - (1-1/M)^M$<br>M很大的时候近似为$1 - 1/e$。</p>
 <p>由于在random search阶段的时候，在小的邻域范围内的搜索是很密集的，可以认为只要在正确的offset一定领域内的offset都可以认为是正确的。</p>
 <p>基于以上的考虑，propagation和random search可以大大加速算法的搜索速度。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>PatchMatch: A Randomized Correspondence Algorithm for Structural Image Editing</p>
+<h2 id="8-参考"><a href="#8-参考" class="headerlink" title="8 参考"></a>8 参考</h2><p>PatchMatch: A Randomized Correspondence Algorithm for Structural Image Editing</p>
 
       
     </div>
@@ -561,7 +561,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -598,7 +598,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -617,6 +619,32 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Cjkkkk" title="GitHub &rarr; https://github.com/Cjkkkk" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:656569648@qq.com" title="E-Mail &rarr; mailto:656569648@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
           
 
           
@@ -643,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心思想"><span class="nav-number">1.</span> <span class="nav-text">核心思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法目的"><span class="nav-number">2.</span> <span class="nav-text">算法目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">3.</span> <span class="nav-text">问题描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些定义"><span class="nav-number">3.1.</span> <span class="nav-text">一些定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法步骤"><span class="nav-number">4.</span> <span class="nav-text">算法步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#initialization-初始化"><span class="nav-number">4.1.</span> <span class="nav-text">initialization 初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#propagation-传播"><span class="nav-number">4.2.</span> <span class="nav-text">propagation 传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-search-随机搜索"><span class="nav-number">4.3.</span> <span class="nav-text">random search 随机搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一幅图说明"><span class="nav-number">5.</span> <span class="nav-text">一幅图说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPU实现"><span class="nav-number">6.</span> <span class="nav-text">GPU实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">7.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-核心思想"><span class="nav-text">1 核心思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-算法目的"><span class="nav-text">2 算法目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-问题描述"><span class="nav-text">3 问题描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-一些定义"><span class="nav-text">3.1 一些定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-算法步骤"><span class="nav-text">4 算法步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-initialization-初始化"><span class="nav-text">4.1 initialization 初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-propagation-传播"><span class="nav-text">4.2 propagation 传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-random-search-随机搜索"><span class="nav-text">4.3 random search 随机搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-一幅图说明"><span class="nav-text">5 一幅图说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-GPU实现"><span class="nav-text">6 GPU实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-分析"><span class="nav-text">7 分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-参考"><span class="nav-text">8 参考</span></a></li></ol></div>
             
 
           </div>

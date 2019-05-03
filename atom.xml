@@ -39,18 +39,14 @@
     <link href="http://cjkkkk.github.io/2019/05/01/GC/"/>
     <id>http://cjkkkk.github.io/2019/05/01/GC/</id>
     <published>2019-05-01T08:37:08.000Z</published>
-    <updated>2019-05-01T09:13:54.922Z</updated>
+    <updated>2019-05-02T16:24:26.779Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Reference-Counting-Details&quot;&gt;&lt;a href=&quot;#Reference-Counting-Details&quot; class=&quot;headerlink&quot; title=&quot;Reference Counting Details&quot;&gt;&lt;/a&gt;Reference Counting Details&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;When creating an object, set its refcount&lt;br&gt;to 0.&lt;/li&gt;
-&lt;li&gt;When creating a reference to an object,&lt;br&gt;increment its refcount.&lt;/li&gt;
-&lt;li&gt;When removing a reference from an object:&lt;/li&gt;
-&lt;li&gt;Decrement its refcount.&lt;/li&gt;
-&lt;li&gt;If its refcount is zero:&lt;ul&gt;
-&lt;li&gt;Remove all outgoing references from that object.&lt;/li&gt;
-&lt;li&gt;Reclaim the memory for that object.
+      &lt;h1 id=&quot;1-引用计数&quot;&gt;&lt;a href=&quot;#1-引用计数&quot; class=&quot;headerlink&quot; title=&quot;1 引用计数&quot;&gt;&lt;/a&gt;1 引用计数&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;当创建一个对象的时候，设置它的引用计数为0&lt;/li&gt;
+&lt;li&gt;当在该对象上创建一个引用的时候，它的计数增加1&lt;/li&gt;
+&lt;li&gt;当移除该对象上的一个引用的时候，它的计数减少1
     
     </summary>
     

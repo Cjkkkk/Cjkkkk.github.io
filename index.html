@@ -503,12 +503,24 @@
                 
               
 
-              <time title="创建时间：2019-05-01 16:37:08 / 修改时间：17:13:54" itemprop="dateCreated datePublished" datetime="2019-05-01T16:37:08+08:00">2019-05-01</time>
+              <time title="创建时间：2019-05-01 16:37:08" itemprop="dateCreated datePublished" datetime="2019-05-01T16:37:08+08:00">2019-05-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-03 00:24:26" itemprop="dateModified" datetime="2019-05-03T00:24:26+08:00">2019-05-03</time>
               
             
           </span>
@@ -543,14 +555,10 @@
 
       
         
-          <h1 id="Reference-Counting-Details"><a href="#Reference-Counting-Details" class="headerlink" title="Reference Counting Details"></a>Reference Counting Details</h1><ul>
-<li>When creating an object, set its refcount<br>to 0.</li>
-<li>When creating a reference to an object,<br>increment its refcount.</li>
-<li>When removing a reference from an object:</li>
-<li>Decrement its refcount.</li>
-<li>If its refcount is zero:<ul>
-<li>Remove all outgoing references from that object.</li>
-<li>Reclaim the memory for that object.
+          <h1 id="1-引用计数"><a href="#1-引用计数" class="headerlink" title="1 引用计数"></a>1 引用计数</h1><ul>
+<li>当创建一个对象的时候，设置它的引用计数为0</li>
+<li>当在该对象上创建一个引用的时候，它的计数增加1</li>
+<li>当移除该对象上的一个引用的时候，它的计数减少1
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -562,7 +570,7 @@
           <!--/noindex-->
         
       
-    </li></ul></li></ul></div>
+    </li></ul></div>
 
     
 

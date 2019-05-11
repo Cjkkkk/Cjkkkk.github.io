@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-05-02T06:23:34.006Z</updated>
+  <updated>2019-05-11T04:58:52.975Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>numpy cheatsheet</title>
+    <link href="http://cjkkkk.github.io/2019/05/11/numpy-basic/"/>
+    <id>http://cjkkkk.github.io/2019/05/11/numpy-basic/</id>
+    <published>2019-05-11T03:06:09.000Z</published>
+    <updated>2019-05-11T04:58:52.975Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://cjkkkk.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git-remote-only-branch</title>
+    <link href="http://cjkkkk.github.io/2019/05/05/git-remote-only-branch/"/>
+    <id>http://cjkkkk.github.io/2019/05/05/git-remote-only-branch/</id>
+    <published>2019-05-04T17:37:55.000Z</published>
+    <updated>2019-05-04T17:46:02.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h2&gt;&lt;p&gt;如何在本地创建一个远程存在但本地不存在的分支, 假定为B&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>接口vs抽象类</title>
@@ -286,24 +326,6 @@
   </entry>
   
   <entry>
-    <title>numpy-basic</title>
-    <link href="http://cjkkkk.github.io/2019/01/08/numpy-basic/"/>
-    <id>http://cjkkkk.github.io/2019/01/08/numpy-basic/</id>
-    <published>2019-01-08T03:06:09.000Z</published>
-    <updated>2019-05-01T09:15:05.213Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;// todo
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://cjkkkk.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>haskell-mind-map</title>
     <link href="http://cjkkkk.github.io/2019/01/01/haskell-knowledge-mind/"/>
     <id>http://cjkkkk.github.io/2019/01/01/haskell-knowledge-mind/</id>
@@ -394,25 +416,6 @@
     
     
       <category term="learning material" scheme="http://cjkkkk.github.io/tags/learning-material/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript-arrow-function</title>
-    <link href="http://cjkkkk.github.io/2018/12/31/javascript-arrow-function/"/>
-    <id>http://cjkkkk.github.io/2018/12/31/javascript-arrow-function/</id>
-    <published>2018-12-31T07:34:08.000Z</published>
-    <updated>2019-05-01T09:14:39.644Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1 前言&quot;&gt;&lt;/a&gt;1 前言&lt;/h2&gt;&lt;p&gt;请先看 -&amp;gt; &lt;a href=&quot;/2018/12/31/javascript-this/&quot;&gt;如何理解this关键词&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;ES6中引入了一种无法使用4种this绑定规则的特殊函数类型,箭头函数(arrow function)&lt;br&gt;箭头函数根据外层作用域来决定this(有词法作用域的味道)&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="http://cjkkkk.github.io/tags/javascript/"/>
     
   </entry>
   

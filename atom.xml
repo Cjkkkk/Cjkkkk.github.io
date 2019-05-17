@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-05-11T05:04:21.482Z</updated>
+  <updated>2019-05-17T03:20:55.057Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>xv6</title>
+    <link href="http://cjkkkk.github.io/2019/05/17/xv6/"/>
+    <id>http://cjkkkk.github.io/2019/05/17/xv6/</id>
+    <published>2019-05-17T02:37:46.000Z</published>
+    <updated>2019-05-17T03:20:55.057Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="operating system" scheme="http://cjkkkk.github.io/tags/operating-system/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NASM assembler</title>
+    <link href="http://cjkkkk.github.io/2019/05/12/GNU-assem/"/>
+    <id>http://cjkkkk.github.io/2019/05/12/GNU-assem/</id>
+    <published>2019-05-12T07:54:25.000Z</published>
+    <updated>2019-05-14T06:37:27.827Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="assemler" scheme="http://cjkkkk.github.io/tags/assemler/"/>
+    
+  </entry>
   
   <entry>
     <title>numpy cheatsheet</title>
@@ -374,42 +422,6 @@
     
     
       <category term="Network Basic" scheme="http://cjkkkk.github.io/tags/Network-Basic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>backend-end-101</title>
-    <link href="http://cjkkkk.github.io/2018/12/31/backend-101/"/>
-    <id>http://cjkkkk.github.io/2018/12/31/backend-101/</id>
-    <published>2018-12-31T08:33:34.000Z</published>
-    <updated>2019-05-01T09:12:56.901Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;后端101&quot;&gt;&lt;a href=&quot;#后端101&quot; class=&quot;headerlink&quot; title=&quot;后端101&quot;&gt;&lt;/a&gt;后端101&lt;/h1&gt;&lt;h2 id=&quot;1-聊一下什么是后端&quot;&gt;&lt;a href=&quot;#1-聊一下什么是后端&quot; class=&quot;headerlink&quot; title=&quot;1 聊一下什么是后端&quot;&gt;&lt;/a&gt;1 聊一下什么是后端&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/nDmrjnb.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;后端的主要作用就是&lt;strong&gt;处理&lt;/strong&gt;并&lt;strong&gt;响应&lt;/strong&gt;前端发来的请求&lt;br&gt;一个例子:&lt;br&gt;前端: 查看一下当前用户列表，并告诉我男女比&lt;br&gt;后端: 从数据库中查找用户列表，并计算男女比，将结果返回&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="learning material" scheme="http://cjkkkk.github.io/tags/learning-material/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>front-end-101</title>
-    <link href="http://cjkkkk.github.io/2018/12/31/front-end-101/"/>
-    <id>http://cjkkkk.github.io/2018/12/31/front-end-101/</id>
-    <published>2018-12-31T08:31:33.000Z</published>
-    <updated>2019-05-01T09:13:44.931Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前端101&quot;&gt;&lt;a href=&quot;#前端101&quot; class=&quot;headerlink&quot; title=&quot;前端101&quot;&gt;&lt;/a&gt;前端101&lt;/h1&gt;&lt;h2 id=&quot;0-前端概览&quot;&gt;&lt;a href=&quot;#0-前端概览&quot; class=&quot;headerlink&quot; title=&quot;0 前端概览&quot;&gt;&lt;/a&gt;0 前端概览&lt;/h2&gt;&lt;p&gt;前端 html / css / js / resource / ….&lt;br&gt;html 描述了网页的骨架/结构&lt;br&gt;css 描述了网页的表现形式/模样&lt;br&gt;js 给网页更多的可能, 动态操作dom/AJAX请求/改变样式/动画/…&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="learning material" scheme="http://cjkkkk.github.io/tags/learning-material/"/>
     
   </entry>
   

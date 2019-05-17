@@ -309,6 +309,372 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/05/17/xv6/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cjkkkk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cjkkkk">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/17/xv6/" class="post-title-link" itemprop="url">xv6</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-17 10:37:46 / 修改时间：11:20:55" itemprop="dateCreated datePublished" datetime="2019-05-17T10:37:46+08:00">2019-05-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>main</code> calls <code>userinit</code>, <code>mpmain</code> calls <code>scheduler</code> to start running processes</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Set up first user process.</span></span><br><span class="line"><span class="keyword">void</span></span><br><span class="line">userinit(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">p</span>;</span></span><br><span class="line">    <span class="keyword">extern</span> <span class="keyword">char</span> _binary_initcode_start[], _binary_initcode_size[];</span><br><span class="line"></span><br><span class="line">    acquire(&amp;ptable.lock);</span><br><span class="line">    p = allocproc();</span><br><span class="line">    initproc = p;</span><br><span class="line">    <span class="keyword">if</span>((p−&gt;pgdir = setupkvm()) == <span class="number">0</span>)</span><br><span class="line">    panic(<span class="string">"userinit: out of memory?"</span>);</span><br><span class="line">    inituvm(p−&gt;pgdir, _binary_initcode_start, (<span class="keyword">int</span>)_binary_initcode_size);</span><br><span class="line">    p−&gt;sz = PGSIZE;</span><br><span class="line">    <span class="built_in">memset</span>(p−&gt;tf, <span class="number">0</span>, <span class="keyword">sizeof</span>(*p−&gt;tf));</span><br><span class="line">    p−&gt;tf−&gt;cs = (SEG_UCODE &lt;&lt; <span class="number">3</span>) | DPL_USER;</span><br><span class="line">    p−&gt;tf−&gt;ds = (SEG_UDATA &lt;&lt; <span class="number">3</span>) | DPL_USER;</span><br><span class="line">    p−&gt;tf−&gt;es = p−&gt;tf−&gt;ds;</span><br><span class="line">    p−&gt;tf−&gt;ss = p−&gt;tf−&gt;ds;</span><br><span class="line">    p−&gt;tf−&gt;eflags = FL_IF;</span><br><span class="line">    p−&gt;tf−&gt;esp = PGSIZE;</span><br><span class="line">    p−&gt;tf−&gt;eip = <span class="number">0</span>; <span class="comment">// beginning of initcode.S</span></span><br><span class="line"></span><br><span class="line">    safestrcpy(p−&gt;name, <span class="string">"initcode"</span>, <span class="keyword">sizeof</span>(p−&gt;name));</span><br><span class="line">    p−&gt;cwd = namei(<span class="string">"/"</span>);</span><br><span class="line"></span><br><span class="line">    p−&gt;state = RUNNABLE;</span><br><span class="line"></span><br><span class="line">    release(&amp;ptable.lock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>userinit</p>
+<ul>
+<li>调用allocproc<ul>
+<li>在proc table中找到一个空闲的slot，用来存放进程的proc struct</li>
+<li>找到空闲的slot后, 为proc的kernel thread分配kernel stack</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Per−CPU process scheduler.</span></span><br><span class="line"><span class="comment">// Each CPU calls scheduler() after setting itself up.</span></span><br><span class="line"><span class="comment">// Scheduler never returns. It loops, doing:</span></span><br><span class="line"><span class="comment">// − choose a process to run</span></span><br><span class="line"><span class="comment">// − swtch to start running that process</span></span><br><span class="line"><span class="comment">// − eventually that process transfers control</span></span><br><span class="line"><span class="comment">// via swtch back to the scheduler.</span></span><br><span class="line"><span class="keyword">void</span></span><br><span class="line">scheduler(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">p</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">    <span class="comment">// Enable interrupts on this processor.</span></span><br><span class="line">    sti();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Loop over process table looking for process to run.</span></span><br><span class="line">    acquire(&amp;ptable.lock);</span><br><span class="line">    <span class="keyword">for</span>(p = ptable.proc; p &lt; &amp;ptable.proc[NPROC]; p++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(p−&gt;state != RUNNABLE)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Switch to chosen process. It is the process’s job</span></span><br><span class="line">        <span class="comment">// to release ptable.lock and then reacquire it</span></span><br><span class="line">        <span class="comment">// before jumping back to us.</span></span><br><span class="line">        proc = p;</span><br><span class="line">        switchuvm(p);</span><br><span class="line">        p−&gt;state = RUNNING;</span><br><span class="line">        swtch(&amp;cpu−&gt;scheduler, p−&gt;context);</span><br><span class="line">        switchkvm();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Process is done running for now.</span></span><br><span class="line">        <span class="comment">// It should have changed its p−&gt;state before coming back.</span></span><br><span class="line">        proc = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    release(&amp;ptable.lock);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Switch TSS and h/w page table to correspond to process p.</span></span><br><span class="line"><span class="keyword">void</span></span><br><span class="line">switchuvm(struct proc *p)</span><br><span class="line">&#123;</span><br><span class="line">    pushcli();</span><br><span class="line">    cpu−&gt;gdt[SEG_TSS] = SEG16(STS_T32A, &amp;cpu−&gt;ts, <span class="keyword">sizeof</span>(cpu−&gt;ts)−<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    cpu−&gt;gdt[SEG_TSS].s = <span class="number">0</span>;</span><br><span class="line">    cpu−&gt;ts.ss0 = SEG_KDATA &lt;&lt; <span class="number">3</span>;</span><br><span class="line">    cpu−&gt;ts.esp0 = (uint)proc−&gt;kstack + KSTACKSIZE;</span><br><span class="line">    <span class="comment">// setting IOPL=0 in eflags *and* iomb beyond the tss segment limit</span></span><br><span class="line">    <span class="comment">// forbids I/O instructions (e.g., inb and outb) from user space</span></span><br><span class="line">    cpu−&gt;ts.iomb = (ushort) <span class="number">0xFFFF</span>;</span><br><span class="line">    ltr(SEG_TSS &lt;&lt; <span class="number">3</span>);</span><br><span class="line">    <span class="keyword">if</span>(p−&gt;pgdir == <span class="number">0</span>)</span><br><span class="line">        panic(<span class="string">"switchuvm: no pgdir"</span>);</span><br><span class="line">    lcr3(V2P(p−&gt;pgdir)); <span class="comment">// switch to process’s address space</span></span><br><span class="line">    popcli();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// note: EMBRYO -&gt; find unused slot, occupy the slot</span></span><br><span class="line"><span class="keyword">enum</span> procstate &#123; UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Per−process state</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">proc</span> &#123;</span></span><br><span class="line">    uint sz; <span class="comment">// Size of process memory (bytes)</span></span><br><span class="line">    <span class="keyword">pde_t</span>* pgdir; <span class="comment">// Page table</span></span><br><span class="line">    <span class="keyword">char</span> *kstack; <span class="comment">// Bottom of kernel stack for this process</span></span><br><span class="line">    <span class="keyword">enum</span> procstate state; <span class="comment">// Process state</span></span><br><span class="line">    <span class="keyword">int</span> pid; <span class="comment">// Process ID</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">parent</span>;</span> <span class="comment">// Parent process</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">trapframe</span> *<span class="title">tf</span>;</span> <span class="comment">// Trap frame for current syscall, note: save register?</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">context</span> *<span class="title">context</span>;</span> <span class="comment">// swtch() here to run process, note: address of proc address</span></span><br><span class="line">    <span class="keyword">void</span> *chan; <span class="comment">// If non−zero, sleeping on chan</span></span><br><span class="line">    <span class="keyword">int</span> killed; <span class="comment">// If non−zero, have been killed</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">file</span> *<span class="title">ofile</span>[<span class="title">NOFILE</span>];</span> <span class="comment">// Open files, note: file table?</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">inode</span> *<span class="title">cwd</span>;</span> <span class="comment">// Current directory</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">16</span>]; <span class="comment">// Process name (debugging)</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Process memory is laid out contiguously, low addresses first:</span></span><br><span class="line"><span class="comment">// text</span></span><br><span class="line"><span class="comment">// original data and bss</span></span><br><span class="line"><span class="comment">// fixed−size stack</span></span><br><span class="line"><span class="comment">// expandable heap</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Saved registers for kernel context switches.</span></span><br><span class="line"><span class="comment">// Don’t need to save all the segment registers (%cs, etc),</span></span><br><span class="line"><span class="comment">// because they are constant across kernel contexts.</span></span><br><span class="line"><span class="comment">// Don’t need to save %eax, %ecx, %edx, because the</span></span><br><span class="line"><span class="comment">// x86 convention is that the caller has saved them.</span></span><br><span class="line"><span class="comment">// Contexts are stored at the bottom of the stack they</span></span><br><span class="line"><span class="comment">// describe; the stack pointer is the address of the context.</span></span><br><span class="line"><span class="comment">// The layout of the context matches the layout of the stack in swtch.S</span></span><br><span class="line"><span class="comment">// at the "Switch stacks" comment. Switch doesn’t save eip explicitly,</span></span><br><span class="line"><span class="comment">// but it is on the stack and allocproc() manipulates it.</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">context</span> &#123;</span></span><br><span class="line">    uint edi;</span><br><span class="line">    uint esi;</span><br><span class="line">    uint ebx;</span><br><span class="line">    uint ebp;</span><br><span class="line">    uint eip;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://akaedu.github.io/book/ch18s02.html" target="_blank" rel="noopener">x86寄存器</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/05/12/GNU-assem/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cjkkkk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cjkkkk">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/12/GNU-assem/" class="post-title-link" itemprop="url">NASM assembler</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-12 15:54:25" itemprop="dateCreated datePublished" datetime="2019-05-12T15:54:25+08:00">2019-05-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-14 14:37:27" itemprop="dateModified" datetime="2019-05-14T14:37:27+08:00">2019-05-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>as : GNU assembler<br>NASM(Intel syntax) vs GAS(AT&amp;T syntax)</p>
+<p>ELF system<br><a href="https://web.eecs.umich.edu/~prabal/teaching/resources/eecs373/Assembler.pdf" target="_blank" rel="noopener">GNU assembler</a><br><a href="https://cs.lmu.edu/~ray/notes/nasmtutorial/" target="_blank" rel="noopener">NASM tutorial</a><br><a href="https://m.w3cschool.cn/assembly/assembly-structure.html" target="_blank" rel="noopener">Another NASM tutorial</a><br><a href="https://en.wikipedia.org/wiki/X86_calling_conventions#Caller_clean-up" target="_blank" rel="noopener">X86 calling convention</a></p>
+<h2 id="1-structure-of-a-NASM-program"><a href="#1-structure-of-a-NASM-program" class="headerlink" title="1 structure of a NASM program"></a>1 structure of a NASM program</h2><p><img src="/images/nasmstructure.png" alt=""></p>
+<h2 id="2-寄存器"><a href="#2-寄存器" class="headerlink" title="2 寄存器"></a>2 寄存器</h2><h3 id="整形寄存器"><a href="#整形寄存器" class="headerlink" title="整形寄存器"></a>整形寄存器</h3><ul>
+<li><p>64bits<br><code>R0  R1  R2  R3  R4  R5  R6  R7  R8  R9  R10  R11  R12  R13  R14  R15</code><br><code>RAX RCX RDX RBX RSP RBP RSI RDI</code></p>
+</li>
+<li><p>32bits<br><code>R0D R1D R2D R3D R4D R5D R6D R7D R8D R9D R10D R11D R12D R13D R14D R15D</code><br><code>EAX ECX EDX EBX ESP EBP ESI EDI</code></p>
+</li>
+<li><p>16bits<br><code>R0W R1W R2W R3W R4W R5W R6W R7W R8W R9W R10W R11W R12W R13W R14W R15W</code><br><code>AX  CX  DX  BX  SP  BP  SI  DI</code></p>
+</li>
+<li><p>8bits<br><code>R0B R1B R2B R3B R4B R5B R6B R7B R8B R9B R10B R11B R12B R13B R14B R15B</code><br><code>AL  CL  DL  BL  SPL BPL SIL DIL</code></p>
+</li>
+</ul>
+<h3 id="浮点寄存器"><a href="#浮点寄存器" class="headerlink" title="浮点寄存器"></a>浮点寄存器</h3><p>16 XMM寄存器, 每一个寄存器128位宽度:</p>
+<p>XMM0 … XMM15</p>
+<h2 id="3-内存寻址"><a href="#3-内存寻址" class="headerlink" title="3 内存寻址"></a>3 内存寻址</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[number]</span><br><span class="line">[reg]</span><br><span class="line">[reg + number]</span><br><span class="line">[reg + reg * scale]</span><br><span class="line">[reg + reg * scale + number]</span><br></pre></td></tr></table></figure>
+<p>[reg + reg <em> scale + number] 完整版<br>reg为基址(base)<br>number为偏移(displacement)<br>reg </em> scale是索引(index)</p>
+<h2 id="4-立即数"><a href="#4-立即数" class="headerlink" title="4 立即数"></a>4 立即数</h2><ul>
+<li><p>10进制<br>200<br>200d<br>0d200</p>
+</li>
+<li><p>16进制<br>0c8h<br>0xc8</p>
+</li>
+<li><p>8进制<br>210q<br>0q210</p>
+</li>
+<li><p>2进制<br>11001000b<br>0b1100_1000</p>
+</li>
+</ul>
+<h2 id="5-分支跳转"><a href="#5-分支跳转" class="headerlink" title="5 分支跳转"></a>5 分支跳转</h2><ul>
+<li>cmp</li>
+<li>je =</li>
+<li>jne !=</li>
+<li>jl &lt;</li>
+<li>jnl ! &lt;</li>
+<li>jg &gt;</li>
+<li>jng !&gt;</li>
+<li>jle &lt;=<br>…</li>
+</ul>
+<h2 id="6-调用约定"><a href="#6-调用约定" class="headerlink" title="6 调用约定"></a>6 调用约定</h2><h3 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h3><p>从左到右，传递尽可能多的参数到寄存器中<br>整形 <code>rdi rsi rdx rcx r8 r9</code><br>浮点 <code>xmm0 xmm1 xmm2 xmm3 xmm4 xmm5 xmm6 xmm7</code></p>
+<p>多余的参数以<em>从右往左</em>的顺序推入堆栈</p>
+<p>返回地址 [rsp]<br>第一个参数[rsp + 8]</p>
+<h3 id="rsp对齐"><a href="#rsp对齐" class="headerlink" title="rsp对齐"></a>rsp对齐</h3><p>The stack pointer rsp must be aligned to a 16-byte boundary before making a call. Fine, but the process of making a call pushes the return address (8 bytes) on the stack, so when a function gets control, rsp is not aligned. You have to make that extra space yourself, by pushing something or subtracting 8 from rsp.</p>
+<h3 id="清理"><a href="#清理" class="headerlink" title="清理"></a>清理</h3><p>caller clean up</p>
+<h3 id="callee-save"><a href="#callee-save" class="headerlink" title="callee save"></a>callee save</h3><p><code>rbp rbx r12 r13 r14 r15</code></p>
+<h2 id="7-section"><a href="#7-section" class="headerlink" title="7 section"></a>7 section</h2><ul>
+<li>data</li>
+<li><p>text</p>
+</li>
+<li><p>bss</p>
+</li>
+<li>undefined section</li>
+</ul>
+<p><img src="/images/7.png" alt=""></p>
+<h2 id="8-entry-point"><a href="#8-entry-point" class="headerlink" title="8 entry point"></a>8 entry point</h2><p>NASM默认入口是_start<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GLOBAL _start</span><br><span class="line">section text</span><br><span class="line">_start:</span><br></pre></td></tr></table></figure></p>
+<p>可以用<code>ld -o out a.o -e _main</code>改变入口函数<br><a href="https://stackoverflow.com/questions/17898989/what-is-global-start-in-assembly-language" target="_blank" rel="noopener">what-is-global-start-in-assembly-language</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/05/11/numpy-basic/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1550,333 +1916,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/03/15/c-standard/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cjkkkk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cjkkkk">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/15/c-standard/" class="post-title-link" itemprop="url">c++特性</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-15 00:51:11" itemprop="dateCreated datePublished" datetime="2019-03-15T00:51:11+08:00">2019-03-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-01 17:13:17" itemprop="dateModified" datetime="2019-05-01T17:13:17+08:00">2019-05-01</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="c-11"><a href="#c-11" class="headerlink" title="c++ 11"></a>c++ 11</h1><h2 id="Lambda-expressions"><a href="#Lambda-expressions" class="headerlink" title="Lambda expressions"></a>Lambda expressions</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// []() -&gt; T &#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> g = [](<span class="keyword">int</span> x)&#123;<span class="keyword">return</span> x * x;&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; g(<span class="number">3</span>); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
-<p>作为predict<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::all_of(s.begin(), s.end(), [](<span class="keyword">int</span> x) &#123; <span class="keyword">return</span> x &gt; <span class="number">0</span>;&#125;) &lt;&lt; <span class="string">"\n"</span>; <span class="comment">// 1</span></span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/15/c-standard/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/03/13/camera-calibration-using-chessboard/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cjkkkk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cjkkkk">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/13/camera-calibration-using-chessboard/" class="post-title-link" itemprop="url">相机标定 camera calibration</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-13 22:29:30" itemprop="dateCreated datePublished" datetime="2019-03-13T22:29:30+08:00">2019-03-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-01 17:48:51" itemprop="dateModified" datetime="2019-05-01T17:48:51+08:00">2019-05-01</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1-认识几个坐标系"><a href="#1-认识几个坐标系" class="headerlink" title="1 认识几个坐标系"></a>1 认识几个坐标系</h1><ul>
-<li>世界坐标系<br>  物体在真实世界中的位置</li>
-<li>相机坐标系<br>  物体在以相机为原点的坐标系中的位置</li>
-<li>成像坐标系<br>  在二维成像平面的位置</li>
-<li>像素坐标系<br>  在实际数字相片中的坐标
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/13/camera-calibration-using-chessboard/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </li></ul></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1923,7 +1962,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1962,7 +2001,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2196,11 +2239,11 @@
       
     
       
+    
+      
+    
+      
         
-      
-    
-      
-    
       
     
       

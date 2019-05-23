@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-05-22T15:06:18.529Z</updated>
+  <updated>2019-05-23T13:06:36.499Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>BIOS_and_bootLoader</title>
+    <link href="http://cjkkkk.github.io/2019/05/23/BIOS-and-bootLoader/"/>
+    <id>http://cjkkkk.github.io/2019/05/23/BIOS-and-bootLoader/</id>
+    <published>2019-05-23T05:38:30.000Z</published>
+    <updated>2019-05-23T13:06:36.499Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="operating system" scheme="http://cjkkkk.github.io/tags/operating-system/"/>
+    
+  </entry>
+  
+  <entry>
     <title>x86_physical_layout</title>
     <link href="http://cjkkkk.github.io/2019/05/22/x86-physical-layout/"/>
     <id>http://cjkkkk.github.io/2019/05/22/x86-physical-layout/</id>
     <published>2019-05-22T13:03:18.000Z</published>
-    <updated>2019-05-22T15:06:18.529Z</updated>
+    <updated>2019-05-23T13:13:55.605Z</updated>
     
     <summary type="html">
     
@@ -53,11 +77,11 @@
   </entry>
   
   <entry>
-    <title>xv6</title>
+    <title>xv6源码阅读</title>
     <link href="http://cjkkkk.github.io/2019/05/17/xv6/"/>
     <id>http://cjkkkk.github.io/2019/05/17/xv6/</id>
     <published>2019-05-17T02:37:46.000Z</published>
-    <updated>2019-05-22T12:58:55.832Z</updated>
+    <updated>2019-05-23T13:14:31.018Z</updated>
     
     <summary type="html">
     
@@ -75,7 +99,7 @@
     <link href="http://cjkkkk.github.io/2019/05/12/GNU-assem/"/>
     <id>http://cjkkkk.github.io/2019/05/12/GNU-assem/</id>
     <published>2019-05-12T07:54:25.000Z</published>
-    <updated>2019-05-23T05:36:11.864Z</updated>
+    <updated>2019-05-23T12:12:53.855Z</updated>
     
     <summary type="html">
     
@@ -359,30 +383,6 @@
 &lt;p&gt;Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The Monte Carlo method is a numerical method of solving mathematical problems by random sampling (or by the simulation of random variables).&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="Computer Graphics" scheme="http://cjkkkk.github.io/tags/Computer-Graphics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>光模拟 Light Simulator</title>
-    <link href="http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/"/>
-    <id>http://cjkkkk.github.io/2019/03/10/rendering-of-3D-image-overview/</id>
-    <published>2019-03-10T10:27:45.000Z</published>
-    <updated>2019-05-01T09:51:19.769Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-先导&quot;&gt;&lt;a href=&quot;#1-先导&quot; class=&quot;headerlink&quot; title=&quot;1 先导&quot;&gt;&lt;/a&gt;1 先导&lt;/h1&gt;&lt;h2 id=&quot;1-1-光与物体表面的作用&quot;&gt;&lt;a href=&quot;#1-1-光与物体表面的作用&quot; class=&quot;headerlink&quot; title=&quot;1.1 光与物体表面的作用&quot;&gt;&lt;/a&gt;1.1 光与物体表面的作用&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;吸收&lt;/li&gt;
-&lt;li&gt;反射&lt;/li&gt;
-&lt;li&gt;投射&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;光在界面的反射和折射是光与物质极化和电子相互作用的结果，才有介电常数和折射率这一说。&lt;/p&gt;
-&lt;p&gt;分清界面透过率和整体透过率。界面透过率小，反射率就大。通过界面的光，吸收越大，整体透过率就越小。&lt;br&gt;
     
     </summary>
     

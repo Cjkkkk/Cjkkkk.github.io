@@ -100,20 +100,18 @@
 
 
 
-  <meta name="description" content="1 认识几个坐标系 世界坐标系  物体在真实世界中的位置 相机坐标系  物体在以相机为原点的坐标系中的位置 成像坐标系  在二维成像平面的位置 像素坐标系  在实际数字相片中的坐标">
-<meta name="keywords" content="computer vision">
+  <meta name="description" content="1 BIOS 上电自检 BIOS发起中断(INT 0x19), 搜索boot signature (0xAA55). 然后加载bootloader到0x7c00并执行。  为什么BIOS加载bootloader到0x7c00 2 bootLoader">
+<meta name="keywords" content="operating system">
 <meta property="og:type" content="article">
-<meta property="og:title" content="相机标定 camera calibration">
-<meta property="og:url" content="http://cjkkkk.github.io/2019/03/13/camera-calibration-using-chessboard/index.html">
+<meta property="og:title" content="BIOS_and_bootLoader">
+<meta property="og:url" content="http://cjkkkk.github.io/2019/05/23/BIOS-and-bootLoader/index.html">
 <meta property="og:site_name" content="Cjkkkk">
-<meta property="og:description" content="1 认识几个坐标系 世界坐标系  物体在真实世界中的位置 相机坐标系  物体在以相机为原点的坐标系中的位置 成像坐标系  在二维成像平面的位置 像素坐标系  在实际数字相片中的坐标">
+<meta property="og:description" content="1 BIOS 上电自检 BIOS发起中断(INT 0x19), 搜索boot signature (0xAA55). 然后加载bootloader到0x7c00并执行。  为什么BIOS加载bootloader到0x7c00 2 bootLoader">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://cjkkkk.github.io/images/3.PNG">
-<meta property="og:updated_time" content="2019-05-01T09:48:51.922Z">
+<meta property="og:updated_time" content="2019-05-23T13:06:36.499Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="相机标定 camera calibration">
-<meta name="twitter:description" content="1 认识几个坐标系 世界坐标系  物体在真实世界中的位置 相机坐标系  物体在以相机为原点的坐标系中的位置 成像坐标系  在二维成像平面的位置 像素坐标系  在实际数字相片中的坐标">
-<meta name="twitter:image" content="http://cjkkkk.github.io/images/3.PNG">
+<meta name="twitter:title" content="BIOS_and_bootLoader">
+<meta name="twitter:description" content="1 BIOS 上电自检 BIOS发起中断(INT 0x19), 搜索boot signature (0xAA55). 然后加载bootloader到0x7c00并执行。  为什么BIOS加载bootloader到0x7c00 2 bootLoader">
 
 
 
@@ -123,7 +121,7 @@
 
   
   
-  <link rel="canonical" href="http://cjkkkk.github.io/2019/03/13/camera-calibration-using-chessboard/">
+  <link rel="canonical" href="http://cjkkkk.github.io/2019/05/23/BIOS-and-bootLoader/">
 
 
 
@@ -133,7 +131,7 @@
   };
 </script>
 
-  <title>相机标定 camera calibration | Cjkkkk</title>
+  <title>BIOS_and_bootLoader | Cjkkkk</title>
   
 
 
@@ -315,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/03/13/camera-calibration-using-chessboard/">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/05/23/BIOS-and-bootLoader/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cjkkkk">
@@ -332,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">相机标定 camera calibration
+          <h1 class="post-title" itemprop="name headline">BIOS_and_bootLoader
 
               
             
@@ -358,24 +356,12 @@
                 
               
 
-              <time title="创建时间：2019-03-13 22:29:30" itemprop="dateCreated datePublished" datetime="2019-03-13T22:29:30+08:00">2019-03-13</time>
+              <time title="创建时间：2019-05-23 13:38:30 / 修改时间：21:06:36" itemprop="dateCreated datePublished" datetime="2019-05-23T13:38:30+08:00">2019-05-23</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-01 17:48:51" itemprop="dateModified" datetime="2019-05-01T17:48:51+08:00">2019-05-01</time>
               
             
           </span>
@@ -409,114 +395,12 @@
       
 
       
-        <h1 id="1-认识几个坐标系"><a href="#1-认识几个坐标系" class="headerlink" title="1 认识几个坐标系"></a>1 认识几个坐标系</h1><ul>
-<li>世界坐标系<br>  物体在真实世界中的位置</li>
-<li>相机坐标系<br>  物体在以相机为原点的坐标系中的位置</li>
-<li>成像坐标系<br>  在二维成像平面的位置</li>
-<li>像素坐标系<br>  在实际数字相片中的坐标<a id="more"></a>
-只有最后一个坐标系的单位是px，为实际图像中的坐标位置， 比如1080 * 720的图像就可以看成一个以图像左上角为原点建立的坐标系。</li>
+        <h1 id="1-BIOS"><a href="#1-BIOS" class="headerlink" title="1 BIOS"></a>1 BIOS</h1><ul>
+<li>上电自检</li>
+<li>BIOS发起中断(INT 0x19), 搜索boot signature (0xAA55). 然后加载bootloader到0x7c00并执行。</li>
 </ul>
-<p><img src="/images/3.PNG" alt=""></p>
-<h2 id="1-1-世界坐标系-gt-相机坐标系"><a href="#1-1-世界坐标系-gt-相机坐标系" class="headerlink" title="1.1 世界坐标系 -&gt; 相机坐标系"></a>1.1 世界坐标系 -&gt; 相机坐标系</h2><script type="math/tex; mode=display">
- \left[
- \begin{matrix}
-   x\\
-   y\\
-   z
-  \end{matrix}
-  \right]
-  =
-   \left[
- \begin{matrix}
-   R & T\\
-   0 & 1
-  \end{matrix}
-
-  \right]
-    \left[
- \begin{matrix}
-   X\\
-   Y\\
-   Z\\
-   1
-  \end{matrix}
-  \right]
-
-   \tag{1}</script><p>R是3 * 3 的旋转矩阵 T是3 * 1的平移矩阵</p>
-<p>0是1 * 3 的全部为0的矩阵 1为1 * 1的矩阵</p>
-<p>所以可以看到4 * 4的变化矩阵乘以4 * 1的齐次坐标，结果应该为4 * 1的齐次坐标，这里结果为3 * 1是因为丢掉了齐次坐标中的最后为1的那个维度。</p>
-<script type="math/tex; mode=display">
-\left[
- \begin{matrix}
-   R & T\\
-   0 & 1
-  \end{matrix}
-  \right]</script><p>矩阵也称为外参矩阵/相机的位姿</p>
-<h3 id="1-1-1-为什么需要齐次坐标呢？"><a href="#1-1-1-为什么需要齐次坐标呢？" class="headerlink" title="1.1.1 为什么需要齐次坐标呢？"></a>1.1.1 为什么需要齐次坐标呢？</h3><p>就是为了能用一个矩阵表达变化，后面不需要齐次坐标了所以可以丢掉最后一维。</p>
-<h2 id="1-2-相机坐标系-gt-成像坐标系"><a href="#1-2-相机坐标系-gt-成像坐标系" class="headerlink" title="1.2 相机坐标系-&gt;成像坐标系"></a>1.2 相机坐标系-&gt;成像坐标系</h2><script type="math/tex; mode=display">
-\left[
- \begin{matrix}
-   x/z\\
-   y/z\\
-   1
-  \end{matrix}
-  \right]</script><p>相当于投影到了相机坐标系中$z = 1$的平面</p>
-<h3 id="1-2-1进行正畸"><a href="#1-2-1进行正畸" class="headerlink" title="1.2.1进行正畸"></a>1.2.1进行正畸</h3><p>几种畸变</p>
-<ul>
-<li>径向畸变<ul>
-<li>透镜本身缺陷</li>
-</ul>
-</li>
-<li>桶形畸变<ul>
-<li>由于透镜摆放位置不平行光圈</li>
-</ul>
-</li>
-</ul>
-<h2 id="1-3-成像坐标系-gt-像素坐标系"><a href="#1-3-成像坐标系-gt-像素坐标系" class="headerlink" title="1.3 成像坐标系-&gt;像素坐标系"></a>1.3 成像坐标系-&gt;像素坐标系</h2><script type="math/tex; mode=display">
-\left[
- \begin{matrix}
-   u\\
-   v\\
-   1
-  \end{matrix}
-  \right]
-=
-
-\left[
- \begin{matrix}
-   f_x & 0 & c_x\\
-   0 & f_y & c_y\\
-   0 & 0 & 1
-  \end{matrix}
-  \right]
-
-\left[
- \begin{matrix}
-   x_{corrected}/z\\
-   y_{corrected}/z\\
-   1
-  \end{matrix}
-  \right]</script><p>其中</p>
-<script type="math/tex; mode=display">
-\left[
- \begin{matrix}
-   f_x & 0 & c_x\\
-   0 & f_y & c_y\\
-   0 & 0 & 1
-  \end{matrix}
-  \right]</script><p>也被称为为相机的内参矩阵</p>
-<p>成像平面的坐标系的原点是在中心的， 而像素平面的原点是在左上角的，向右边是u<br>向下是v，u和v的单位都是px</p>
-<p>内参矩阵相当于进行了二者的一个映射，即先乘以分辨率进行放缩，然后加上偏移量移动原点</p>
-<h1 id="2-相机标定"><a href="#2-相机标定" class="headerlink" title="2 相机标定"></a>2 相机标定</h1><p>相机标定需要确定的参数个数为9个<br>$(f_x, f_y, c_x, c_y, k_1, k_2, k_3, p_1, p_2)$<br>同时我们需要关注的是成像坐标系 -&gt; 像素坐标系，这里是内参矩阵作用的地方</p>
-<p>对于K个棋盘照片，每一个棋盘中的N个角点，我们都有一个x, y的坐标，也就是我们能够得到2NK个等式</p>
-<p>K个棋盘照片意味着有K个相机的位姿，即K个外参矩阵，也就是6K个参数。<br>同时相机内参有4个参数，这意味着一共有6K + 4个参数。</p>
-<script type="math/tex; mode=display">
-2NK > 6K + 4</script><script type="math/tex; mode=display">
-NK > 3K + 2</script><script type="math/tex; mode=display">
-K(N-3) > 2</script><h2 id="2-1-如何确定标定板的三维坐标"><a href="#2-1-如何确定标定板的三维坐标" class="headerlink" title="2.1 如何确定标定板的三维坐标"></a>2.1 如何确定标定板的三维坐标</h2><p>根据K个棋盘照片， 我们可以求得每个角点的像素坐标</p>
-<p>然后我们可以以标定板所在平面为z=0的平面建立世界坐标系，同时设定相邻角点的坐标差，就可以得到所有角点在世界坐标系下的坐标。</p>
-<p>(世界坐标系嘛…人为设定一下就好)</p>
-
+<p><a href="https://www.glamenv-septzen.net/en/view/6" target="_blank" rel="noopener">为什么BIOS加载bootloader到0x7c00</a></p>
+<h1 id="2-bootLoader"><a href="#2-bootLoader" class="headerlink" title="2 bootLoader"></a>2 bootLoader</h1>
       
     </div>
 
@@ -539,7 +423,7 @@ K(N-3) > 2</script><h2 id="2-1-如何确定标定板的三维坐标"><a href="#2
       
         <div class="post-tags">
           
-            <a href="/tags/computer-vision/" rel="tag"># computer vision</a>
+            <a href="/tags/operating-system/" rel="tag"># operating system</a>
           
         </div>
       
@@ -552,8 +436,8 @@ K(N-3) > 2</script><h2 id="2-1-如何确定标定板的三维坐标"><a href="#2
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/13/quaternion/" rel="next" title="四元数 quaternion">
-                <i class="fa fa-chevron-left"></i> 四元数 quaternion
+              <a href="/2019/05/22/x86-physical-layout/" rel="next" title="x86_physical_layout">
+                <i class="fa fa-chevron-left"></i> x86_physical_layout
               </a>
             
           </div>
@@ -561,10 +445,6 @@ K(N-3) > 2</script><h2 id="2-1-如何确定标定板的三维坐标"><a href="#2
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/15/c-standard/" rel="prev" title="c++特性">
-                c++特性 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -747,7 +627,7 @@ K(N-3) > 2</script><h2 id="2-1-如何确定标定板的三维坐标"><a href="#2
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-认识几个坐标系"><span class="nav-text">1 认识几个坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-世界坐标系-gt-相机坐标系"><span class="nav-text">1.1 世界坐标系 -&gt; 相机坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-为什么需要齐次坐标呢？"><span class="nav-text">1.1.1 为什么需要齐次坐标呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-相机坐标系-gt-成像坐标系"><span class="nav-text">1.2 相机坐标系-&gt;成像坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1进行正畸"><span class="nav-text">1.2.1进行正畸</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-成像坐标系-gt-像素坐标系"><span class="nav-text">1.3 成像坐标系-&gt;像素坐标系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-相机标定"><span class="nav-text">2 相机标定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-如何确定标定板的三维坐标"><span class="nav-text">2.1 如何确定标定板的三维坐标</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-BIOS"><span class="nav-text">1 BIOS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-bootLoader"><span class="nav-text">2 bootLoader</span></a></li></ol></div>
             
 
           </div>
@@ -924,46 +804,6 @@ K(N-3) > 2</script><h2 id="2-1-如何确定标定板的三维坐标"><a href="#2
   
   
 
-  
-    
-      <script type="text/x-mathjax-config">
-  
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
-        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
-      }
-    });
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
-    }
-  });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
   
 
 

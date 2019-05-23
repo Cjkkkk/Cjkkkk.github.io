@@ -111,7 +111,8 @@
 <meta property="og:image" content="http://cjkkkk.github.io/images/t.PNG">
 <meta property="og:image" content="http://cjkkkk.github.io/images/selector.PNG">
 <meta property="og:image" content="http://cjkkkk.github.io/images/GDT.PNG">
-<meta property="og:updated_time" content="2019-05-22T15:06:18.529Z">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/X86_Paging_4K.svg/864px-X86_Paging_4K.svg.png">
+<meta property="og:updated_time" content="2019-05-23T13:13:55.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="x86_physical_layout">
 <meta name="twitter:description" content="总结关于x86物理内存布局和real mode/protect mode相关的基本知识">
@@ -360,12 +361,24 @@
                 
               
 
-              <time title="创建时间：2019-05-22 21:03:18 / 修改时间：23:06:18" itemprop="dateCreated datePublished" datetime="2019-05-22T21:03:18+08:00">2019-05-22</time>
+              <time title="创建时间：2019-05-22 21:03:18" itemprop="dateCreated datePublished" datetime="2019-05-22T21:03:18+08:00">2019-05-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-23 21:13:55" itemprop="dateModified" datetime="2019-05-23T21:13:55+08:00">2019-05-23</time>
               
             
           </span>
@@ -400,11 +413,11 @@
 
       
         <p>总结关于x86物理内存布局和real mode/protect mode相关的基本知识<br><a id="more"></a></p>
-<h2 id="1-x86-physical-address-layout"><a href="#1-x86-physical-address-layout" class="headerlink" title="1 x86 physical address layout"></a>1 x86 physical address layout</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+------------------+  &lt;- 0xFFFFFFFF (4GB)</span><br><span class="line">|      32-bit      |</span><br><span class="line">|  memory mapped   |</span><br><span class="line">|     devices      |</span><br><span class="line">|                  |</span><br><span class="line">/\/\/\/\/\/\/\/\/\/\</span><br><span class="line"></span><br><span class="line">/\/\/\/\/\/\/\/\/\/\</span><br><span class="line">|                  |</span><br><span class="line">|      Unused      |</span><br><span class="line">|                  |</span><br><span class="line">+------------------+  &lt;- depends on amount of RAM</span><br><span class="line">|                  |</span><br><span class="line">|                  |</span><br><span class="line">| Extended Memory  |</span><br><span class="line">|                  |</span><br><span class="line">|                  |</span><br><span class="line">+------------------+  &lt;- 0x00100000 (1MB)</span><br><span class="line">|     BIOS ROM     |</span><br><span class="line">+------------------+  &lt;- 0x000F0000 (960KB)</span><br><span class="line">|  16-bit devices, |</span><br><span class="line">|  expansion ROMs  |</span><br><span class="line">+------------------+  &lt;- 0x000C0000 (768KB)</span><br><span class="line">|   VGA Display    |</span><br><span class="line">+------------------+  &lt;- 0x000A0000 (640KB)</span><br><span class="line">|                  |</span><br><span class="line">|    Low Memory    |</span><br><span class="line">|                  |</span><br><span class="line">+------------------+  &lt;- 0x00000000</span><br></pre></td></tr></table></figure>
+<h1 id="1-x86-physical-address-layout"><a href="#1-x86-physical-address-layout" class="headerlink" title="1 x86 physical address layout"></a>1 x86 physical address layout</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+------------------+  &lt;- 0xFFFFFFFF (4GB)</span><br><span class="line">|      32-bit      |</span><br><span class="line">|  memory mapped   |</span><br><span class="line">|     devices      |</span><br><span class="line">|                  |</span><br><span class="line">/\/\/\/\/\/\/\/\/\/\</span><br><span class="line"></span><br><span class="line">/\/\/\/\/\/\/\/\/\/\</span><br><span class="line">|                  |</span><br><span class="line">|      Unused      |</span><br><span class="line">|                  |</span><br><span class="line">+------------------+  &lt;- depends on amount of RAM</span><br><span class="line">|                  |</span><br><span class="line">|                  |</span><br><span class="line">| Extended Memory  |</span><br><span class="line">|                  |</span><br><span class="line">|                  |</span><br><span class="line">+------------------+  &lt;- 0x00100000 (1MB)</span><br><span class="line">|     BIOS ROM     |</span><br><span class="line">+------------------+  &lt;- 0x000F0000 (960KB)</span><br><span class="line">|  16-bit devices, |</span><br><span class="line">|  expansion ROMs  |</span><br><span class="line">+------------------+  &lt;- 0x000C0000 (768KB)</span><br><span class="line">|   VGA Display    |</span><br><span class="line">+------------------+  &lt;- 0x000A0000 (640KB)</span><br><span class="line">|                  |</span><br><span class="line">|    Low Memory    |</span><br><span class="line">|                  |</span><br><span class="line">+------------------+  &lt;- 0x00000000</span><br></pre></td></tr></table></figure>
 <p>8086的16位架构，操作系统只能利用2^20的地址，也就是1MB，也就是上图中0x0000000到0x00100000的区域。其中0x0到0xA0000的640KB是RAM使用，0xA0000到0xF0000的320KB是设备使用比如VGA，0xF0000到0x100000的64KB是BIOS使用。</p>
 <p>在扩展到80386的32位架构后，系统可以收用2^32的4GB的地址。为了兼容16位系统，0xA0000到0x100000的区域(原先BIOS和设备区域)不再使用而空出。把原来0x0到0xA0000的RAM区域称为Low memory区域，1MB之后的RAM区域称为Extended Memory区域。BIOS和设备内存区域移动到32位区域的顶部。</p>
 <p>可想而知当扩展到64位架构之后，为了系统向后兼容，又会产生第二个空闲区域。</p>
-<h2 id="2-real-mode和protect-mode"><a href="#2-real-mode和protect-mode" class="headerlink" title="2 real mode和protect mode"></a>2 real mode和protect mode</h2><h3 id="2-1-real-mode"><a href="#2-1-real-mode" class="headerlink" title="2.1 real mode"></a>2.1 real mode</h3><p><a href="https://en.wikipedia.org/wiki/Real_mode" target="_blank" rel="noopener">real mode wiki</a><br>real mode是x86系统都兼容的一个运行模式，出现在早期的8086/8088架构时期。</p>
+<h1 id="2-real-mode和protect-mode"><a href="#2-real-mode和protect-mode" class="headerlink" title="2 real mode和protect mode"></a>2 real mode和protect mode</h1><h2 id="2-1-real-mode"><a href="#2-1-real-mode" class="headerlink" title="2.1 real mode"></a>2.1 real mode</h2><p><a href="https://en.wikipedia.org/wiki/Real_mode" target="_blank" rel="noopener">real mode wiki</a><br>real mode是x86系统都兼容的一个运行模式，出现在早期的8086/8088架构时期。</p>
 <ul>
 <li>real mode支持20位寻址，也就是1MB的内存空间。<ul>
 <li>使用段寄存器(16位)和偏移寄存器(16位)计算地址: segment * 16 + offset</li>
@@ -413,41 +426,36 @@
 <li>运行程序可以直接访问物理内存，I/O地址和外部设备</li>
 <li>因此不提供内存保护(memory protection)/多任务(multitasking)和权限(code privilege levels)</li>
 </ul>
-<h3 id="2-2-protect-mode"><a href="#2-2-protect-mode" class="headerlink" title="2.2 protect mode"></a>2.2 protect mode</h3><p><a href="https://en.wikipedia.org/wiki/Protected_mode" target="_blank" rel="noopener">protect mode wiki</a><br>80286引进protect mode， 80386加强</p>
+<h2 id="2-2-protect-mode"><a href="#2-2-protect-mode" class="headerlink" title="2.2 protect mode"></a>2.2 protect mode</h2><p><a href="https://en.wikipedia.org/wiki/Protected_mode" target="_blank" rel="noopener">protect mode wiki</a><br>80286引进protect mode， 80386加强</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">           Selector  +--------------+         +-----------+</span><br><span class="line">          ----------&gt;|              |         |           |</span><br><span class="line">                     | Segmentation |         |  Paging   |</span><br><span class="line">Software             |              |--------&gt;|           |----------&gt;  RAM</span><br><span class="line">            Offset   |  Mechanism   |         | Mechanism |</span><br><span class="line">          ----------&gt;|              |         |           |</span><br><span class="line">                     +--------------+         +-----------+</span><br><span class="line">            Virtual                   Linear                Physical</span><br></pre></td></tr></table></figure>
-<ul>
-<li>提供<ul>
+<h3 id="2-2-1-提供"><a href="#2-2-1-提供" class="headerlink" title="2.2.1 提供"></a>2.2.1 提供</h3><ul>
 <li>虚拟内存(virtual memory)</li>
 <li>页表(page)(386引进)</li>
 <li>安全的多任务(multi-tasking)处理(286引进)</li>
-<li>无需重置CPU切换回real mode(386引入)</li>
-</ul>
-</li>
-<li>段寻址(80286开始)<br>  <img src="/images/t.PNG" alt=""><ul>
+<li>无需重置CPU切换回real mode(386引入)<h3 id="2-2-2-段寻址-80286开始"><a href="#2-2-2-段寻址-80286开始" class="headerlink" title="2.2.2 段寻址(80286开始)"></a>2.2.2 段寻址(80286开始)</h3><img src="/images/t.PNG" alt=""></li>
 <li>real mode中段部分替换为16位的选择器(selector), 高13位代表GDT的条目索引， 最低2位确定了请求的权限等级(0代表最高等级/3代表最低等级)<br><img src="/images/selector.PNG" alt=""></li>
 <li><a href="http://www.ics.p.lodz.pl/~dpuchala/LowLevelProgr/Old/Lecture2.pdf" target="_blank" rel="noopener">GDT介绍</a><ul>
 <li>GDT条目(segment descriptor)有8字节长，定义了段的基地址(base address 32位)，段的大小(limit 20位)以及权限(access rights)<br><img src="/images/GDT.PNG" alt=""> 注意base的32bits是分成8bits, 8bits和16bits的， limit的20bits是分成16bits和4bits的</li>
 <li>GDT的位置存在GDTR寄存器中，可以使用LGDT指令写，只有一个GDT</li>
 </ul>
 </li>
-<li>如果开启paging,则将计算出的linear address输入page table，否则直接映射到物理地址</li>
-</ul>
-</li>
-<li>paging(80386开始)<ul>
+<li>如果开启paging,则将计算出的linear address输入page table，否则直接映射到物理地址<h3 id="2-2-3-paging-80386开始"><a href="#2-2-3-paging-80386开始" class="headerlink" title="2.2.3 paging(80386开始)"></a>2.2.3 paging(80386开始)</h3><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/X86_Paging_4K.svg/864px-X86_Paging_4K.svg.png" alt=""></li>
 <li>page管理使用page directories和page tables。<ul>
 <li>page directory是1个page的大小(4K)包含1024 page directories entries(PDE), PDE指向page table</li>
 <li>page table同样是4K大小，包含1024个page tables entries(PTE),PTE指向实际的物理地址</li>
 </ul>
 </li>
+<li>page directories的地址存在控制寄存器CR3的高20位之中(参考<a href="https://en.wikipedia.org/wiki/Control_register" target="_blank" rel="noopener">控制寄存器</a>)</li>
+<li>开启paging需要设置CR0的PG位</li>
 <li>一个时间内只会有1个page directory在使用中</li>
 </ul>
-</li>
-<li>为了提供向后兼容，286以real mode开始运行, 当系统程序设置了descriptor table(至少设置null descriptor/code segment descriptot和data segment descriptor)且开启控制寄存器CR0中的Protection Enable(PE)位之后，才可以进入protect mode。</li>
-</ul>
+<h3 id="2-2-4-flat-mode"><a href="#2-2-4-flat-mode" class="headerlink" title="2.2.4 flat mode"></a>2.2.4 flat mode</h3><p>没有必要使用segment translation, 但是没有直接可以关闭segment translation的方式。</p>
+<p>C 指针就是虚拟地址(virtual address)的偏移部分。 在boot/boot.S, 我们可以设置一个Global Descriptor Table (GDT)来通过使得所有segment base address为0而limit为0xffffffff来有效关闭segment translation。 因此selector部分就没有作用了，linear address总是等于虚拟地址(virtual address)的offset。</p>
+<h3 id="2-2-5-兼容real-mode"><a href="#2-2-5-兼容real-mode" class="headerlink" title="2.2.5 兼容real mode"></a>2.2.5 兼容real mode</h3><p>为了提供向后兼容，286以real mode开始运行, 当系统程序设置了descriptor table(至少设置null descriptor/code segment descriptot和data segment descriptor)且开启控制寄存器CR0中的Protection Enable(PE)位之后，才可以进入protect mode。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">; set PE bit</span><br><span class="line">mov eax, cr0</span><br><span class="line">or eax, 1</span><br><span class="line">mov cr0, eax</span><br><span class="line"></span><br><span class="line">; far jump (cs = selector of code segment)</span><br><span class="line">jmp cs:@pm</span><br><span class="line"></span><br><span class="line">@pm:</span><br><span class="line">; Now we are in PM.</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-关于在real-mode下的寻址能力"><a href="#2-3-关于在real-mode下的寻址能力" class="headerlink" title="2.3 关于在real mode下的寻址能力"></a>2.3 关于在real mode下的寻址能力</h3><p>8086/8088/80186的地址总线是20位，用段寄存器和偏移寄存器寻址方式能产生21位，如果超过$2^{20}$则取模$2^{20}$，即偏移地址 - 0x10(A20line关闭)</p>
+<h2 id="2-3-关于在real-mode下的寻址能力"><a href="#2-3-关于在real-mode下的寻址能力" class="headerlink" title="2.3 关于在real mode下的寻址能力"></a>2.3 关于在real mode下的寻址能力</h2><p>8086/8088/80186的地址总线是20位，用段寄存器和偏移寄存器寻址方式能产生21位，如果超过$2^{20}$则取模$2^{20}$，即偏移地址 - 0x10(A20line关闭)</p>
 <p>80286的地址总线是24位也就是16MB的寻址能力，可以容纳21位，用段寄存器和偏移寄存器的方式寻址，最大寻址能力为0xFFFF0 + 0xFFFF = 0x10FFEF = 1MB + 64KB - 16(A20line打开)</p>
-<h3 id="2-4-80286下从protect-mode切回real-mode"><a href="#2-4-80286下从protect-mode切回real-mode" class="headerlink" title="2.4 80286下从protect mode切回real mode"></a>2.4 80286下从protect mode切回real mode</h3><p>直接重置CPU，由于RAM没有重置，CPU可以重新以real mode开始运行。</p>
+<h2 id="2-4-80286下从protect-mode切回real-mode"><a href="#2-4-80286下从protect-mode切回real-mode" class="headerlink" title="2.4 80286下从protect mode切回real mode"></a>2.4 80286下从protect mode切回real mode</h2><p>直接重置CPU，由于RAM没有重置，CPU可以重新以real mode开始运行。</p>
 
       
     </div>
@@ -493,6 +501,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/23/BIOS-and-bootLoader/" rel="prev" title="BIOS_and_bootLoader">
+                BIOS_and_bootLoader <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -561,7 +573,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -675,7 +687,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-x86-physical-address-layout"><span class="nav-text">1 x86 physical address layout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-real-mode和protect-mode"><span class="nav-text">2 real mode和protect mode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-real-mode"><span class="nav-text">2.1 real mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-protect-mode"><span class="nav-text">2.2 protect mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-关于在real-mode下的寻址能力"><span class="nav-text">2.3 关于在real mode下的寻址能力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-80286下从protect-mode切回real-mode"><span class="nav-text">2.4 80286下从protect mode切回real mode</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-x86-physical-address-layout"><span class="nav-text">1 x86 physical address layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-real-mode和protect-mode"><span class="nav-text">2 real mode和protect mode</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-real-mode"><span class="nav-text">2.1 real mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-protect-mode"><span class="nav-text">2.2 protect mode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-提供"><span class="nav-text">2.2.1 提供</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-段寻址-80286开始"><span class="nav-text">2.2.2 段寻址(80286开始)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-paging-80386开始"><span class="nav-text">2.2.3 paging(80386开始)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-flat-mode"><span class="nav-text">2.2.4 flat mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-5-兼容real-mode"><span class="nav-text">2.2.5 兼容real mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-关于在real-mode下的寻址能力"><span class="nav-text">2.3 关于在real mode下的寻址能力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-80286下从protect-mode切回real-mode"><span class="nav-text">2.4 80286下从protect mode切回real mode</span></a></li></ol></li></ol></div>
             
 
           </div>

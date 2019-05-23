@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="main calls userinit, mpmain calls scheduler to start running processes 123456789101112131415161718192021222324252627282930// Set up first user process.voiduserinit(void)&amp;#123;    struct proc *p;    ex">
+  <meta name="description" content="main calls userinit, mpmain calls scheduler to start running processes">
 <meta name="keywords" content="operating system">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xv6">
 <meta property="og:url" content="http://cjkkkk.github.io/2019/05/17/xv6/index.html">
 <meta property="og:site_name" content="Cjkkkk">
-<meta property="og:description" content="main calls userinit, mpmain calls scheduler to start running processes 123456789101112131415161718192021222324252627282930// Set up first user process.voiduserinit(void)&amp;#123;    struct proc *p;    ex">
+<meta property="og:description" content="main calls userinit, mpmain calls scheduler to start running processes">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-17T03:20:55.057Z">
+<meta property="og:updated_time" content="2019-05-22T12:58:55.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xv6">
-<meta name="twitter:description" content="main calls userinit, mpmain calls scheduler to start running processes 123456789101112131415161718192021222324252627282930// Set up first user process.voiduserinit(void)&amp;#123;    struct proc *p;    ex">
+<meta name="twitter:description" content="main calls userinit, mpmain calls scheduler to start running processes">
 
 
 
@@ -356,12 +356,24 @@
                 
               
 
-              <time title="创建时间：2019-05-17 10:37:46 / 修改时间：11:20:55" itemprop="dateCreated datePublished" datetime="2019-05-17T10:37:46+08:00">2019-05-17</time>
+              <time title="创建时间：2019-05-17 10:37:46" itemprop="dateCreated datePublished" datetime="2019-05-17T10:37:46+08:00">2019-05-17</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-22 20:58:55" itemprop="dateModified" datetime="2019-05-22T20:58:55+08:00">2019-05-22</time>
               
             
           </span>
@@ -395,8 +407,7 @@
       
 
       
-        <p><code>main</code> calls <code>userinit</code>, <code>mpmain</code> calls <code>scheduler</code> to start running processes</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Set up first user process.</span></span><br><span class="line"><span class="keyword">void</span></span><br><span class="line">userinit(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">p</span>;</span></span><br><span class="line">    <span class="keyword">extern</span> <span class="keyword">char</span> _binary_initcode_start[], _binary_initcode_size[];</span><br><span class="line"></span><br><span class="line">    acquire(&amp;ptable.lock);</span><br><span class="line">    p = allocproc();</span><br><span class="line">    initproc = p;</span><br><span class="line">    <span class="keyword">if</span>((p−&gt;pgdir = setupkvm()) == <span class="number">0</span>)</span><br><span class="line">    panic(<span class="string">"userinit: out of memory?"</span>);</span><br><span class="line">    inituvm(p−&gt;pgdir, _binary_initcode_start, (<span class="keyword">int</span>)_binary_initcode_size);</span><br><span class="line">    p−&gt;sz = PGSIZE;</span><br><span class="line">    <span class="built_in">memset</span>(p−&gt;tf, <span class="number">0</span>, <span class="keyword">sizeof</span>(*p−&gt;tf));</span><br><span class="line">    p−&gt;tf−&gt;cs = (SEG_UCODE &lt;&lt; <span class="number">3</span>) | DPL_USER;</span><br><span class="line">    p−&gt;tf−&gt;ds = (SEG_UDATA &lt;&lt; <span class="number">3</span>) | DPL_USER;</span><br><span class="line">    p−&gt;tf−&gt;es = p−&gt;tf−&gt;ds;</span><br><span class="line">    p−&gt;tf−&gt;ss = p−&gt;tf−&gt;ds;</span><br><span class="line">    p−&gt;tf−&gt;eflags = FL_IF;</span><br><span class="line">    p−&gt;tf−&gt;esp = PGSIZE;</span><br><span class="line">    p−&gt;tf−&gt;eip = <span class="number">0</span>; <span class="comment">// beginning of initcode.S</span></span><br><span class="line"></span><br><span class="line">    safestrcpy(p−&gt;name, <span class="string">"initcode"</span>, <span class="keyword">sizeof</span>(p−&gt;name));</span><br><span class="line">    p−&gt;cwd = namei(<span class="string">"/"</span>);</span><br><span class="line"></span><br><span class="line">    p−&gt;state = RUNNABLE;</span><br><span class="line"></span><br><span class="line">    release(&amp;ptable.lock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p><code>main</code> calls <code>userinit</code>, <code>mpmain</code> calls <code>scheduler</code> to start running processes<br><a id="more"></a><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Set up first user process.</span></span><br><span class="line"><span class="keyword">void</span></span><br><span class="line">userinit(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">p</span>;</span></span><br><span class="line">    <span class="keyword">extern</span> <span class="keyword">char</span> _binary_initcode_start[], _binary_initcode_size[];</span><br><span class="line"></span><br><span class="line">    acquire(&amp;ptable.lock);</span><br><span class="line">    p = allocproc();</span><br><span class="line">    initproc = p;</span><br><span class="line">    <span class="keyword">if</span>((p−&gt;pgdir = setupkvm()) == <span class="number">0</span>)</span><br><span class="line">    panic(<span class="string">"userinit: out of memory?"</span>);</span><br><span class="line">    inituvm(p−&gt;pgdir, _binary_initcode_start, (<span class="keyword">int</span>)_binary_initcode_size);</span><br><span class="line">    p−&gt;sz = PGSIZE;</span><br><span class="line">    <span class="built_in">memset</span>(p−&gt;tf, <span class="number">0</span>, <span class="keyword">sizeof</span>(*p−&gt;tf));</span><br><span class="line">    p−&gt;tf−&gt;cs = (SEG_UCODE &lt;&lt; <span class="number">3</span>) | DPL_USER;</span><br><span class="line">    p−&gt;tf−&gt;ds = (SEG_UDATA &lt;&lt; <span class="number">3</span>) | DPL_USER;</span><br><span class="line">    p−&gt;tf−&gt;es = p−&gt;tf−&gt;ds;</span><br><span class="line">    p−&gt;tf−&gt;ss = p−&gt;tf−&gt;ds;</span><br><span class="line">    p−&gt;tf−&gt;eflags = FL_IF;</span><br><span class="line">    p−&gt;tf−&gt;esp = PGSIZE;</span><br><span class="line">    p−&gt;tf−&gt;eip = <span class="number">0</span>; <span class="comment">// beginning of initcode.S</span></span><br><span class="line"></span><br><span class="line">    safestrcpy(p−&gt;name, <span class="string">"initcode"</span>, <span class="keyword">sizeof</span>(p−&gt;name));</span><br><span class="line">    p−&gt;cwd = namei(<span class="string">"/"</span>);</span><br><span class="line"></span><br><span class="line">    p−&gt;state = RUNNABLE;</span><br><span class="line"></span><br><span class="line">    release(&amp;ptable.lock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>userinit</p>
 <ul>
 <li>调用allocproc<ul>
@@ -456,6 +467,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/05/22/ELF/" rel="prev" title="ELF">
+                ELF <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -514,7 +529,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

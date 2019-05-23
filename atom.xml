@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-05-17T03:20:55.057Z</updated>
+  <updated>2019-05-22T15:06:18.529Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -17,21 +17,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>x86_physical_layout</title>
+    <link href="http://cjkkkk.github.io/2019/05/22/x86-physical-layout/"/>
+    <id>http://cjkkkk.github.io/2019/05/22/x86-physical-layout/</id>
+    <published>2019-05-22T13:03:18.000Z</published>
+    <updated>2019-05-22T15:06:18.529Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总结关于x86物理内存布局和real mode/protect mode相关的基本知识&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="operating system" scheme="http://cjkkkk.github.io/tags/operating-system/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ELF</title>
+    <link href="http://cjkkkk.github.io/2019/05/22/ELF/"/>
+    <id>http://cjkkkk.github.io/2019/05/22/ELF/</id>
+    <published>2019-05-22T07:56:37.000Z</published>
+    <updated>2019-05-22T08:03:13.255Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ELF (Executable and Linking Format).&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="operating system" scheme="http://cjkkkk.github.io/tags/operating-system/"/>
+    
+  </entry>
+  
+  <entry>
     <title>xv6</title>
     <link href="http://cjkkkk.github.io/2019/05/17/xv6/"/>
     <id>http://cjkkkk.github.io/2019/05/17/xv6/</id>
     <published>2019-05-17T02:37:46.000Z</published>
-    <updated>2019-05-17T03:20:55.057Z</updated>
+    <updated>2019-05-22T12:58:55.832Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;p&gt;&lt;code&gt;main&lt;/code&gt; calls &lt;code&gt;userinit&lt;/code&gt;, &lt;code&gt;mpmain&lt;/code&gt; calls &lt;code&gt;scheduler&lt;/code&gt; to start running processes&lt;br&gt;
     
     </summary>
     
@@ -45,17 +75,11 @@
     <link href="http://cjkkkk.github.io/2019/05/12/GNU-assem/"/>
     <id>http://cjkkkk.github.io/2019/05/12/GNU-assem/</id>
     <published>2019-05-12T07:54:25.000Z</published>
-    <updated>2019-05-14T06:37:27.827Z</updated>
+    <updated>2019-05-23T05:36:11.864Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;p&gt;as : GNU assembler&lt;br&gt;NASM(Intel syntax) vs GAS(AT&amp;amp;T syntax)&lt;br&gt;
     
     </summary>
     
@@ -364,64 +388,6 @@
     
     
       <category term="Computer Graphics" scheme="http://cjkkkk.github.io/tags/Computer-Graphics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>haskell-mind-map</title>
-    <link href="http://cjkkkk.github.io/2019/01/01/haskell-knowledge-mind/"/>
-    <id>http://cjkkkk.github.io/2019/01/01/haskell-knowledge-mind/</id>
-    <published>2019-01-01T15:30:02.000Z</published>
-    <updated>2019-05-01T09:14:18.660Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;chapter1&quot;&gt;&lt;a href=&quot;#chapter1&quot; class=&quot;headerlink&quot; title=&quot;chapter1&quot;&gt;&lt;/a&gt;chapter1&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;重要的概念 Important Concept&lt;ul&gt;
-&lt;li&gt;函数式 functional&lt;/li&gt;
-&lt;li&gt;纯净 pure&lt;/li&gt;
-&lt;li&gt;惰性 lazy&lt;/li&gt;
-&lt;li&gt;严格类型 statically typed&lt;/li&gt;
-&lt;li&gt;抽象 abstraction&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;基本数据类型 basic type&lt;ul&gt;
-&lt;li&gt;Int&lt;/li&gt;
-&lt;li&gt;Integer&lt;/li&gt;
-&lt;li&gt;Double&lt;/li&gt;
-&lt;li&gt;Float&lt;/li&gt;
-&lt;li&gt;Bool&lt;/li&gt;
-&lt;li&gt;Char&lt;/li&gt;
-&lt;li&gt;String&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;模式匹配 pattern matching&lt;/li&gt;
-&lt;li&gt;守卫 guards&lt;/li&gt;
-&lt;li&gt;组 pair&lt;/li&gt;
-&lt;li&gt;列表 List
-    
-    </summary>
-    
-    
-      <category term="Haskell" scheme="http://cjkkkk.github.io/tags/Haskell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>how-https-works</title>
-    <link href="http://cjkkkk.github.io/2018/12/31/how-https-works/"/>
-    <id>http://cjkkkk.github.io/2018/12/31/how-https-works/</id>
-    <published>2018-12-31T08:41:33.000Z</published>
-    <updated>2019-05-01T09:14:33.042Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;HTTPS是如何工作的-翻译&quot;&gt;&lt;a href=&quot;#HTTPS是如何工作的-翻译&quot; class=&quot;headerlink&quot; title=&quot;HTTPS是如何工作的[翻译]&quot;&gt;&lt;/a&gt;HTTPS是如何工作的[翻译]&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://robertheaton.com/2014/03/27/how-does-https-actually-work/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文链接&lt;/a&gt;&lt;br&gt;HTTPS is simply your standard HTTP protocol slathered with a generous layer of delicious SSL/TLS encryption goodness.&lt;br&gt;HTTPS其实只是具有SSL / TLS加密优势的标准HTTP协议&lt;br&gt;Unless something goes horribly wrong (and it can), it prevents people like the infamous Eve from viewing or modifying the requests that make up your browsing experience;&lt;br&gt;除非某些事情发生了非常严重的错误(这是有可能发生的),HTTPS协议能保护使用者免于遭受第三人(infamous eve)篡改或者监视你的浏览请求(http request)&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="Network Basic" scheme="http://cjkkkk.github.io/tags/Network-Basic/"/>
     
   </entry>
   

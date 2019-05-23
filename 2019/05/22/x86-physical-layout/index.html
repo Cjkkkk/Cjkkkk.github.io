@@ -100,20 +100,22 @@
 
 
 
-  <meta name="description" content="1 核心思想random sampling and data coherence">
-<meta name="keywords" content="Computer Graphics">
+  <meta name="description" content="总结关于x86物理内存布局和real mode/protect mode相关的基本知识">
+<meta name="keywords" content="operating system">
 <meta property="og:type" content="article">
-<meta property="og:title" content="patchmatch算法">
-<meta property="og:url" content="http://cjkkkk.github.io/2019/04/05/patchmatch/index.html">
+<meta property="og:title" content="x86_physical_layout">
+<meta property="og:url" content="http://cjkkkk.github.io/2019/05/22/x86-physical-layout/index.html">
 <meta property="og:site_name" content="Cjkkkk">
-<meta property="og:description" content="1 核心思想random sampling and data coherence">
+<meta property="og:description" content="总结关于x86物理内存布局和real mode/protect mode相关的基本知识">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://cjkkkk.github.io/images/TAnm9ti.png">
-<meta property="og:updated_time" content="2019-05-01T09:47:29.479Z">
+<meta property="og:image" content="http://cjkkkk.github.io/images/t.PNG">
+<meta property="og:image" content="http://cjkkkk.github.io/images/selector.PNG">
+<meta property="og:image" content="http://cjkkkk.github.io/images/GDT.PNG">
+<meta property="og:updated_time" content="2019-05-22T15:06:18.529Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="patchmatch算法">
-<meta name="twitter:description" content="1 核心思想random sampling and data coherence">
-<meta name="twitter:image" content="http://cjkkkk.github.io/images/TAnm9ti.png">
+<meta name="twitter:title" content="x86_physical_layout">
+<meta name="twitter:description" content="总结关于x86物理内存布局和real mode/protect mode相关的基本知识">
+<meta name="twitter:image" content="http://cjkkkk.github.io/images/t.PNG">
 
 
 
@@ -123,7 +125,7 @@
 
   
   
-  <link rel="canonical" href="http://cjkkkk.github.io/2019/04/05/patchmatch/">
+  <link rel="canonical" href="http://cjkkkk.github.io/2019/05/22/x86-physical-layout/">
 
 
 
@@ -133,7 +135,7 @@
   };
 </script>
 
-  <title>patchmatch算法 | Cjkkkk</title>
+  <title>x86_physical_layout | Cjkkkk</title>
   
 
 
@@ -315,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/04/05/patchmatch/">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/05/22/x86-physical-layout/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cjkkkk">
@@ -332,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">patchmatch算法
+          <h1 class="post-title" itemprop="name headline">x86_physical_layout
 
               
             
@@ -358,24 +360,12 @@
                 
               
 
-              <time title="创建时间：2019-04-05 01:36:49" itemprop="dateCreated datePublished" datetime="2019-04-05T01:36:49+08:00">2019-04-05</time>
+              <time title="创建时间：2019-05-22 21:03:18 / 修改时间：23:06:18" itemprop="dateCreated datePublished" datetime="2019-05-22T21:03:18+08:00">2019-05-22</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-01 17:47:29" itemprop="dateModified" datetime="2019-05-01T17:47:29+08:00">2019-05-01</time>
               
             
           </span>
@@ -409,41 +399,55 @@
       
 
       
-        <h2 id="1-核心思想"><a href="#1-核心思想" class="headerlink" title="1 核心思想"></a>1 核心思想</h2><p>random sampling and data coherence</p>
- <a id="more"></a>
-<h2 id="2-算法目的"><a href="#2-算法目的" class="headerlink" title="2 算法目的"></a>2 算法目的</h2><p>quickly finding approximate nearest neighbor matches between image patches</p>
-<h2 id="3-问题描述"><a href="#3-问题描述" class="headerlink" title="3 问题描述"></a>3 问题描述</h2><p>给定两张图像A B, 对图像A中的每个patch，找到图像B中与之匹配度最高的patch.</p>
-<h3 id="3-1-一些定义"><a href="#3-1-一些定义" class="headerlink" title="3.1 一些定义"></a>3.1 一些定义</h3><ul>
-<li>NNF(nearest-neighbor field)<br>定义NNF为$f: A \rightarrow R^2$，假如图像A中的patch a与图像B中的patch b对应, $f(a) = b - a$, patch的坐标使用patch中心的坐标代替，同时需要定义距离函数$D$。</li>
-</ul>
-<h2 id="4-算法步骤"><a href="#4-算法步骤" class="headerlink" title="4 算法步骤"></a>4 算法步骤</h2><p>问题简化为:为图像A中的每个patch a计算f(a)的值</p>
-<h3 id="4-1-initialization-初始化"><a href="#4-1-initialization-初始化" class="headerlink" title="4.1 initialization 初始化"></a>4.1 initialization 初始化</h3><p>为图像A中的每一个patch a赋值随机的f(a)<br>(在图像B中进行独立的均与采样(independent uniform sampling))</p>
+        <p>总结关于x86物理内存布局和real mode/protect mode相关的基本知识<br><a id="more"></a></p>
+<h2 id="1-x86-physical-address-layout"><a href="#1-x86-physical-address-layout" class="headerlink" title="1 x86 physical address layout"></a>1 x86 physical address layout</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+------------------+  &lt;- 0xFFFFFFFF (4GB)</span><br><span class="line">|      32-bit      |</span><br><span class="line">|  memory mapped   |</span><br><span class="line">|     devices      |</span><br><span class="line">|                  |</span><br><span class="line">/\/\/\/\/\/\/\/\/\/\</span><br><span class="line"></span><br><span class="line">/\/\/\/\/\/\/\/\/\/\</span><br><span class="line">|                  |</span><br><span class="line">|      Unused      |</span><br><span class="line">|                  |</span><br><span class="line">+------------------+  &lt;- depends on amount of RAM</span><br><span class="line">|                  |</span><br><span class="line">|                  |</span><br><span class="line">| Extended Memory  |</span><br><span class="line">|                  |</span><br><span class="line">|                  |</span><br><span class="line">+------------------+  &lt;- 0x00100000 (1MB)</span><br><span class="line">|     BIOS ROM     |</span><br><span class="line">+------------------+  &lt;- 0x000F0000 (960KB)</span><br><span class="line">|  16-bit devices, |</span><br><span class="line">|  expansion ROMs  |</span><br><span class="line">+------------------+  &lt;- 0x000C0000 (768KB)</span><br><span class="line">|   VGA Display    |</span><br><span class="line">+------------------+  &lt;- 0x000A0000 (640KB)</span><br><span class="line">|                  |</span><br><span class="line">|    Low Memory    |</span><br><span class="line">|                  |</span><br><span class="line">+------------------+  &lt;- 0x00000000</span><br></pre></td></tr></table></figure>
+<p>8086的16位架构，操作系统只能利用2^20的地址，也就是1MB，也就是上图中0x0000000到0x00100000的区域。其中0x0到0xA0000的640KB是RAM使用，0xA0000到0xF0000的320KB是设备使用比如VGA，0xF0000到0x100000的64KB是BIOS使用。</p>
+<p>在扩展到80386的32位架构后，系统可以收用2^32的4GB的地址。为了兼容16位系统，0xA0000到0x100000的区域(原先BIOS和设备区域)不再使用而空出。把原来0x0到0xA0000的RAM区域称为Low memory区域，1MB之后的RAM区域称为Extended Memory区域。BIOS和设备内存区域移动到32位区域的顶部。</p>
+<p>可想而知当扩展到64位架构之后，为了系统向后兼容，又会产生第二个空闲区域。</p>
+<h2 id="2-real-mode和protect-mode"><a href="#2-real-mode和protect-mode" class="headerlink" title="2 real mode和protect mode"></a>2 real mode和protect mode</h2><h3 id="2-1-real-mode"><a href="#2-1-real-mode" class="headerlink" title="2.1 real mode"></a>2.1 real mode</h3><p><a href="https://en.wikipedia.org/wiki/Real_mode" target="_blank" rel="noopener">real mode wiki</a><br>real mode是x86系统都兼容的一个运行模式，出现在早期的8086/8088架构时期。</p>
 <ul>
-<li>或者使用prior information</li>
-<li>迭代<br>接下来的需要对每个像素迭代进行propagation和random search来改进f(a)的值, 遍历像素的顺序为从左到右，从上到下，且不是所有像素都完成propagation后进行random search，而是对每一个像素进行完propagation后立刻进行random search。</li>
+<li>real mode支持20位寻址，也就是1MB的内存空间。<ul>
+<li>使用段寄存器(16位)和偏移寄存器(16位)计算地址: segment * 16 + offset</li>
 </ul>
-<h3 id="4-2-propagation-传播"><a href="#4-2-propagation-传播" class="headerlink" title="4.2 propagation 传播"></a>4.2 propagation 传播</h3><p>利用$f(x-1, y)$和$f(x, y-1)$的值来改进$f(x, y)$<br>$f(x, y)$的新值是$min(D(f(x,y)), D(f(x-1, y)), D(x, y-1))$对应的$(x,y)$</p>
+</li>
+<li>运行程序可以直接访问物理内存，I/O地址和外部设备</li>
+<li>因此不提供内存保护(memory protection)/多任务(multitasking)和权限(code privilege levels)</li>
+</ul>
+<h3 id="2-2-protect-mode"><a href="#2-2-protect-mode" class="headerlink" title="2.2 protect mode"></a>2.2 protect mode</h3><p><a href="https://en.wikipedia.org/wiki/Protected_mode" target="_blank" rel="noopener">protect mode wiki</a><br>80286引进protect mode， 80386加强</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">           Selector  +--------------+         +-----------+</span><br><span class="line">          ----------&gt;|              |         |           |</span><br><span class="line">                     | Segmentation |         |  Paging   |</span><br><span class="line">Software             |              |--------&gt;|           |----------&gt;  RAM</span><br><span class="line">            Offset   |  Mechanism   |         | Mechanism |</span><br><span class="line">          ----------&gt;|              |         |           |</span><br><span class="line">                     +--------------+         +-----------+</span><br><span class="line">            Virtual                   Linear                Physical</span><br></pre></td></tr></table></figure>
 <ul>
-<li>$D$为距离函数</li>
-<li>在偶数次迭代可以使用从右往左,从下往上的顺序迭代</li>
+<li>提供<ul>
+<li>虚拟内存(virtual memory)</li>
+<li>页表(page)(386引进)</li>
+<li>安全的多任务(multi-tasking)处理(286引进)</li>
+<li>无需重置CPU切换回real mode(386引入)</li>
 </ul>
-<h3 id="4-3-random-search-随机搜索"><a href="#4-3-random-search-随机搜索" class="headerlink" title="4.3 random search 随机搜索"></a>4.3 random search 随机搜索</h3><p>$u_i = v_0 +wa^iR_i$<br>$v_0 = f(x, y)$,$R_i$为$[-1,1]\times[-1,1]$,$w$为搜索窗口大小,$a_i$为每次搜索窗口衰减的比例<br>即以f(x, y)为中心的window进行搜索</p>
-<ul>
-<li>停止条件即搜索半径小于等于1个像素:$wa^i &lt; 1$</li>
+</li>
+<li>段寻址(80286开始)<br>  <img src="/images/t.PNG" alt=""><ul>
+<li>real mode中段部分替换为16位的选择器(selector), 高13位代表GDT的条目索引， 最低2位确定了请求的权限等级(0代表最高等级/3代表最低等级)<br><img src="/images/selector.PNG" alt=""></li>
+<li><a href="http://www.ics.p.lodz.pl/~dpuchala/LowLevelProgr/Old/Lecture2.pdf" target="_blank" rel="noopener">GDT介绍</a><ul>
+<li>GDT条目(segment descriptor)有8字节长，定义了段的基地址(base address 32位)，段的大小(limit 20位)以及权限(access rights)<br><img src="/images/GDT.PNG" alt=""> 注意base的32bits是分成8bits, 8bits和16bits的， limit的20bits是分成16bits和4bits的</li>
+<li>GDT的位置存在GDTR寄存器中，可以使用LGDT指令写，只有一个GDT</li>
 </ul>
-<h2 id="5-一幅图说明"><a href="#5-一幅图说明" class="headerlink" title="5 一幅图说明"></a>5 一幅图说明</h2><p><img src="/images/TAnm9ti.png" alt=""><br>约定: 下文称f(a)为a的offset</p>
-<p>需要搜索A图像中蓝色patch的offset, 红色patch是蓝色的left patch, 绿色patch是蓝色patch的up patch。</p>
-<p>在( a )initialization中可以看到A图中3个颜色的patch被赋予了B图中随机的offset。</p>
-<p>在( b )proagation中检查红色patch和绿色patch在B图中的offset是否比蓝色patch的offset更加match,可以看到红色的ofset更加match,于是更新蓝色patch的offset。</p>
-<p>在( c ) random search中，以( b )中更新的offset为中心的window进行随机搜索。</p>
-<p>重复( b )( c )步骤直到收敛。</p>
-<h2 id="6-GPU实现"><a href="#6-GPU实现" class="headerlink" title="6 GPU实现"></a>6 GPU实现</h2><p>思路: propagation和random search阶段并行。</p>
-<p>矛盾: propagation之前的CPU version是以scanline的形式进行，这意味着propagation是有先后顺序。</p>
-<p>解决方案: jump flood scheme</p>
-<h2 id="7-分析"><a href="#7-分析" class="headerlink" title="7 分析"></a>7 分析</h2><p>假设图像A B都是M像素，考虑所有像素都被初始化到错误的offset的概率为$(1-1/M)^M$, 则至少有一个像素被初始化到正确的offset的概率为$1 - (1-1/M)^M$<br>M很大的时候近似为$1 - 1/e$。</p>
-<p>由于在random search阶段的时候，在小的邻域范围内的搜索是很密集的，可以认为只要在正确的offset一定领域内的offset都可以认为是正确的。</p>
-<p>基于以上的考虑，propagation和random search可以大大加速算法的搜索速度。</p>
-<h2 id="8-参考"><a href="#8-参考" class="headerlink" title="8 参考"></a>8 参考</h2><p>PatchMatch: A Randomized Correspondence Algorithm for Structural Image Editing</p>
+</li>
+<li>如果开启paging,则将计算出的linear address输入page table，否则直接映射到物理地址</li>
+</ul>
+</li>
+<li>paging(80386开始)<ul>
+<li>page管理使用page directories和page tables。<ul>
+<li>page directory是1个page的大小(4K)包含1024 page directories entries(PDE), PDE指向page table</li>
+<li>page table同样是4K大小，包含1024个page tables entries(PTE),PTE指向实际的物理地址</li>
+</ul>
+</li>
+<li>一个时间内只会有1个page directory在使用中</li>
+</ul>
+</li>
+<li>为了提供向后兼容，286以real mode开始运行, 当系统程序设置了descriptor table(至少设置null descriptor/code segment descriptot和data segment descriptor)且开启控制寄存器CR0中的Protection Enable(PE)位之后，才可以进入protect mode。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">; set PE bit</span><br><span class="line">mov eax, cr0</span><br><span class="line">or eax, 1</span><br><span class="line">mov cr0, eax</span><br><span class="line"></span><br><span class="line">; far jump (cs = selector of code segment)</span><br><span class="line">jmp cs:@pm</span><br><span class="line"></span><br><span class="line">@pm:</span><br><span class="line">; Now we are in PM.</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-关于在real-mode下的寻址能力"><a href="#2-3-关于在real-mode下的寻址能力" class="headerlink" title="2.3 关于在real mode下的寻址能力"></a>2.3 关于在real mode下的寻址能力</h3><p>8086/8088/80186的地址总线是20位，用段寄存器和偏移寄存器寻址方式能产生21位，如果超过$2^{20}$则取模$2^{20}$，即偏移地址 - 0x10(A20line关闭)</p>
+<p>80286的地址总线是24位也就是16MB的寻址能力，可以容纳21位，用段寄存器和偏移寄存器的方式寻址，最大寻址能力为0xFFFF0 + 0xFFFF = 0x10FFEF = 1MB + 64KB - 16(A20line打开)</p>
+<h3 id="2-4-80286下从protect-mode切回real-mode"><a href="#2-4-80286下从protect-mode切回real-mode" class="headerlink" title="2.4 80286下从protect mode切回real mode"></a>2.4 80286下从protect mode切回real mode</h3><p>直接重置CPU，由于RAM没有重置，CPU可以重新以real mode开始运行。</p>
 
       
     </div>
@@ -467,7 +471,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Computer-Graphics/" rel="tag"># Computer Graphics</a>
+            <a href="/tags/operating-system/" rel="tag"># operating system</a>
           
         </div>
       
@@ -480,8 +484,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/22/BRDF/" rel="next" title="BRDF">
-                <i class="fa fa-chevron-left"></i> BRDF
+              <a href="/2019/05/22/ELF/" rel="next" title="ELF">
+                <i class="fa fa-chevron-left"></i> ELF
               </a>
             
           </div>
@@ -489,10 +493,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/21/PBR/" rel="prev" title="PBR">
-                PBR <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -675,7 +675,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-核心思想"><span class="nav-text">1 核心思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-算法目的"><span class="nav-text">2 算法目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-问题描述"><span class="nav-text">3 问题描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-一些定义"><span class="nav-text">3.1 一些定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-算法步骤"><span class="nav-text">4 算法步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-initialization-初始化"><span class="nav-text">4.1 initialization 初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-propagation-传播"><span class="nav-text">4.2 propagation 传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-random-search-随机搜索"><span class="nav-text">4.3 random search 随机搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-一幅图说明"><span class="nav-text">5 一幅图说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-GPU实现"><span class="nav-text">6 GPU实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-分析"><span class="nav-text">7 分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-参考"><span class="nav-text">8 参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-x86-physical-address-layout"><span class="nav-text">1 x86 physical address layout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-real-mode和protect-mode"><span class="nav-text">2 real mode和protect mode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-real-mode"><span class="nav-text">2.1 real mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-protect-mode"><span class="nav-text">2.2 protect mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-关于在real-mode下的寻址能力"><span class="nav-text">2.3 关于在real mode下的寻址能力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-80286下从protect-mode切回real-mode"><span class="nav-text">2.4 80286下从protect mode切回real mode</span></a></li></ol></li></ol></div>
             
 
           </div>

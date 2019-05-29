@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://cjkkkk.github.io/images/selector.PNG">
 <meta property="og:image" content="http://cjkkkk.github.io/images/GDT.PNG">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/X86_Paging_4K.svg/864px-X86_Paging_4K.svg.png">
-<meta property="og:updated_time" content="2019-05-23T13:13:55.605Z">
+<meta property="og:updated_time" content="2019-05-25T05:46:39.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="x86_physical_layout">
 <meta name="twitter:description" content="总结关于x86物理内存布局和real mode/protect mode相关的基本知识">
@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-23 21:13:55" itemprop="dateModified" datetime="2019-05-23T21:13:55+08:00">2019-05-23</time>
+                <time title="修改时间：2019-05-25 13:46:39" itemprop="dateModified" datetime="2019-05-25T13:46:39+08:00">2019-05-25</time>
               
             
           </span>
@@ -432,14 +432,20 @@
 <li>虚拟内存(virtual memory)</li>
 <li>页表(page)(386引进)</li>
 <li>安全的多任务(multi-tasking)处理(286引进)</li>
-<li>无需重置CPU切换回real mode(386引入)<h3 id="2-2-2-段寻址-80286开始"><a href="#2-2-2-段寻址-80286开始" class="headerlink" title="2.2.2 段寻址(80286开始)"></a>2.2.2 段寻址(80286开始)</h3><img src="/images/t.PNG" alt=""></li>
+<li>无需重置CPU切换回real mode(386引入)</li>
+</ul>
+<h3 id="2-2-2-段寻址-80286开始"><a href="#2-2-2-段寻址-80286开始" class="headerlink" title="2.2.2 段寻址(80286开始)"></a>2.2.2 段寻址(80286开始)</h3><p><img src="/images/t.PNG" alt=""></p>
+<ul>
 <li>real mode中段部分替换为16位的选择器(selector), 高13位代表GDT的条目索引， 最低2位确定了请求的权限等级(0代表最高等级/3代表最低等级)<br><img src="/images/selector.PNG" alt=""></li>
 <li><a href="http://www.ics.p.lodz.pl/~dpuchala/LowLevelProgr/Old/Lecture2.pdf" target="_blank" rel="noopener">GDT介绍</a><ul>
 <li>GDT条目(segment descriptor)有8字节长，定义了段的基地址(base address 32位)，段的大小(limit 20位)以及权限(access rights)<br><img src="/images/GDT.PNG" alt=""> 注意base的32bits是分成8bits, 8bits和16bits的， limit的20bits是分成16bits和4bits的</li>
 <li>GDT的位置存在GDTR寄存器中，可以使用LGDT指令写，只有一个GDT</li>
 </ul>
 </li>
-<li>如果开启paging,则将计算出的linear address输入page table，否则直接映射到物理地址<h3 id="2-2-3-paging-80386开始"><a href="#2-2-3-paging-80386开始" class="headerlink" title="2.2.3 paging(80386开始)"></a>2.2.3 paging(80386开始)</h3><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/X86_Paging_4K.svg/864px-X86_Paging_4K.svg.png" alt=""></li>
+<li>如果开启paging,则将计算出的linear address输入page table，否则直接映射到物理地址</li>
+</ul>
+<h3 id="2-2-3-paging-80386开始"><a href="#2-2-3-paging-80386开始" class="headerlink" title="2.2.3 paging(80386开始)"></a>2.2.3 paging(80386开始)</h3><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/X86_Paging_4K.svg/864px-X86_Paging_4K.svg.png" alt=""></p>
+<ul>
 <li>page管理使用page directories和page tables。<ul>
 <li>page directory是1个page的大小(4K)包含1024 page directories entries(PDE), PDE指向page table</li>
 <li>page table同样是4K大小，包含1024个page tables entries(PTE),PTE指向实际的物理地址</li>

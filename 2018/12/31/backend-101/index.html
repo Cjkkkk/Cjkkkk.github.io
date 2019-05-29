@@ -108,14 +108,14 @@
 <meta property="og:site_name" content="Cjkkkk">
 <meta property="og:description" content="后端1011 聊一下什么是后端后端的主要作用就是处理并响应前端发来的请求一个例子:前端: 查看一下当前用户列表，并告诉我男女比后端: 从数据库中查找用户列表，并计算男女比，将结果返回">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://i.imgur.com/nDmrjnb.png">
-<meta property="og:image" content="https://i.imgur.com/Q76fQpZ.png">
+<meta property="og:image" content="http://cjkkkk.github.io/images/nDmrjnb.png">
+<meta property="og:image" content="http://cjkkkk.github.io/images/Q76fQpZ.png">
 <meta property="og:image" content="https://i.imgur.com/VuBrRzu.png">
-<meta property="og:updated_time" content="2019-05-01T09:12:56.901Z">
+<meta property="og:updated_time" content="2019-05-29T08:26:54.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="backend-end-101">
 <meta name="twitter:description" content="后端1011 聊一下什么是后端后端的主要作用就是处理并响应前端发来的请求一个例子:前端: 查看一下当前用户列表，并告诉我男女比后端: 从数据库中查找用户列表，并计算男女比，将结果返回">
-<meta name="twitter:image" content="https://i.imgur.com/nDmrjnb.png">
+<meta name="twitter:image" content="http://cjkkkk.github.io/images/nDmrjnb.png">
 
 
 
@@ -377,7 +377,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-01 17:12:56" itemprop="dateModified" datetime="2019-05-01T17:12:56+08:00">2019-05-01</time>
+                <time title="修改时间：2019-05-29 16:26:54" itemprop="dateModified" datetime="2019-05-29T16:26:54+08:00">2019-05-29</time>
               
             
           </span>
@@ -411,7 +411,7 @@
       
 
       
-        <h1 id="后端101"><a href="#后端101" class="headerlink" title="后端101"></a>后端101</h1><h2 id="1-聊一下什么是后端"><a href="#1-聊一下什么是后端" class="headerlink" title="1 聊一下什么是后端"></a>1 聊一下什么是后端</h2><p><img src="https://i.imgur.com/nDmrjnb.png" alt=""><br>后端的主要作用就是<strong>处理</strong>并<strong>响应</strong>前端发来的请求<br>一个例子:<br>前端: 查看一下当前用户列表，并告诉我男女比<br>后端: 从数据库中查找用户列表，并计算男女比，将结果返回<br> <a id="more"></a><br>问题:</p>
+        <h1 id="后端101"><a href="#后端101" class="headerlink" title="后端101"></a>后端101</h1><h2 id="1-聊一下什么是后端"><a href="#1-聊一下什么是后端" class="headerlink" title="1 聊一下什么是后端"></a>1 聊一下什么是后端</h2><p><img src="/images/nDmrjnb.png" alt=""><br>后端的主要作用就是<strong>处理</strong>并<strong>响应</strong>前端发来的请求<br>一个例子:<br>前端: 查看一下当前用户列表，并告诉我男女比<br>后端: 从数据库中查找用户列表，并计算男女比，将结果返回<br> <a id="more"></a><br>问题:</p>
 <ul>
 <li>前端如何发送请求到后端</li>
 <li>后端如何解析请求</li>
@@ -431,7 +431,7 @@
 <p>  而之所以分成7层是因为需要将每一个通信模块分离，每一个通信模块之间只提供接口，而不关心内部的实现，以这种方式进行设计，只要接口没变，内部的实现方式可以随意改变，使得每一个通信模块可以独立设计，也可以很方便的利用其他模块提供的接口进行新的模块设计。</p>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/Q76fQpZ.png" alt=""></p>
+<p><img src="/images/Q76fQpZ.png" alt=""></p>
 <p>除了物理层外<strong>从上往下</strong>每一层都会在原有的数据包上加上特定的帧头(就是包含特定信息的二进制数据)</p>
 <p>比如网络层帧头，其中包含了目的地网络地址，用于指示沿途的路由器，这一串二进制流的目的地是哪里，路由器查询自己的网络地址表，决定再发给更靠近目的地的下一跳路由器。</p>
 <p>之前提到的<strong>HTTP协议/DNS协议</strong>就是一个位于应用层的协议，而<strong>TCP协议</strong>则是位于传输层的一个协议。<strong>HTTP协议</strong>主要是确定了发送的数据包的内容应该是什么样的格式，而<strong>TCP协议</strong>主要是帮助你进行一个可靠的传输。</p>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-05-23T13:06:36.499Z</updated>
+  <updated>2019-06-05T12:36:32.800Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python_import</title>
+    <link href="http://cjkkkk.github.io/2019/06/05/python-import/"/>
+    <id>http://cjkkkk.github.io/2019/06/05/python-import/</id>
+    <published>2019-06-05T12:29:46.000Z</published>
+    <updated>2019-06-05T12:36:32.800Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;how to correctly import a python module…&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://cjkkkk.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>BIOS_and_bootLoader</title>
@@ -367,27 +385,6 @@
     
     
       <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Monte Carlo</title>
-    <link href="http://cjkkkk.github.io/2019/03/11/Monte-Carlo/"/>
-    <id>http://cjkkkk.github.io/2019/03/11/Monte-Carlo/</id>
-    <published>2019-03-11T10:20:12.000Z</published>
-    <updated>2019-05-01T09:15:00.782Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;什么是Monte-Carlo-Method&quot;&gt;&lt;a href=&quot;#什么是Monte-Carlo-Method&quot; class=&quot;headerlink&quot; title=&quot;什么是Monte Carlo Method&quot;&gt;&lt;/a&gt;什么是Monte Carlo Method&lt;/h2&gt;&lt;p&gt;简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分(原函数不是初等原函数比如${e^{x^2}}$)等问题答案的一系列统计学的方法集合。&lt;/p&gt;
-&lt;p&gt;Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The Monte Carlo method is a numerical method of solving mathematical problems by random sampling (or by the simulation of random variables).&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="Computer Graphics" scheme="http://cjkkkk.github.io/tags/Computer-Graphics/"/>
     
   </entry>
   

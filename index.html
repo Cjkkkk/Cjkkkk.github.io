@@ -354,7 +354,7 @@
                 
               
 
-              <time title="创建时间：2019-07-21 11:52:58 / 修改时间：19:06:30" itemprop="dateCreated datePublished" datetime="2019-07-21T11:52:58+08:00">2019-07-21</time>
+              <time title="创建时间：2019-07-21 11:52:58 / 修改时间：19:26:52" itemprop="dateCreated datePublished" datetime="2019-07-21T11:52:58+08:00">2019-07-21</time>
             
 
             
@@ -394,72 +394,19 @@
 
       
         
+          <h2 id="1-起因"><a href="#1-起因" class="headerlink" title="1 起因"></a>1 起因</h2><p>因为最近在尝试做游戏手机端的景深效果，所以需要从场景的深度图(z-buffer)中还原场景在观察空间下的深度值。这需要理解图形学中坐标系的变化原理。所以本篇博客主要关注的是投影矩阵(projection matrix)。<br>
+          <!--noindex-->
           
-            <h2 id="1-起因"><a href="#1-起因" class="headerlink" title="1 起因"></a>1 起因</h2><p>因为最近在尝试做游戏手机端的景深效果，所以需要从场景的深度图(z-buffer)中还原场景在观察空间下的深度值。这需要理解图形学中坐标系的变化原理。所以本篇博客主要关注的是投影矩阵(projection matrix)</p>
-<h2 id="2-复习"><a href="#2-复习" class="headerlink" title="2 复习"></a>2 复习</h2><p>首先复习一下在图形学中的5个坐标系。分别为</p>
-<ul>
-<li>局部空间(local space)</li>
-<li>世界空间(world space)</li>
-<li>观察空间(view space)</li>
-<li>裁剪空间(clip space)</li>
-<li>屏幕空间(screen space)</li>
-</ul>
-<p>以及在相邻的坐标系中需要用一个矩阵进行坐标系的转换</p>
-<ul>
-<li>局部空间 -&gt; 世界空间 : model matrix</li>
-<li>世界空间 -&gt; 观察空间 : view matrix</li>
-<li>观察空间 -&gt; 裁剪空间 : <ul>
-<li>观察空间 -&gt; 4D裁剪空间坐标 : projection matrix</li>
-<li>4D裁剪空间坐标 -&gt; 3D标准化设备坐标(NDC) : 透视除法(Perspective Division)</li>
-<li>透视除法 : 将x, y, z, w坐标除以w</li>
-<li>也有的地方把裁剪空间分为裁剪空间和NDC空间 <a href="https://stackoverflow.com/questions/21841598/when-does-the-transition-from-clip-space-to-screen-coordinates-happen" target="_blank" rel="noopener">NDC vs clip</a></li>
-</ul>
-</li>
-<li>裁剪空间 -&gt; 屏幕空间 : 根据设定的窗口大小等信息，将NDC转为屏幕像素坐标，在opengl中式gl_viewport函数<h2 id="3-投影矩阵-projection-matrix"><a href="#3-投影矩阵-projection-matrix" class="headerlink" title="3 投影矩阵 projection matrix"></a>3 投影矩阵 projection matrix</h2>这篇博客主要讲关于projection matrix，因为从z-buffer中还原到projection matrix需要用到的就是projection matrix</li>
-</ul>
-<h3 id="3-1-z-buffer"><a href="#3-1-z-buffer" class="headerlink" title="3.1 z-buffer"></a>3.1 z-buffer</h3><p>z-buffer是用于做深度检测的(depth test)，用于判断场景中物体的前后关系，达到正确的渲染效果。z-buffer是在3D标准化设备坐标中z的大小(即透视除法之后)。</p>
-<h3 id="3-2-推导"><a href="#3-2-推导" class="headerlink" title="3.2 推导"></a>3.2 推导</h3><p>设在观察空间中的坐标为$(x_e, y_e, z_e, w_e)$, 在4D裁剪空间的坐标为$(x_c, y_c, z_c, w_c)$, 3D标准化设备NDC坐标为$(x_n, y_n, z_n, w_n)$</p>
-<p>我们需要求得一个projection矩阵将$(x_e, y_e, z_e, w_e)$映射到$(x_c, y_c, z_c, w_c)$(这正是我们对projection矩阵的定义)</p>
-<h4 id="3-2-1-思路"><a href="#3-2-1-思路" class="headerlink" title="3.2.1 思路"></a>3.2.1 思路</h4><p>我们首先引入$(x_p, y_p, z_p, w_p)$(p是观察空间的点投影映射到一个二维平面后的坐标，所以我们不关心$z_p$与$w_p$),然后建立$(x_p, y_p, z_p, w_p)$与$(x_n, y_n, z_n, w_n)$的映射关系(因为p与n的点的定义范围是明确的，比如x_p是在[l, r]之间，x_n是在[-1, 1]之间，二者的点可以容易建立方程)，最后经过简单的处理就可以得到投影矩阵。</p>
-<h4 id="3-2-2-推导"><a href="#3-2-2-推导" class="headerlink" title="3.2.2 推导"></a>3.2.2 推导</h4><p>假设相机位置到透视投影的近平面距离为$-n$<br>$\frac{x_p}{x_e} = \frac{-n}{z_e}$<br>$\frac{y_p}{y_e} = \frac{-n}{y_e}$</p>
-<p>我们知道裁剪空间的坐标需要除以$w_c$的值获得其NDC的值。可以看到$x_p$与$y_p$都除以了$-z_e$。于是可以获得$w_c$的等式(投影矩阵的第4行):$w_c = -z_e$(从后面的推导可以看出这样的设置是合理的)</p>
-<p>$x_p$从$[l, r]$映射到$x_n[-1, 1]$<br>$y_p$从$[b, t]$映射到$y_n[-1, 1]$<br>$z_p$从$[-n, -f]$映射到$z_n[-1, 1]$</p>
-<p>$x_n = \frac{1-(-1)}{r-l}x_p + d$<br>带入$(l, -1)$得到$-1=\frac{2l}{r-l} + d$<br>$d=\frac{-r-l}{r-l}$</p>
-<p>$x_n = \frac{2}{r-l}x_p - \frac{r+l}{r-l}$<br>$=\frac{2}{r-l}\frac{-nx_e}{z_e} - \frac{r+l}{r-l}$<br>$=\frac{2nx_e + (r+l)z_e}{-z_e(r-l)}$<br>这就得到了$x_n$与$x_e$的关系，将等式两边同时乘以$w_c$就得到了$x_c$的等式(投影矩阵的第1行): $x_c =\frac{2nx_e + (r+l)z_e}{r-l}$</p>
-<p>同理<br>$y_n =\frac{2ny_e + (t+b)z_e}{-z_e(t-b)}$<br>(投影矩阵的第2行): $y_c =\frac{2ny_e + (t+b)z_e}{t-b}$</p>
-<p>$z_c$与$z_e$的推导方式与上面的有所不同:<br>$z_n=\frac{z_c}{w_c}=\frac{Az_e + Bw_e}{w_c}, w_e = 1, w_c=-z_e$<br>=&gt;代入$(-n, 1) (-f, -1)$得<br>$1=\frac{-An + B}{-n}$<br>$-1=\frac{-Af + B}{-f}$</p>
-<p>=&gt;解得$A=-\frac{f+n}{f-n}$<br>$B=-\frac{2fn}{f-n}$</p>
-<p>即$z_n=\frac{-\frac{f+n}{f-n}z_e - \frac{2fn}{f-n}w_e}{-z_e}$,等式两边同时乘以$-z_e$也就得到了$z_c$的等式(投影矩阵的第3行):$z_c=-\frac{f+n}{f-n}z_e - \frac{2fn}{f-n}w_e$</p>
-<h4 id="3-2-4-综上"><a href="#3-2-4-综上" class="headerlink" title="3.2.4 综上"></a>3.2.4 综上</h4><script type="math/tex; mode=display">
-\left(\begin{array}{c} 
-x_c\\ 
-y_c\\
-z_c\\
-w_c\\
-\end{array}\right)=
-\left(\begin{array}{cccc} 
-\frac{2n}{r-l} & \frac{r+l}{r-l} & 0&0\\
-0 & \frac{2n}{t-b} & \frac{t+b}{t-b} & 0\\
-0 & 0 & -\frac{f+n}{f-n}& -\frac{2fn}{f-n}\\
-0 & 0 & -1 & 0
-\end{array}\right)
-\left(\begin{array}{c} 
-x_e\\ 
-y_e\\
-z_e\\
-w_e\\
-\end{array}\right)</script><h2 id="4-z-buffer中获得观察空间的z值"><a href="#4-z-buffer中获得观察空间的z值" class="headerlink" title="4 z-buffer中获得观察空间的z值"></a>4 z-buffer中获得观察空间的z值</h2><p>之前在投影矩阵中我们获得了从观察空间到z-buffer的映射(投影矩阵的第3行等式两边同时除以$w_c$)，因此我们可以构造逆映射获得从z-buffer到观察空间z值的映射。</p>
-<p>$z_n=\frac{f+n}{f-n} + \frac{2fn}{z_e(f-n)}$<br>于是<br>$z_e = \frac{2fn}{(f-n)(z_n - \frac{f+n}{f-n})} = \frac{2fn}{(f-n)z_n - (f+n)}$</p>
-<p>注意当z-buffer的存储范围为[0, 1]时，先将$z_n = z_n * 2 - 1$将$z_n$映射到[-1, 1]再套用上面的公式求$z_e$</p>
-<h2 id="5-参考链接"><a href="#5-参考链接" class="headerlink" title="5 参考链接"></a>5 参考链接</h2><ul>
-<li><a href="http://www.songho.ca/opengl/gl_projectionmatrix.html" target="_blank" rel="noopener">projection matrix推导</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E7%BC%93%E5%86%B2" target="_blank" rel="noopener">z-buffer wiki</a></li>
-</ul>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/21/matrix/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     
 
@@ -706,12 +653,24 @@ w_e\\
                 
               
 
-              <time title="创建时间：2019-06-09 13:19:27 / 修改时间：16:24:59" itemprop="dateCreated datePublished" datetime="2019-06-09T13:19:27+08:00">2019-06-09</time>
+              <time title="创建时间：2019-06-09 13:19:27" itemprop="dateCreated datePublished" datetime="2019-06-09T13:19:27+08:00">2019-06-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-21 19:28:47" itemprop="dateModified" datetime="2019-07-21T19:28:47+08:00">2019-07-21</time>
               
             
           </span>

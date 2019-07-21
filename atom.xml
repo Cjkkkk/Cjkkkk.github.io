@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-07-21T11:06:30.509Z</updated>
+  <updated>2019-07-21T11:26:52.701Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="http://cjkkkk.github.io/2019/07/21/matrix/"/>
     <id>http://cjkkkk.github.io/2019/07/21/matrix/</id>
     <published>2019-07-21T03:52:58.000Z</published>
-    <updated>2019-07-21T11:06:30.509Z</updated>
+    <updated>2019-07-21T11:26:52.701Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;h2 id=&quot;1-起因&quot;&gt;&lt;a href=&quot;#1-起因&quot; class=&quot;headerlink&quot; title=&quot;1 起因&quot;&gt;&lt;/a&gt;1 起因&lt;/h2&gt;&lt;p&gt;因为最近在尝试做游戏手机端的景深效果，所以需要从场景的深度图(z-buffer)中还原场景在观察空间下的深度值。这需要理解图形学中坐标系的变化原理。所以本篇博客主要关注的是投影矩阵(projection matrix)。&lt;br&gt;
     
     </summary>
     
@@ -64,7 +58,7 @@
     <link href="http://cjkkkk.github.io/2019/06/09/tty/"/>
     <id>http://cjkkkk.github.io/2019/06/09/tty/</id>
     <published>2019-06-09T05:19:27.000Z</published>
-    <updated>2019-06-09T08:24:59.646Z</updated>
+    <updated>2019-07-21T11:28:47.848Z</updated>
     
     <summary type="html">
     

@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="什么是Monte Carlo Method简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分(原函数不是初等原函数比如${e^{x^2}}$)等问题答案的一系列统计学的方法集合。 Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:  The Monte Carlo method is a numer">
+  <meta name="description" content="什么是Monte Carlo Method简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分等问题答案的一系列统计学的方法集合。 Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:  The Monte Carlo method is a numerical method of solving ma">
 <meta name="keywords" content="Computer Graphics">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Monte Carlo">
 <meta property="og:url" content="http://cjkkkk.github.io/2019/03/11/Monte-Carlo/index.html">
 <meta property="og:site_name" content="Cjkkkk">
-<meta property="og:description" content="什么是Monte Carlo Method简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分(原函数不是初等原函数比如${e^{x^2}}$)等问题答案的一系列统计学的方法集合。 Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:  The Monte Carlo method is a numer">
+<meta property="og:description" content="什么是Monte Carlo Method简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分等问题答案的一系列统计学的方法集合。 Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:  The Monte Carlo method is a numerical method of solving ma">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-01T09:15:00.782Z">
+<meta property="og:updated_time" content="2019-07-11T15:49:11.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Monte Carlo">
-<meta name="twitter:description" content="什么是Monte Carlo Method简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分(原函数不是初等原函数比如${e^{x^2}}$)等问题答案的一系列统计学的方法集合。 Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:  The Monte Carlo method is a numer">
+<meta name="twitter:description" content="什么是Monte Carlo Method简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分等问题答案的一系列统计学的方法集合。 Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:  The Monte Carlo method is a numerical method of solving ma">
 
 
 
@@ -373,7 +373,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-01 17:15:00" itemprop="dateModified" datetime="2019-05-01T17:15:00+08:00">2019-05-01</time>
+                <time title="修改时间：2019-07-11 23:49:11" itemprop="dateModified" datetime="2019-07-11T23:49:11+08:00">2019-07-11</time>
               
             
           </span>
@@ -407,7 +407,7 @@
       
 
       
-        <h2 id="什么是Monte-Carlo-Method"><a href="#什么是Monte-Carlo-Method" class="headerlink" title="什么是Monte Carlo Method"></a>什么是Monte Carlo Method</h2><p>简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分(原函数不是初等原函数比如${e^{x^2}}$)等问题答案的一系列统计学的方法集合。</p>
+        <h2 id="什么是Monte-Carlo-Method"><a href="#什么是Monte-Carlo-Method" class="headerlink" title="什么是Monte Carlo Method"></a>什么是Monte Carlo Method</h2><p>简单来说， Monte Carlo Method就是找到函数的期望输出值/函数的积分等问题答案的一系列统计学的方法集合。</p>
 <p>Monte Carlo Method的核心就是random sampling, 引用俄罗斯数学家Sobol的话来说:</p>
 <blockquote>
 <p>The Monte Carlo method is a numerical method of solving mathematical problems by random sampling (or by the simulation of random variables).<br> <a id="more"></a></p>
@@ -417,13 +417,11 @@
 </ul>
 </blockquote>
 <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>随着随机采样sample数目的提高，收敛的速度增加的十分缓慢</p>
-<h2 id="蒙特卡洛积分公式"><a href="#蒙特卡洛积分公式" class="headerlink" title="蒙特卡洛积分公式"></a>蒙特卡洛积分公式</h2><p>$\frac{1}{N}\sum{\frac{f(x_i)}{pdf(x_i)}}$</p>
-<p>pdf 是概率分布函数</p>
-<h2 id="如何利用平均分布生成非均匀分布的采样"><a href="#如何利用平均分布生成非均匀分布的采样" class="headerlink" title="如何利用平均分布生成非均匀分布的采样"></a>如何利用平均分布生成非均匀分布的采样</h2><p><a href="http://blog.mir.dlang.io/random/2016/08/19/intro-to-random-sampling.html" target="_blank" rel="noopener">参考链接</a></p>
-<h3 id="inverse-method"><a href="#inverse-method" class="headerlink" title="inverse method"></a>inverse method</h3><p>// todo</p>
-<h3 id="rejection-method"><a href="#rejection-method" class="headerlink" title="rejection method"></a>rejection method</h3><p>// todo</p>
-<h2 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h2><h3 id="概率密度函数-probability-density-function"><a href="#概率密度函数-probability-density-function" class="headerlink" title="概率密度函数 probability density function"></a>概率密度函数 probability density function</h3><p>随机变量的取值落在某个区域内的概率为概率密度函数在这个区域上的积分<br>比如x在(0, 1)之间均匀分布， x的概率密度函数为f(x) = x<br>则x在(0, 0.5)之间的概率为$\int_{0}^{0.5}xdx = 0.125$</p>
-<h3 id="累积密度函数-cumulative-density-function"><a href="#累积密度函数-cumulative-density-function" class="headerlink" title="累积密度函数 cumulative density function"></a>累积密度函数 cumulative density function</h3><p>就是概率密度函数的积分orz</p>
+<h2 id="蒙特卡洛积分公式"><a href="#蒙特卡洛积分公式" class="headerlink" title="蒙特卡洛积分公式"></a>蒙特卡洛积分公式</h2><p>$\int{f(x)}dx = \int{\frac{f(x)}{pdf(x)}pdf(x)}dx = E(\frac{f(x)}{pdf(x)})$</p>
+<p>$E^e(x) = \frac{1}{N}\sum{\frac{f(x)}{pdf(x)}}$是$E(\frac{f(x)}{pdf(x)})$的无偏估计，pdf是概率分布函数，$x$服从$pdf(x)$分布，这也被称为重要性采样。</p>
+<p>$var(E^e(x))$为$\frac{var(x)}{N}$, 选取不同的pdf的目的就是要减少这个无偏估计的方差，当pdf(x)与f(x)为正比关系的时候，$E^e(x)$的方差最小。</p>
+<h2 id="如何利用平均分布生成非均匀分布的采样"><a href="#如何利用平均分布生成非均匀分布的采样" class="headerlink" title="如何利用平均分布生成非均匀分布的采样"></a>如何利用平均分布生成非均匀分布的采样</h2><p>需要使用平均分布产生上述可能为非均匀的pdf分布<br><a href="http://blog.mir.dlang.io/random/2016/08/19/intro-to-random-sampling.html" target="_blank" rel="noopener">参考链接</a></p>
+<h2 id="无偏与一致性"><a href="#无偏与一致性" class="headerlink" title="无偏与一致性"></a>无偏与一致性</h2><p>无偏与一致性是估计量的特点。当估计量的期望与真实值的期望一致的时候，该估计量是无偏的。当样本趋向无穷大的时候，估计量的值向真实值收敛的时候，该估计量是一致的。</p>
 
       
     </div>
@@ -541,7 +539,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -586,7 +584,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -657,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Monte-Carlo-Method"><span class="nav-text">什么是Monte Carlo Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Monte-Carlo-Method主要解决两类问题"><span class="nav-text">Monte Carlo Method主要解决两类问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡洛积分公式"><span class="nav-text">蒙特卡洛积分公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何利用平均分布生成非均匀分布的采样"><span class="nav-text">如何利用平均分布生成非均匀分布的采样</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inverse-method"><span class="nav-text">inverse method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rejection-method"><span class="nav-text">rejection method</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些概念"><span class="nav-text">一些概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概率密度函数-probability-density-function"><span class="nav-text">概率密度函数 probability density function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#累积密度函数-cumulative-density-function"><span class="nav-text">累积密度函数 cumulative density function</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Monte-Carlo-Method"><span class="nav-text">什么是Monte Carlo Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Monte-Carlo-Method主要解决两类问题"><span class="nav-text">Monte Carlo Method主要解决两类问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡洛积分公式"><span class="nav-text">蒙特卡洛积分公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何利用平均分布生成非均匀分布的采样"><span class="nav-text">如何利用平均分布生成非均匀分布的采样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无偏与一致性"><span class="nav-text">无偏与一致性</span></a></li></ol></div>
             
 
           </div>

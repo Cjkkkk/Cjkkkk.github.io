@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-06-06T08:01:07.162Z</updated>
+  <updated>2019-07-21T11:06:30.509Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>projection matrix</title>
+    <link href="http://cjkkkk.github.io/2019/07/21/matrix/"/>
+    <id>http://cjkkkk.github.io/2019/07/21/matrix/</id>
+    <published>2019-07-21T03:52:58.000Z</published>
+    <updated>2019-07-21T11:06:30.509Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="computer graphics" scheme="http://cjkkkk.github.io/tags/computer-graphics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>memory_order</title>
+    <link href="http://cjkkkk.github.io/2019/06/09/memory-order/"/>
+    <id>http://cjkkkk.github.io/2019/06/09/memory-order/</id>
+    <published>2019-06-09T05:21:53.000Z</published>
+    <updated>2019-06-09T05:23:56.204Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这篇博客是对gg学长的技术分享的一些思考与总结&lt;/p&gt;
+&lt;p&gt;keyword: TSO， CAS， memory order， atomic ，重排序， CPU流水线&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="linux c++" scheme="http://cjkkkk.github.io/tags/linux-c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tty</title>
+    <link href="http://cjkkkk.github.io/2019/06/09/tty/"/>
+    <id>http://cjkkkk.github.io/2019/06/09/tty/</id>
+    <published>2019-06-09T05:19:27.000Z</published>
+    <updated>2019-06-09T08:24:59.646Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;听了u1k同学关于terminal的技术分享，发现自己对tty，terminal内部的一些原理还不是太理解，于是写下这篇博客作为学习的记录。&lt;/p&gt;
+&lt;p&gt;keyword: terminal, tty, screen buffer, x11, ioctl&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://cjkkkk.github.io/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>python_import</title>
@@ -117,7 +179,7 @@
     <link href="http://cjkkkk.github.io/2019/05/12/GNU-assem/"/>
     <id>http://cjkkkk.github.io/2019/05/12/GNU-assem/</id>
     <published>2019-05-12T07:54:25.000Z</published>
-    <updated>2019-05-23T12:12:53.855Z</updated>
+    <updated>2019-06-12T08:51:25.835Z</updated>
     
     <summary type="html">
     
@@ -330,61 +392,6 @@
     
     
       <category term="Computer Graphics" scheme="http://cjkkkk.github.io/tags/Computer-Graphics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>c++ algorithm</title>
-    <link href="http://cjkkkk.github.io/2019/03/13/c-algorithm/"/>
-    <id>http://cjkkkk.github.io/2019/03/13/c-algorithm/</id>
-    <published>2019-03-12T16:53:28.000Z</published>
-    <updated>2019-05-01T09:13:09.262Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;为了面试苦学c++ orz… 记录下STL中的algorithm模块&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>c++ generic</title>
-    <link href="http://cjkkkk.github.io/2019/03/12/generics/"/>
-    <id>http://cjkkkk.github.io/2019/03/12/generics/</id>
-    <published>2019-03-12T11:42:09.000Z</published>
-    <updated>2019-05-01T09:14:11.073Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;c-中的模板&quot;&gt;&lt;a href=&quot;#c-中的模板&quot; class=&quot;headerlink&quot; title=&quot;c++中的模板&quot;&gt;&lt;/a&gt;c++中的模板&lt;/h1&gt;&lt;p&gt;以函数模板为例&lt;br&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;template&lt;/span&gt;&amp;lt;T&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;T &lt;span class=&quot;title&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(T a, T b)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a - b;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;函数模板定义了函数的通用公式，减少为不同类型相同功能写重复代码&lt;br&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; a, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; b)&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; a, &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; b)&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>c++ string</title>
-    <link href="http://cjkkkk.github.io/2019/03/12/c-string/"/>
-    <id>http://cjkkkk.github.io/2019/03/12/c-string/</id>
-    <published>2019-03-12T10:24:33.000Z</published>
-    <updated>2019-05-01T09:13:21.218Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近准备Google面试，写图形学项目发现自己c++菜的一逼…于是准备记录一些c++的学习笔记orz&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
     
   </entry>
   

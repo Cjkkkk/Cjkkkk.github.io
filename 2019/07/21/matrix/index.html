@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Cjkkkk">
 <meta property="og:description" content="1 起因因为最近在尝试做游戏手机端的景深效果，所以需要从场景的深度图(z-buffer)中还原场景在观察空间下的深度值。这需要理解图形学中坐标系的变化原理。所以本篇博客主要关注的是投影矩阵(projection matrix)。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-21T11:26:52.701Z">
+<meta property="og:updated_time" content="2019-07-21T11:30:02.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="projection matrix">
 <meta name="twitter:description" content="1 起因因为最近在尝试做游戏手机端的景深效果，所以需要从场景的深度图(z-buffer)中还原场景在观察空间下的深度值。这需要理解图形学中坐标系的变化原理。所以本篇博客主要关注的是投影矩阵(projection matrix)。">
@@ -356,7 +356,7 @@
                 
               
 
-              <time title="创建时间：2019-07-21 11:52:58 / 修改时间：19:26:52" itemprop="dateCreated datePublished" datetime="2019-07-21T11:52:58+08:00">2019-07-21</time>
+              <time title="创建时间：2019-07-21 11:52:58 / 修改时间：19:30:02" itemprop="dateCreated datePublished" datetime="2019-07-21T11:52:58+08:00">2019-07-21</time>
             
 
             
@@ -415,8 +415,9 @@
 <li>也有的地方把裁剪空间分为裁剪空间和NDC空间 <a href="https://stackoverflow.com/questions/21841598/when-does-the-transition-from-clip-space-to-screen-coordinates-happen" target="_blank" rel="noopener">NDC vs clip</a></li>
 </ul>
 </li>
-<li>裁剪空间 -&gt; 屏幕空间 : 根据设定的窗口大小等信息，将NDC转为屏幕像素坐标，在opengl中式gl_viewport函数<h2 id="3-投影矩阵-projection-matrix"><a href="#3-投影矩阵-projection-matrix" class="headerlink" title="3 投影矩阵 projection matrix"></a>3 投影矩阵 projection matrix</h2>这篇博客主要讲关于projection matrix，因为从z-buffer中还原到projection matrix需要用到的就是projection matrix。</li>
+<li>裁剪空间 -&gt; 屏幕空间 : 根据设定的窗口大小等信息，将NDC转为屏幕像素坐标，在opengl中式gl_viewport函数</li>
 </ul>
+<h2 id="3-投影矩阵-projection-matrix"><a href="#3-投影矩阵-projection-matrix" class="headerlink" title="3 投影矩阵 projection matrix"></a>3 投影矩阵 projection matrix</h2><p>这篇博客主要讲关于projection matrix，因为从z-buffer中还原到projection matrix需要用到的就是projection matrix。</p>
 <h3 id="3-1-z-buffer"><a href="#3-1-z-buffer" class="headerlink" title="3.1 z-buffer"></a>3.1 z-buffer</h3><p>z-buffer是用于做深度检测的(depth test)，用于判断场景中物体的前后关系，达到正确的渲染效果。z-buffer是在3D标准化设备坐标中z的大小(即透视除法之后)。</p>
 <h3 id="3-2-推导"><a href="#3-2-推导" class="headerlink" title="3.2 推导"></a>3.2 推导</h3><p>设在观察空间中的坐标为$(x_e, y_e, z_e, w_e)$, 在4D裁剪空间的坐标为$(x_c, y_c, z_c, w_c)$, 3D标准化设备NDC坐标为$(x_n, y_n, z_n, w_n)$</p>
 <p>我们需要求得一个projection矩阵将$(x_e, y_e, z_e, w_e)$映射到$(x_c, y_c, z_c, w_c)$(这正是我们对projection矩阵的定义)</p>

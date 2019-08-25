@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-07-21T11:30:02.542Z</updated>
+  <updated>2019-08-25T15:02:22.561Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>bit_operator</title>
+    <link href="http://cjkkkk.github.io/2019/08/25/bit-operator/"/>
+    <id>http://cjkkkk.github.io/2019/08/25/bit-operator/</id>
+    <published>2019-08-25T14:35:15.000Z</published>
+    <updated>2019-08-25T15:02:22.561Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近写mit的JOS操作系统看到一些有意思的位运算的使用方法，在这里分享/记录一下。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="operating system" scheme="http://cjkkkk.github.io/tags/operating-system/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>container</title>
+    <link href="http://cjkkkk.github.io/2019/08/25/container/"/>
+    <id>http://cjkkkk.github.io/2019/08/25/container/</id>
+    <published>2019-08-25T14:24:39.000Z</published>
+    <updated>2019-08-25T14:29:01.021Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>projection matrix</title>
@@ -346,46 +386,6 @@
     
     
       <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>相机标定 camera calibration</title>
-    <link href="http://cjkkkk.github.io/2019/03/13/camera-calibration-using-chessboard/"/>
-    <id>http://cjkkkk.github.io/2019/03/13/camera-calibration-using-chessboard/</id>
-    <published>2019-03-13T14:29:30.000Z</published>
-    <updated>2019-05-01T09:48:51.922Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-认识几个坐标系&quot;&gt;&lt;a href=&quot;#1-认识几个坐标系&quot; class=&quot;headerlink&quot; title=&quot;1 认识几个坐标系&quot;&gt;&lt;/a&gt;1 认识几个坐标系&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;世界坐标系&lt;br&gt;  物体在真实世界中的位置&lt;/li&gt;
-&lt;li&gt;相机坐标系&lt;br&gt;  物体在以相机为原点的坐标系中的位置&lt;/li&gt;
-&lt;li&gt;成像坐标系&lt;br&gt;  在二维成像平面的位置&lt;/li&gt;
-&lt;li&gt;像素坐标系&lt;br&gt;  在实际数字相片中的坐标
-    
-    </summary>
-    
-    
-      <category term="computer vision" scheme="http://cjkkkk.github.io/tags/computer-vision/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>四元数 quaternion</title>
-    <link href="http://cjkkkk.github.io/2019/03/13/quaternion/"/>
-    <id>http://cjkkkk.github.io/2019/03/13/quaternion/</id>
-    <published>2019-03-13T05:23:13.000Z</published>
-    <updated>2019-05-01T09:15:10.905Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;3D旋转公式&quot;&gt;&lt;a href=&quot;#3D旋转公式&quot; class=&quot;headerlink&quot; title=&quot;3D旋转公式&quot;&gt;&lt;/a&gt;3D旋转公式&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/assets/1.PNG&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;code&gt;Rodrigues&amp;#39;s Rotation Formula&lt;/code&gt; 3D旋转公式&lt;br&gt;$v^{‘} = cos(\theta)v + ( 1 - cos(\theta))(u\cdot v)u + sin(\theta)(u\times v)$&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="Computer Graphics" scheme="http://cjkkkk.github.io/tags/Computer-Graphics/"/>
     
   </entry>
   

@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="how to correctly import a python module…">
-<meta name="keywords" content="python">
+  <meta name="description" content="最近写mit的JOS操作系统看到一些有意思的位运算的使用方法，在这里分享/记录一下。">
+<meta name="keywords" content="operating system">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python_import">
-<meta property="og:url" content="http://cjkkkk.github.io/2019/06/05/python-import/index.html">
+<meta property="og:title" content="bit_operator">
+<meta property="og:url" content="http://cjkkkk.github.io/2019/08/25/bit-operator/index.html">
 <meta property="og:site_name" content="Cjkkkk">
-<meta property="og:description" content="how to correctly import a python module…">
+<meta property="og:description" content="最近写mit的JOS操作系统看到一些有意思的位运算的使用方法，在这里分享/记录一下。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-06T08:01:07.162Z">
+<meta property="og:updated_time" content="2019-08-25T15:02:22.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python_import">
-<meta name="twitter:description" content="how to correctly import a python module…">
+<meta name="twitter:title" content="bit_operator">
+<meta name="twitter:description" content="最近写mit的JOS操作系统看到一些有意思的位运算的使用方法，在这里分享/记录一下。">
 
 
 
@@ -121,7 +121,7 @@
 
   
   
-  <link rel="canonical" href="http://cjkkkk.github.io/2019/06/05/python-import/">
+  <link rel="canonical" href="http://cjkkkk.github.io/2019/08/25/bit-operator/">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>python_import | Cjkkkk</title>
+  <title>bit_operator | Cjkkkk</title>
   
 
 
@@ -313,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/06/05/python-import/">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/08/25/bit-operator/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cjkkkk">
@@ -330,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python_import
+          <h1 class="post-title" itemprop="name headline">bit_operator
 
               
             
@@ -356,24 +356,12 @@
                 
               
 
-              <time title="创建时间：2019-06-05 20:29:46" itemprop="dateCreated datePublished" datetime="2019-06-05T20:29:46+08:00">2019-06-05</time>
+              <time title="创建时间：2019-08-25 22:35:15 / 修改时间：23:02:22" itemprop="dateCreated datePublished" datetime="2019-08-25T22:35:15+08:00">2019-08-25</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-06 16:01:07" itemprop="dateModified" datetime="2019-06-06T16:01:07+08:00">2019-06-06</time>
               
             
           </span>
@@ -407,16 +395,14 @@
       
 
       
-        <p>how to correctly import a python module…<br><a id="more"></a></p>
-<h2 id="package-module"><a href="#package-module" class="headerlink" title="package/module"></a>package/module</h2><p>module就是一个python的源文件<br>package就是带有<code>__init__.py</code>的目录, package可以使用<code>.</code>来索引目录下的module或者package<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dir1</span><br><span class="line">    dir2</span><br><span class="line">    __init__.py</span><br></pre></td></tr></table></figure></p>
-<p>则可以使用dir1.dir2访问dir2</p>
-<h2 id="python寻找module的路径"><a href="#python寻找module的路径" class="headerlink" title="python寻找module的路径"></a>python寻找module的路径</h2><p>python寻找module的路径可以使用sys查看<br>main.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">print(sys.path)</span><br></pre></td></tr></table></figure></p>
-<p>可以看到sys.path的第一项是main所在的目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dir1</span><br><span class="line">    dir2</span><br><span class="line">dir3</span><br><span class="line">    main.py</span><br></pre></td></tr></table></figure>
-<p>所以在main.py中假如有<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import dir1</span><br></pre></td></tr></table></figure></p>
-<p>然后使用python dir3/main.py是会报错的，因为sys中只会添加dir3目录，而在dir3目录下是找不到dir1的</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>1 手动修改sys，添加dir1目录<br>2 python -m dir3.main</p>
-
+        <p>最近写mit的JOS操作系统看到一些有意思的位运算的使用方法，在这里分享/记录一下。<br><a id="more"></a></p>
+<h2 id="一-使用-amp-位可以快速清除低位"><a href="#一-使用-amp-位可以快速清除低位" class="headerlink" title="一 使用&amp;位可以快速清除低位"></a>一 使用<code>&amp;</code>位可以快速清除低位</h2><p>页表的entry格式如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">31                                  12 11                      0</span><br><span class="line">   +--------------------------------------+-------+---+-+-+---+-+-+-+</span><br><span class="line">   |                                      |       |   | | |   |U|R| |</span><br><span class="line">   |      PAGE FRAME ADDRESS 31..12       | AVAIL |0 0|D|A|0 0|/|/|P|</span><br><span class="line">   |                                      |       |   | | |   |S|W| |</span><br><span class="line">   +--------------------------------------+-------+---+-+-+---+-+-+-+</span><br><span class="line"></span><br><span class="line">             P      - PRESENT</span><br><span class="line">             R/W    - READ/WRITE</span><br><span class="line">             U/S    - USER/SUPERVISOR</span><br><span class="line">             D      - DIRTY</span><br><span class="line">             AVAIL  - AVAILABLE FOR SYSTEMS PROGRAMMER USE</span><br><span class="line"></span><br><span class="line">             NOTE: 0 INDICATES INTEL RESERVED. DO NOT DEFINE.</span><br></pre></td></tr></table></figure></p>
+<p>现在需要从页表entry中获得页的物理地址。我们知道因为页的物理地址也是关于页大小对齐的，所以在页表entry存储的只是页对应的物理地址的高20bits。只要将entry的低12bits置零就可以得到对应的物理地址。在JOS中是这样做的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#define PADDR(pte) pte &amp; ~0xfff</span><br><span class="line">// 0xfff是12bits都是1的数字，取~后使得高20bits都为1，低12bits都为0。再与pte取&amp;即可</span><br><span class="line">// 将低12bits置零，其余bit保持不变</span><br></pre></td></tr></table></figure></p>
+<h2 id="二-使用-位运算来结合flags"><a href="#二-使用-位运算来结合flags" class="headerlink" title="二 使用|位运算来结合flags:"></a>二 使用<code>|</code>位运算来结合flags:</h2><p>还是在一中页表的例子，在设置页表的时候要设置12bits的flags来控制页是否present/读写权限/用户权限等等。</p>
+<p>JOS中做法大致如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define PTE_P 0x1</span><br><span class="line">define PTE_W 0x2</span><br><span class="line">//</span><br><span class="line">typedef uint32_t pte_t</span><br><span class="line">// 声明一个entry</span><br><span class="line">pte_t pte = 0x8000ffff; // 随便写的一个</span><br><span class="line">// 设置flag P = 1 R/W = 1</span><br><span class="line">pte = PADDR(pte) | PTE_P | PTE_W ; // pte的最后两个bit就会变成11</span><br></pre></td></tr></table></figure></p>
+<p>使用或位运算可以用来清晰方便的combine flags。</p>
+<h2 id="三-快速置零"><a href="#三-快速置零" class="headerlink" title="三 快速置零"></a>三 快速置零</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 快速将a的值清零</span><br><span class="line">a ^= a;</span><br><span class="line">a &amp;= 0x0;</span><br><span class="line">// 第一种做法在写汇编的时候更加常见</span><br></pre></td></tr></table></figure>
+<h2 id="四-待补充…"><a href="#四-待补充…" class="headerlink" title="四 待补充…"></a>四 待补充…</h2>
       
     </div>
 
@@ -439,7 +425,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/operating-system/" rel="tag"># operating system</a>
           
         </div>
       
@@ -452,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/23/BIOS-and-bootLoader/" rel="next" title="BIOS_and_bootLoader">
-                <i class="fa fa-chevron-left"></i> BIOS_and_bootLoader
+              <a href="/2019/08/25/container/" rel="next" title="container">
+                <i class="fa fa-chevron-left"></i> container
               </a>
             
           </div>
@@ -461,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/09/tty/" rel="prev" title="tty">
-                tty <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -653,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#package-module"><span class="nav-text">package/module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python寻找module的路径"><span class="nav-text">python寻找module的路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-text">解决方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-使用-amp-位可以快速清除低位"><span class="nav-text">一 使用&amp;位可以快速清除低位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-使用-位运算来结合flags"><span class="nav-text">二 使用|位运算来结合flags:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-快速置零"><span class="nav-text">三 快速置零</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-待补充…"><span class="nav-text">四 待补充…</span></a></li></ol></div>
             
 
           </div>

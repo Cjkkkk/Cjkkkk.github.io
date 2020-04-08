@@ -109,7 +109,7 @@
 <meta property="og:description" content="ELF (Executable and Linking Format).">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://cjkkkk.github.io/images/elf.png">
-<meta property="og:updated_time" content="2019-05-22T08:03:13.255Z">
+<meta property="og:updated_time" content="2020-03-03T04:18:56.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELF">
 <meta name="twitter:description" content="ELF (Executable and Linking Format).">
@@ -358,12 +358,24 @@
                 
               
 
-              <time title="创建时间：2019-05-22 15:56:37 / 修改时间：16:03:13" itemprop="dateCreated datePublished" datetime="2019-05-22T15:56:37+08:00">2019-05-22</time>
+              <time title="创建时间：2019-05-22 15:56:37" itemprop="dateCreated datePublished" datetime="2019-05-22T15:56:37+08:00">2019-05-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-03 12:18:56" itemprop="dateModified" datetime="2020-03-03T12:18:56+08:00">2020-03-03</time>
               
             
           </span>
@@ -397,8 +409,32 @@
       
 
       
-        <p>ELF (Executable and Linking Format).<br><a id="more"></a><br><a href="https://pdos.csail.mit.edu/6.828/2017/readings/elf.pdf" target="_blank" rel="noopener">elf文档</a><br>There are three main types of object files.<br>• A relocatable file holds code and data suitable for linking with other object files to create an<br>executable or a shared object file.<br>• An executable file holds a program suitable for execution.<br>• A shared object file holds code and data suitable for linking in two contexts. First, the link<br>editor may process it with other relocatable and shared object files to create another object file.<br>Second, the dynamic linker combines it with an executable file and other shared objects to<br>create a process image. </p>
-<p><img src="/images/elf.png" alt=""></p>
+        <p>ELF (Executable and Linking Format).<br><a id="more"></a><br>根据elf文档, elf文件有三种类型:<br>• A relocatable file holds code and data suitable for linking with other object files to create an executable or a shared object file.<br>• An executable file holds a program suitable for execution.<br>• A shared object file holds code and data suitable for linking in two contexts. First, the link editor may process it with other relocatable and shared object files to create another object file.<br>Second, the dynamic linker combines it with an executable file and other shared objects to<br>create a process image. </p>
+<h2 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h2><p><img src="/images/elf.png" alt=""><br>一般来说elf文件有三个部分elf header/section header table/program header table</p>
+<p>三种类型的elf文件都具有elf header, relocatable file通常没有program header table, executable通常没有section header table。因为section header table一般用于指导链接而program header table则是用于指导如何加载到内存中运行。通常使用mmap系统调用将内容映射到虚拟内存中。</p>
+<p>section header table主要包含</p>
+<ul>
+<li>.text</li>
+<li>.data(初始化数据)</li>
+<li>.rodata</li>
+<li>.bss(未初始化数据)</li>
+</ul>
+<p>program header table主要包含</p>
+<ul>
+<li>Load</li>
+<li>INTERP<blockquote>
+<p>This segment type is meaningful only for executable files<br>  指明需要使用的linker一般来说是ld.so/ld-linux.so。用于动态链接程序并执行程序</p>
+</blockquote>
+</li>
+<li>DYNAMIC</li>
+</ul>
+<p>ldd to find shared library used by this program</p>
+<h2 id="a-vs-o"><a href="#a-vs-o" class="headerlink" title=".a vs .o"></a>.a vs .o</h2><p>在linux上通常用gcc编译可能会碰到的文件有.a / .o / .so / executable<br>.o文件即为relocatable file,即为一个compilation unit的编译结果, .so文件即为shared object file. .a 文件不属于上述三种文件，而是relocatable file的archive。可以理解为一堆.o文件的集合。</p>
+<p>一个生成.a文件的makefile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">AR = ar </span><br><span class="line">CC = gcc</span><br><span class="line"></span><br><span class="line">objects := hello.o world.o</span><br><span class="line"></span><br><span class="line">libby.a: $(objects)</span><br><span class="line">    $(AR) rcu $@ $(objects)</span><br><span class="line"></span><br><span class="line">%.o: %.c</span><br><span class="line">    $(CC) $(CFLAGS) -c $&lt; -o $@</span><br></pre></td></tr></table></figure></p>
+<h2 id="so-vs-executable"><a href="#so-vs-executable" class="headerlink" title=".so vs executable"></a>.so vs executable</h2><h2 id="gcc-common-symbols"><a href="#gcc-common-symbols" class="headerlink" title="gcc common symbols"></a>gcc common symbols</h2><p>weak/strong/common<br>common symbol: unitialized global variable without extern is treated as common symbol, compiler will try to merge this symbols and allocate the memory at one location.<br>note that common only exist in link time, therefore executable file doesn’t have .common<br>section and these symbols goes to either .bss or .data, depends on whether it is initialized in other files.</p>
+<h2 id="linkaege-type"><a href="#linkaege-type" class="headerlink" title="linkaege type"></a>linkaege type</h2><p>global<br>extern<br>local(static)</p>
+<p>local(static) variables will not be exported as symbols.</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://pdos.csail.mit.edu/6.828/2017/readings/elf.pdf" target="_blank" rel="noopener">elf文档</a><br><a href="https://people.cs.pitt.edu/~xianeizhang/notes/Linking.html" target="_blank" rel="noopener">link</a><br><a href="https://stackoverflow.com/questions/16835716/bss-vs-common-what-goes-where" target="_blank" rel="noopener">common</a><br><a href="https://stackoverflow.com/questions/3065535/what-are-the-meanings-of-the-columns-of-the-symbol-table-displayed-by-readelf" target="_blank" rel="noopener">symbol table</a></p>
 
       
     </div>
@@ -491,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -507,7 +552,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -617,6 +662,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#layout"><span class="nav-text">layout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-vs-o"><span class="nav-text">.a vs .o</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#so-vs-executable"><span class="nav-text">.so vs executable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc-common-symbols"><span class="nav-text">gcc common symbols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linkaege-type"><span class="nav-text">linkaege type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">reference</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -631,7 +693,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

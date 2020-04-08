@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2019-08-25T15:02:22.561Z</updated>
+  <updated>2020-04-08T07:00:00.617Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>type_info</title>
+    <link href="http://cjkkkk.github.io/2020/04/08/type_info/"/>
+    <id>http://cjkkkk.github.io/2020/04/08/type_info/</id>
+    <published>2020-04-08T05:38:30.000Z</published>
+    <updated>2020-04-08T07:00:00.617Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;c++ type_info&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用namespace的原因</title>
+    <link href="http://cjkkkk.github.io/2020/04/02/namespace/"/>
+    <id>http://cjkkkk.github.io/2020/04/02/namespace/</id>
+    <published>2020-04-02T04:38:30.000Z</published>
+    <updated>2020-04-08T06:55:46.156Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;c++ namespace&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>bit_operator</title>
@@ -39,7 +75,7 @@
     <link href="http://cjkkkk.github.io/2019/08/25/container/"/>
     <id>http://cjkkkk.github.io/2019/08/25/container/</id>
     <published>2019-08-25T14:24:39.000Z</published>
-    <updated>2019-08-25T14:29:01.021Z</updated>
+    <updated>2019-08-31T10:31:41.407Z</updated>
     
     <summary type="html">
     
@@ -177,7 +213,7 @@
     <link href="http://cjkkkk.github.io/2019/05/22/ELF/"/>
     <id>http://cjkkkk.github.io/2019/05/22/ELF/</id>
     <published>2019-05-22T07:56:37.000Z</published>
-    <updated>2019-05-22T08:03:13.255Z</updated>
+    <updated>2020-03-03T04:18:56.507Z</updated>
     
     <summary type="html">
     
@@ -349,43 +385,6 @@
     
     
       <category term="computer graphics" scheme="http://cjkkkk.github.io/tags/computer-graphics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>视觉中的特征点</title>
-    <link href="http://cjkkkk.github.io/2019/03/16/key-point/"/>
-    <id>http://cjkkkk.github.io/2019/03/16/key-point/</id>
-    <published>2019-03-15T16:04:52.000Z</published>
-    <updated>2019-05-01T09:14:56.589Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h1&gt;&lt;p&gt;特征点是图像中具有一定特点的/可识别的像素点&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="computer vision" scheme="http://cjkkkk.github.io/tags/computer-vision/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>c++特性</title>
-    <link href="http://cjkkkk.github.io/2019/03/15/c-standard/"/>
-    <id>http://cjkkkk.github.io/2019/03/15/c-standard/</id>
-    <published>2019-03-14T16:51:11.000Z</published>
-    <updated>2019-05-01T09:13:17.063Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;c-11&quot;&gt;&lt;a href=&quot;#c-11&quot; class=&quot;headerlink&quot; title=&quot;c++ 11&quot;&gt;&lt;/a&gt;c++ 11&lt;/h1&gt;&lt;h2 id=&quot;Lambda-expressions&quot;&gt;&lt;a href=&quot;#Lambda-expressions&quot; class=&quot;headerlink&quot; title=&quot;Lambda expressions&quot;&gt;&lt;/a&gt;Lambda expressions&lt;/h2&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// []() -&amp;gt; T &amp;#123;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;auto&lt;/span&gt; g = [](&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; x)&amp;#123;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; x * x;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;cout&lt;/span&gt; &amp;lt;&amp;lt; g(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// 9&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;作为predict&lt;br&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;vector&lt;/span&gt;&amp;lt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&amp;gt; s = &amp;#123;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;cout&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::all_of(s.begin(), s.end(), [](&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; x) &amp;#123; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; x &amp;gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&amp;#125;) &amp;lt;&amp;lt; &lt;span class=&quot;string&quot;&gt;&quot;\n&quot;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
     
   </entry>
   

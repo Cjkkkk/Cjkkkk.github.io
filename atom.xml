@@ -249,11 +249,11 @@
     <link href="http://cjkkkk.github.io/2019/05/12/GNU-assem/"/>
     <id>http://cjkkkk.github.io/2019/05/12/GNU-assem/</id>
     <published>2019-05-12T07:54:25.000Z</published>
-    <updated>2019-06-12T08:51:25.835Z</updated>
+    <updated>2020-04-08T15:22:19.287Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;as : GNU assembler&lt;br&gt;NASM(Intel syntax) vs GAS(AT&amp;amp;T syntax)&lt;br&gt;
+      &lt;p&gt;GAS : GNU assembler&lt;br&gt;NASM(Intel syntax) vs GAS(AT&amp;amp;T syntax)&lt;br&gt;
     
     </summary>
     

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2020-04-08T07:00:00.617Z</updated>
+  <updated>2020-04-09T19:02:39.246Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>reference</title>
+    <link href="http://cjkkkk.github.io/2020/04/10/reference/"/>
+    <id>http://cjkkkk.github.io/2020/04/10/reference/</id>
+    <published>2020-04-09T18:17:08.000Z</published>
+    <updated>2020-04-09T19:02:39.246Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于reference的一些思考(?)&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ABI</title>
+    <link href="http://cjkkkk.github.io/2020/04/08/application_binary_interface/"/>
+    <id>http://cjkkkk.github.io/2020/04/08/application_binary_interface/</id>
+    <published>2020-04-08T08:33:34.000Z</published>
+    <updated>2020-04-09T19:22:45.565Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>type_info</title>
@@ -343,43 +385,6 @@
     <summary type="html">
     
       &lt;p&gt;PBR的一些小总结, 为了保持篇幅的简短，忽略了辐射度量学的基本知识。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="computer graphics" scheme="http://cjkkkk.github.io/tags/computer-graphics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>patchmatch算法</title>
-    <link href="http://cjkkkk.github.io/2019/04/05/patchmatch/"/>
-    <id>http://cjkkkk.github.io/2019/04/05/patchmatch/</id>
-    <published>2019-04-04T17:36:49.000Z</published>
-    <updated>2019-05-01T09:47:29.479Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-核心思想&quot;&gt;&lt;a href=&quot;#1-核心思想&quot; class=&quot;headerlink&quot; title=&quot;1 核心思想&quot;&gt;&lt;/a&gt;1 核心思想&lt;/h2&gt;&lt;p&gt;random sampling and data coherence&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Computer Graphics" scheme="http://cjkkkk.github.io/tags/Computer-Graphics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BRDF</title>
-    <link href="http://cjkkkk.github.io/2019/03/22/BRDF/"/>
-    <id>http://cjkkkk.github.io/2019/03/22/BRDF/</id>
-    <published>2019-03-22T12:12:04.000Z</published>
-    <updated>2019-05-01T09:13:03.344Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21376124&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考原文&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;基于经验的模型&quot;&gt;&lt;a href=&quot;#基于经验的模型&quot; class=&quot;headerlink&quot; title=&quot;基于经验的模型&quot;&gt;&lt;/a&gt;基于经验的模型&lt;/h1&gt;&lt;h2 id=&quot;Phong&quot;&gt;&lt;a href=&quot;#Phong&quot; class=&quot;headerlink&quot; title=&quot;Phong&quot;&gt;&lt;/a&gt;Phong&lt;/h2&gt;&lt;p&gt;$I_{Phong} = K_aI_a + K_d(n·l) I_d + K_s(r·v)^\alpha I_s$&lt;br&gt;n法线，l入射向量，r反射向量，v观察向量，I代表光强，K代表物体颜射或者反射系数，a代表环境，s代表高光，d代表漫反射,$\alpha$代表粗糙程度,值越小越粗糙。&lt;/p&gt;
     
     </summary>
     

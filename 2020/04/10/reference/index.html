@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="这篇博客是对gg学长的技术分享的一些思考与总结 keyword: TSO， CAS， memory order， atomic ，重排序， CPU流水线">
-<meta name="keywords" content="linux c++">
+  <meta name="description" content="关于reference的一些思考(?)">
+<meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="memory_order">
-<meta property="og:url" content="http://cjkkkk.github.io/2019/06/09/memory-order/index.html">
+<meta property="og:title" content="reference">
+<meta property="og:url" content="http://cjkkkk.github.io/2020/04/10/reference/index.html">
 <meta property="og:site_name" content="Cjkkkk">
-<meta property="og:description" content="这篇博客是对gg学长的技术分享的一些思考与总结 keyword: TSO， CAS， memory order， atomic ，重排序， CPU流水线">
+<meta property="og:description" content="关于reference的一些思考(?)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-09T05:23:56.204Z">
+<meta property="og:updated_time" content="2020-04-09T19:02:39.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="memory_order">
-<meta name="twitter:description" content="这篇博客是对gg学长的技术分享的一些思考与总结 keyword: TSO， CAS， memory order， atomic ，重排序， CPU流水线">
+<meta name="twitter:title" content="reference">
+<meta name="twitter:description" content="关于reference的一些思考(?)">
 
 
 
@@ -121,7 +121,7 @@
 
   
   
-  <link rel="canonical" href="http://cjkkkk.github.io/2019/06/09/memory-order/">
+  <link rel="canonical" href="http://cjkkkk.github.io/2020/04/10/reference/">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>memory_order | Cjkkkk</title>
+  <title>reference | Cjkkkk</title>
   
 
 
@@ -313,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/06/09/memory-order/">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2020/04/10/reference/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cjkkkk">
@@ -330,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">memory_order
+          <h1 class="post-title" itemprop="name headline">reference
 
               
             
@@ -356,7 +356,7 @@
                 
               
 
-              <time title="创建时间：2019-06-09 13:21:53 / 修改时间：13:23:56" itemprop="dateCreated datePublished" datetime="2019-06-09T13:21:53+08:00">2019-06-09</time>
+              <time title="创建时间：2020-04-10 02:17:08 / 修改时间：03:02:39" itemprop="dateCreated datePublished" datetime="2020-04-10T02:17:08+08:00">2020-04-10</time>
             
 
             
@@ -395,8 +395,25 @@
       
 
       
-        <p>这篇博客是对gg学长的技术分享的一些思考与总结</p>
-<p>keyword: TSO， CAS， memory order， atomic ，重排序， CPU流水线<br><a id="more"></a></p>
+        <p>关于reference的一些思考(?)<br> <a id="more"></a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>我常常被指针和引用所搞混以至于在c++中经常胡乱使用这两个东西。指针是我比较熟悉的东西，它是一个变量，占有一个内存区域，只不过其中的值是其他变量的地址。引用实际上和指针很相似，我是通过将两者都转换为汇编观察他们的不同，我尝试的内容不多，我最直观的理解是把引用当作一个带有限制的指针：</p>
+<ul>
+<li><p>你无法取得引用的地址，尽管引用是占据内存区域的，这就使得你弄不出引用的引用来。如果观察汇编会发现如果对引用进行取址&amp;操作，返回的是引用所指向的变量的地址</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">int</span>&amp; ra = a;</span><br><span class="line"><span class="comment">// 两者的输出是相同的</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; &amp;ra;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; &amp;a;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>你无法改变一个引用的指向</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a, b;</span><br><span class="line"><span class="keyword">int</span>&amp; ra = a;</span><br><span class="line">ra = b; <span class="comment">// 改变了a的值而不是让ra指向了b</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一般情况下不是NULLABLE的<br>有了这些限制的情况下，引用指向性的能力减弱了，但是出现错误的概率也减小了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A a;</span><br><span class="line">A* pa = &amp;a;</span><br><span class="line">pa = <span class="literal">NULL</span>;</span><br><span class="line">pa-&gt;f() <span class="comment">// ub</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><p>这个时候右值引用的概念又让我困惑了，于是我尝试按照wiki上尝试从使用场景出发…<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A a1, a2, a3;</span><br><span class="line">a1 = a2 + a3; <span class="comment">// 假设A重载了+并返回一个A</span></span><br></pre></td></tr></table></figure></p>
+<p>a2 + a3的结果是一个临时变量，其结果会被拷贝到a1中，其实这个a2 + a3的结果马上就会消亡，此时直接将其值”移动”到a1中似乎是更为合理的，反正不要浪费嘛… 为什么要额外拷贝一下。</p>
+<p>然而c++中此时似乎需要有overload = operator来提供移动赋值语义，不然怎么区分拷贝赋值呢，于是就引入了移动构造和移动赋值语句。</p>
+<p>说到这我就想起来c++里还有传统左值(lvalue)/传统右值(rvalue)/消亡值(xvalue)/泛左值(glvalue)/泛右值(grvalue)的概念似乎对理解右值引用比较有帮助</p>
+<p>定义里是这么说的，传统左值是带有名字的，可以使用&amp;操作获取地址的值<br>传统右值呢就是非传统左值。通常是临时变量(运算结果啦 函数返回值啦)，字面量(字面量会被用来构造一个临时变量)<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">A <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> A();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    A a, a1;</span><br><span class="line">    A* pa = &amp;(f()); <span class="comment">// error: taking address of temporary [-fpermissive]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>泛左值 = 传统左值 + 消亡值<br>泛右值 = 传统右值 + 消亡值</p>
 
       
     </div>
@@ -420,7 +437,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux-c/" rel="tag"># linux c++</a>
+            <a href="/tags/c/" rel="tag"># c++</a>
           
         </div>
       
@@ -433,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/09/tty/" rel="next" title="tty">
-                <i class="fa fa-chevron-left"></i> tty
+              <a href="/2020/04/08/application_binary_interface/" rel="next" title="ABI">
+                <i class="fa fa-chevron-left"></i> ABI
               </a>
             
           </div>
@@ -442,10 +459,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/21/matrix/" rel="prev" title="projection matrix">
-                projection matrix <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,8 +502,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -614,6 +636,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-text">引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#右值引用"><span class="nav-text">右值引用</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

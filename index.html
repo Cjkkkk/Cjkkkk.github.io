@@ -309,6 +309,332 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2020/04/10/reference/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cjkkkk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cjkkkk">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/04/10/reference/" class="post-title-link" itemprop="url">reference</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-10 02:17:08 / 修改时间：03:02:39" itemprop="dateCreated datePublished" datetime="2020-04-10T02:17:08+08:00">2020-04-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>关于reference的一些思考(?)<br>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/04/10/reference/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </p></div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2020/04/08/application_binary_interface/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cjkkkk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cjkkkk">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/04/08/application_binary_interface/" class="post-title-link" itemprop="url">ABI</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-08 16:33:34" itemprop="dateCreated datePublished" datetime="2020-04-08T16:33:34+08:00">2020-04-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-10 03:22:45" itemprop="dateModified" datetime="2020-04-10T03:22:45+08:00">2020-04-10</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+             <a id="more"></a>
+<p>ABI(application binary interface)包括很多方面的内容</p>
+<ul>
+<li>calling convention</li>
+<li>type representation</li>
+<li>name mangling</li>
+<li>executable format</li>
+<li>…</li>
+</ul>
+<h2 id="calling-convention"><a href="#calling-convention" class="headerlink" title="calling convention"></a>calling convention</h2><h3 id="x86-32bits"><a href="#x86-32bits" class="headerlink" title="x86 32bits"></a>x86 32bits</h3><h4 id="cdecl"><a href="#cdecl" class="headerlink" title="cdecl"></a>cdecl</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c = f(<span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">f:</span><br><span class="line">  pushl %ebp</span><br><span class="line">  movl %esp,%ebp</span><br><span class="line">  movl 8(%ebp),%eax</span><br><span class="line">  addl 12(%ebp),%eax</span><br><span class="line">  jmp .L1</span><br><span class="line">.L1:</span><br><span class="line">  leave</span><br><span class="line">  ret</span><br><span class="line">main:</span><br><span class="line">  pushl %ebp</span><br><span class="line">  movl %esp,%ebp</span><br><span class="line">  subl $4,%esp</span><br><span class="line">  pushl $5</span><br><span class="line">  pushl $4</span><br><span class="line">  call f</span><br><span class="line">  movl %eax,-4(%ebp)</span><br><span class="line">  leave</span><br><span class="line">  ret</span><br></pre></td></tr></table></figure>
+<h4 id="stdcall"><a href="#stdcall" class="headerlink" title="stdcall"></a>stdcall</h4><h4 id="thiscall"><a href="#thiscall" class="headerlink" title="thiscall"></a>thiscall</h4><p>是c++ non static member function的calling conventions<br>在linux平台上几乎和cdecl相等，除了隐式传递一个this指针参数作为第一个参数<br>在windows上this指针放在ecx之中</p>
+<h3 id="x86-64-calling-conventions"><a href="#x86-64-calling-conventions" class="headerlink" title="x86-64 calling conventions"></a>x86-64 calling conventions</h3><p>x86-64 calling conventions使用了额外的register来传递参数.同时不兼容的calling convention的数目也减少了，目前主要是两种在使用当中</p>
+<ul>
+<li>Microsoft x64 calling convention</li>
+<li>System V AMD64 ABI</li>
+</ul>
+<p>同样一段代码的汇编结果在64bit上就是用寄存器来传参数了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">f:</span><br><span class="line">  push rbp</span><br><span class="line">  mov rbp, rsp</span><br><span class="line">  mov DWORD PTR [rbp-4], edi</span><br><span class="line">  mov DWORD PTR [rbp-8], esi</span><br><span class="line">  mov edx, DWORD PTR [rbp-4]</span><br><span class="line">  mov eax, DWORD PTR [rbp-8]</span><br><span class="line">  add eax, edx</span><br><span class="line">  pop rbp</span><br><span class="line">  ret</span><br><span class="line">main:</span><br><span class="line">  push rbp</span><br><span class="line">  mov rbp, rsp</span><br><span class="line">  sub rsp, 16</span><br><span class="line">  mov DWORD PTR [rbp-4], 5</span><br><span class="line">  mov eax, DWORD PTR [rbp-4]</span><br><span class="line">  mov esi, 5</span><br><span class="line">  mov edi, eax</span><br><span class="line">  call f</span><br><span class="line">  mov DWORD PTR [rbp-8], eax</span><br><span class="line">  mov eax, 0</span><br><span class="line">  leave</span><br><span class="line">  ret</span><br></pre></td></tr></table></figure></p>
+<p>我之前学习汇编啥的都是用64bit来操作以至于我看到32bit的汇编把所有参数都放在栈上有些吃惊。</p>
+<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><p>有一次我从网上抄袭了一段汇编内容，大概内容是这样的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">;</span><br><span class="line">; assemble and link with:</span><br><span class="line">; nasm -f elf printf-test.asm &amp;&amp; gcc -m32 -o printf-test printf-test.o</span><br><span class="line">;</span><br><span class="line">section .text</span><br><span class="line">global main</span><br><span class="line">extern printf</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line"></span><br><span class="line">  mov eax, 0xDEADBEEF</span><br><span class="line">  push eax</span><br><span class="line">  push message</span><br><span class="line">  call printf</span><br><span class="line">  add esp, 8</span><br><span class="line">  ret</span><br><span class="line"></span><br><span class="line">message db &quot;Register = %08X&quot;, 10, 0</span><br></pre></td></tr></table></figure></p>
+<p>我尝试在我的机器上<br>nasm -f elf printf-test.asm &amp;&amp; gcc -m32 -o printf-test printf-test.o<br>编译之后报错了(因为我是64bit的机器所以m32是需要交叉编译的)，我发现了这个问题后一顿操作<br>改成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">section .text</span><br><span class="line">global main</span><br><span class="line">extern printf</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line"></span><br><span class="line">  mov rax, 0xDEADBEEF</span><br><span class="line">  push rax</span><br><span class="line">  push message</span><br><span class="line">  call printf</span><br><span class="line">  add rsp, 16</span><br><span class="line">  ret</span><br><span class="line"></span><br><span class="line">message db &quot;Register = %08X&quot;, 10, 0</span><br></pre></td></tr></table></figure></p>
+<p>nasm -f elf64 printf-test.asm &amp;&amp; gcc -o printf-test printf-test.o成功通过了编译<br>一运行就segment fault了<br>至于为什么…看看我是怎么调用printf的就行了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">section .text</span><br><span class="line">global main</span><br><span class="line">extern printf</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line">  mov rax, 0xDEADBEEF</span><br><span class="line">  mov rsi, rax</span><br><span class="line">  mov rdi, message</span><br><span class="line">  call printf</span><br><span class="line">  ret</span><br><span class="line"></span><br><span class="line">message db &quot;Register = %08X&quot;, 10, 0</span><br></pre></td></tr></table></figure></p>
+<p>再编译一下运行就成功啦，很显然在64位机器上的gcc使用的calling convention是认为参数在寄存器中的。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2020/04/08/type_info/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1537,314 +1863,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/05/23/BIOS-and-bootLoader/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cjkkkk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cjkkkk">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/23/BIOS-and-bootLoader/" class="post-title-link" itemprop="url">BIOS_and_bootLoader</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-23 13:38:30 / 修改时间：21:06:36" itemprop="dateCreated datePublished" datetime="2019-05-23T13:38:30+08:00">2019-05-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-BIOS"><a href="#1-BIOS" class="headerlink" title="1 BIOS"></a>1 BIOS</h1><ul>
-<li>上电自检</li>
-<li>BIOS发起中断(INT 0x19), 搜索boot signature (0xAA55). 然后加载bootloader到0x7c00并执行。</li>
-</ul>
-<p><a href="https://www.glamenv-septzen.net/en/view/6" target="_blank" rel="noopener">为什么BIOS加载bootloader到0x7c00</a></p>
-<h1 id="2-bootLoader"><a href="#2-bootLoader" class="headerlink" title="2 bootLoader"></a>2 bootLoader</h1>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/05/22/x86-physical-layout/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cjkkkk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cjkkkk">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/22/x86-physical-layout/" class="post-title-link" itemprop="url">x86_physical_layout</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-22 21:03:18" itemprop="dateCreated datePublished" datetime="2019-05-22T21:03:18+08:00">2019-05-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-25 13:46:39" itemprop="dateModified" datetime="2019-05-25T13:46:39+08:00">2019-05-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>总结关于x86物理内存布局和real mode/protect mode相关的基本知识<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/22/x86-physical-layout/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1891,7 +1909,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2174,11 +2192,11 @@
       
     
       
+    
+      
+    
+      
         
-      
-    
-      
-    
       
     
       

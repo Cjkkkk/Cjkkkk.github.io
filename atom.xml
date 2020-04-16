@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2020-04-09T19:02:39.246Z</updated>
+  <updated>2020-04-15T15:33:27.643Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,136 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>llvm-linux</title>
+    <link href="http://cjkkkk.github.io/2020/04/15/llvm-linux/"/>
+    <id>http://cjkkkk.github.io/2020/04/15/llvm-linux/</id>
+    <published>2020-04-15T15:14:26.000Z</published>
+    <updated>2020-04-15T15:33:27.643Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;以clang+llvm9.0为例说明如何不从源码编译llvm/clang来实现pass的编译&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="llvm" scheme="http://cjkkkk.github.io/tags/llvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>brk_printf</title>
+    <link href="http://cjkkkk.github.io/2020/04/15/brk-printf/"/>
+    <id>http://cjkkkk.github.io/2020/04/15/brk-printf/</id>
+    <published>2020-04-14T18:02:02.000Z</published>
+    <updated>2020-04-14T18:09:26.918Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;printf引起的一次…&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>txy</title>
+    <link href="http://cjkkkk.github.io/2020/04/15/txy/"/>
+    <id>http://cjkkkk.github.io/2020/04/15/txy/</id>
+    <published>2020-04-14T16:09:38.000Z</published>
+    <updated>2020-04-14T17:28:26.991Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记一次腾讯实习面试&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="http://cjkkkk.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ds</title>
+    <link href="http://cjkkkk.github.io/2020/04/14/ds/"/>
+    <id>http://cjkkkk.github.io/2020/04/14/ds/</id>
+    <published>2020-04-14T10:08:46.000Z</published>
+    <updated>2020-04-15T15:35:41.688Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为了实习面试复习一下数据结构的内容&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>interrupt_exception</title>
+    <link href="http://cjkkkk.github.io/2020/04/11/interrupt-exception/"/>
+    <id>http://cjkkkk.github.io/2020/04/11/interrupt-exception/</id>
+    <published>2020-04-10T16:04:11.000Z</published>
+    <updated>2020-04-10T16:04:17.035Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>syscall_int80</title>
+    <link href="http://cjkkkk.github.io/2020/04/10/syscall-int80/"/>
+    <id>http://cjkkkk.github.io/2020/04/10/syscall-int80/</id>
+    <published>2020-04-10T15:40:29.000Z</published>
+    <updated>2020-04-10T15:47:11.897Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>class_hierarchy</title>
+    <link href="http://cjkkkk.github.io/2020/04/10/class-hierarchy/"/>
+    <id>http://cjkkkk.github.io/2020/04/10/class-hierarchy/</id>
+    <published>2020-04-10T04:42:01.000Z</published>
+    <updated>2020-04-10T05:01:34.331Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;public/private/protected&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>reference</title>
@@ -39,17 +169,11 @@
     <link href="http://cjkkkk.github.io/2020/04/08/application_binary_interface/"/>
     <id>http://cjkkkk.github.io/2020/04/08/application_binary_interface/</id>
     <published>2020-04-08T08:33:34.000Z</published>
-    <updated>2020-04-09T19:22:45.565Z</updated>
+    <updated>2020-04-09T19:25:26.383Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          
-        
-      
+      &lt;p&gt;ABI(application binary interface)包括很多方面的内容&lt;br&gt;
     
     </summary>
     
@@ -265,131 +389,6 @@
     
     
       <category term="operating system" scheme="http://cjkkkk.github.io/tags/operating-system/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xv6源码阅读</title>
-    <link href="http://cjkkkk.github.io/2019/05/17/xv6/"/>
-    <id>http://cjkkkk.github.io/2019/05/17/xv6/</id>
-    <published>2019-05-17T02:37:46.000Z</published>
-    <updated>2019-05-23T13:14:31.018Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;code&gt;main&lt;/code&gt; calls &lt;code&gt;userinit&lt;/code&gt;, &lt;code&gt;mpmain&lt;/code&gt; calls &lt;code&gt;scheduler&lt;/code&gt; to start running processes&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="operating system" scheme="http://cjkkkk.github.io/tags/operating-system/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NASM assembler</title>
-    <link href="http://cjkkkk.github.io/2019/05/12/GNU-assem/"/>
-    <id>http://cjkkkk.github.io/2019/05/12/GNU-assem/</id>
-    <published>2019-05-12T07:54:25.000Z</published>
-    <updated>2020-04-08T15:22:19.287Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;GAS : GNU assembler&lt;br&gt;NASM(Intel syntax) vs GAS(AT&amp;amp;T syntax)&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="assemler" scheme="http://cjkkkk.github.io/tags/assemler/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>numpy cheatsheet</title>
-    <link href="http://cjkkkk.github.io/2019/05/11/numpy-basic/"/>
-    <id>http://cjkkkk.github.io/2019/05/11/numpy-basic/</id>
-    <published>2019-05-11T03:06:09.000Z</published>
-    <updated>2019-05-25T05:42:58.871Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;numpy cheatsheet&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://cjkkkk.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git-remote-only-branch</title>
-    <link href="http://cjkkkk.github.io/2019/05/05/git-remote-only-branch/"/>
-    <id>http://cjkkkk.github.io/2019/05/05/git-remote-only-branch/</id>
-    <published>2019-05-04T17:37:55.000Z</published>
-    <updated>2019-05-04T17:46:02.605Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h2&gt;&lt;p&gt;如何在本地创建一个远程存在但本地不存在的分支, 假定为B&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>接口vs抽象类</title>
-    <link href="http://cjkkkk.github.io/2019/05/02/interface-abstract-class/"/>
-    <id>http://cjkkkk.github.io/2019/05/02/interface-abstract-class/</id>
-    <published>2019-05-01T16:04:28.000Z</published>
-    <updated>2019-05-02T06:23:34.006Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Go中有接口的概念而c++中有抽象类的概念，这两者有什么具体的区别呢？&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="programming language" scheme="http://cjkkkk.github.io/tags/programming-language/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GC</title>
-    <link href="http://cjkkkk.github.io/2019/05/01/GC/"/>
-    <id>http://cjkkkk.github.io/2019/05/01/GC/</id>
-    <published>2019-05-01T08:37:08.000Z</published>
-    <updated>2019-05-02T16:24:26.779Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-引用计数&quot;&gt;&lt;a href=&quot;#1-引用计数&quot; class=&quot;headerlink&quot; title=&quot;1 引用计数&quot;&gt;&lt;/a&gt;1 引用计数&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;当创建一个对象的时候，设置它的引用计数为0&lt;/li&gt;
-&lt;li&gt;当在该对象上创建一个引用的时候，它的计数增加1&lt;/li&gt;
-&lt;li&gt;当移除该对象上的一个引用的时候，它的计数减少1
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>PBR</title>
-    <link href="http://cjkkkk.github.io/2019/04/21/PBR/"/>
-    <id>http://cjkkkk.github.io/2019/04/21/PBR/</id>
-    <published>2019-04-21T04:43:52.000Z</published>
-    <updated>2019-05-01T09:44:05.052Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PBR的一些小总结, 为了保持篇幅的简短，忽略了辐射度量学的基本知识。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="computer graphics" scheme="http://cjkkkk.github.io/tags/computer-graphics/"/>
     
   </entry>
   

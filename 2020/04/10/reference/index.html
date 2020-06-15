@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Cjkkkk">
 <meta property="og:description" content="关于reference的一些思考(?)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T19:02:39.246Z">
+<meta property="og:updated_time" content="2020-06-10T10:59:26.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="reference">
 <meta name="twitter:description" content="关于reference的一些思考(?)">
@@ -356,12 +356,24 @@
                 
               
 
-              <time title="创建时间：2020-04-10 02:17:08 / 修改时间：03:02:39" itemprop="dateCreated datePublished" datetime="2020-04-10T02:17:08+08:00">2020-04-10</time>
+              <time title="创建时间：2020-04-10 02:17:08" itemprop="dateCreated datePublished" datetime="2020-04-10T02:17:08+08:00">2020-04-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-06-10 18:59:26" itemprop="dateModified" datetime="2020-06-10T18:59:26+08:00">2020-06-10</time>
               
             
           </span>
@@ -411,9 +423,16 @@
 <h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><p>这个时候右值引用的概念又让我困惑了，于是我尝试按照wiki上尝试从使用场景出发…<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A a1, a2, a3;</span><br><span class="line">a1 = a2 + a3; <span class="comment">// 假设A重载了+并返回一个A</span></span><br></pre></td></tr></table></figure></p>
 <p>a2 + a3的结果是一个临时变量，其结果会被拷贝到a1中，其实这个a2 + a3的结果马上就会消亡，此时直接将其值”移动”到a1中似乎是更为合理的，反正不要浪费嘛… 为什么要额外拷贝一下。</p>
 <p>然而c++中此时似乎需要有overload = operator来提供移动赋值语义，不然怎么区分拷贝赋值呢，于是就引入了移动构造和移动赋值语句。</p>
-<p>说到这我就想起来c++里还有传统左值(lvalue)/传统右值(rvalue)/消亡值(xvalue)/泛左值(glvalue)/泛右值(grvalue)的概念似乎对理解右值引用比较有帮助</p>
+<p>说到这我就想起来c++里还有lvalue/prvalue/xvalue/glvalue/rvalue的概念似乎对理解右值引用比较有帮助</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    glvalue     rvalue</span><br><span class="line">    /   \       /   \</span><br><span class="line">lvalue    xvalue      prvalue</span><br></pre></td></tr></table></figure>
 <p>定义里是这么说的，传统左值是带有名字的，可以使用&amp;操作获取地址的值<br>传统右值呢就是非传统左值。通常是临时变量(运算结果啦 函数返回值啦)，字面量(字面量会被用来构造一个临时变量)<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">A <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> A();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    A a, a1;</span><br><span class="line">    A* pa = &amp;(f()); <span class="comment">// error: taking address of temporary [-fpermissive]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>泛左值 = 传统左值 + 消亡值<br>泛右值 = 传统右值 + 消亡值</p>
+<p>表达式(expression)是</p>
+<ul>
+<li>一系列操作符与函数在表达式上运算的结果</li>
+<li>字面量</li>
+<li>变量(变量作为表达式时候去掉其引用类型比如int&amp;变为int))</li>
+</ul>
+<p>表达式具有类型(type)，但不能是引用类型和值类别(value category)<br>表达式的类型取决于函数运算的结果(把操作符也看做函数运算)<br>表达式的值类别帮助确定拷贝和移动语义</p>
 
       
     </div>
@@ -582,9 +601,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

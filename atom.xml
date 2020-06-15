@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2020-04-15T15:33:27.643Z</updated>
+  <updated>2020-06-15T16:54:35.673Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>exception handling</title>
+    <link href="http://cjkkkk.github.io/2020/06/16/exception-handling/"/>
+    <id>http://cjkkkk.github.io/2020/06/16/exception-handling/</id>
+    <published>2020-06-15T16:53:10.000Z</published>
+    <updated>2020-06-15T16:54:35.673Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单整理一下g++在x86/64上的exception的实现&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://cjkkkk.github.io/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>llvm-linux</title>
@@ -151,7 +169,7 @@
     <link href="http://cjkkkk.github.io/2020/04/10/reference/"/>
     <id>http://cjkkkk.github.io/2020/04/10/reference/</id>
     <published>2020-04-09T18:17:08.000Z</published>
-    <updated>2020-04-09T19:02:39.246Z</updated>
+    <updated>2020-06-10T10:59:26.478Z</updated>
     
     <summary type="html">
     
@@ -292,25 +310,6 @@
     
     
       <category term="linux c++" scheme="http://cjkkkk.github.io/tags/linux-c/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tty</title>
-    <link href="http://cjkkkk.github.io/2019/06/09/tty/"/>
-    <id>http://cjkkkk.github.io/2019/06/09/tty/</id>
-    <published>2019-06-09T05:19:27.000Z</published>
-    <updated>2019-07-21T11:28:47.848Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;听了u1k同学关于terminal的技术分享，发现自己对tty，terminal内部的一些原理还不是太理解，于是写下这篇博客作为学习的记录。&lt;/p&gt;
-&lt;p&gt;keyword: terminal, tty, screen buffer, x11, ioctl&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://cjkkkk.github.io/tags/linux/"/>
     
   </entry>
   

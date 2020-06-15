@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="简单整理一下g++在x86/64上的exception的实现">
+<meta name="keywords" content="c++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="exception handling">
+<meta property="og:url" content="http://cjkkkk.github.io/2020/06/16/exception-handling/index.html">
+<meta property="og:site_name" content="Cjkkkk">
+<meta property="og:description" content="简单整理一下g++在x86/64上的exception的实现">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-15T16:54:35.673Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="exception handling">
+<meta name="twitter:description" content="简单整理一下g++在x86/64上的exception的实现">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cjkkkk" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://cjkkkk.github.io/2020/06/16/exception-handling/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>exception handling | Cjkkkk</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cjkkkk</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2020/06/16/exception-handling/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cjkkkk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cjkkkk">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">exception handling
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-16 00:53:10 / 修改时间：00:54:35" itemprop="dateCreated datePublished" datetime="2020-06-16T00:53:10+08:00">2020-06-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>简单整理一下g++在x86/64上的exception的实现<br><a id="more"></a></p>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">|	f3	|</span><br><span class="line">---------</span><br><span class="line">|	f2	|</span><br><span class="line">---------		^</span><br><span class="line">|	f1	|		|  direction of stack growth</span><br><span class="line">---------</span><br><span class="line">|	f0	|</span><br><span class="line">---------</span><br></pre></td></tr></table></figure>
+<p>上图为4个函数调用对应的4个调用帧</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f3</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">throw</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f2</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	f3();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f1</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	f2();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f0</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	f1();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>overview：当f3抛出异常时，应该顺着函数调用栈从顶部往下，即f3-&gt;f2-&gt;f1-&gt;f0的顺序检查每一个函数是否能处理这个异常。</p>
+<p>这意味着哪个函数应该处理抛出的异常是运行时候确定而非编译器确定的。这说明编译器必须为每一个函数生成必要的信息以使得运行时可以确定这个函数对应的调用是否能处理抛出的异常。</p>
+<h2 id="Compiler-support"><a href="#Compiler-support" class="headerlink" title="Compiler support"></a>Compiler support</h2><p>编译器生成了CFI（call frame information）使得追踪每一个调用帧成为可能，同时编译器也为每一个函数生成</p>
+<p>LSDA（language specific data area）也叫 .gcc_except_table，LSDA说明该函数具有的</p>
+<ul>
+<li>所有try/catch块（一个try块叫call site）的try的起始地址</li>
+<li>所有try/catch块的try块长度</li>
+<li>所有try/catch块的第一个catch块的起始位置<ul>
+<li>catch块也叫landing pad，因为当try块中抛出的异常可以捕捉时，会跳转到catch开始执行即landing</li>
+</ul>
+</li>
+<li>所有catch块对应的action（就是每一个块catch的exception的类型, RTTI用于类型比对）<ul>
+<li>因为一个try可以有多个catch块，每一个catch块对应一个action</li>
+</ul>
+</li>
+</ul>
+<p>可以用下面的数据结构描述提到的两个重要数据</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// LSDA call site table entry</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LSDA_Call_Site</span> &#123;</span></span><br><span class="line">    <span class="comment">// Offset into function from which we could handle a throw</span></span><br><span class="line">    <span class="keyword">uint8_t</span> start; </span><br><span class="line">    <span class="comment">// Length of the block that might throw</span></span><br><span class="line">    <span class="keyword">uint8_t</span> len;</span><br><span class="line">    <span class="comment">// Landing pad</span></span><br><span class="line">    <span class="keyword">uint8_t</span> lp;</span><br><span class="line">    <span class="comment">// Offset into action table + 1 (0 means no action)</span></span><br><span class="line">    <span class="keyword">uint8_t</span> action;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// action table entry</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Action</span> &#123;</span></span><br><span class="line">    <span class="comment">// An index into the types table</span></span><br><span class="line">    <span class="keyword">int</span> type_index;</span><br><span class="line">	<span class="comment">// dont care</span></span><br><span class="line">    <span class="keyword">int</span> next_offset;</span><br><span class="line">	<span class="comment">// dont care</span></span><br><span class="line">    LSDA_ptr raw_action_ptr;</span><br><span class="line"></span><br><span class="line">&#125; current_action;</span><br></pre></td></tr></table></figure>
+<p>例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// cs1</span></span><br><span class="line">	<span class="keyword">try</span>&#123; <span class="comment">// cs1.start</span></span><br><span class="line">        <span class="comment">// cs1.len</span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(e1)&#123; <span class="comment">// cs1.lp, action11</span></span><br><span class="line">        </span><br><span class="line">    &#125;<span class="keyword">catch</span>(e2) &#123; <span class="comment">// action12</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// cs2</span></span><br><span class="line">    <span class="keyword">try</span>&#123; <span class="comment">// cs2.start</span></span><br><span class="line">        <span class="comment">// cs2.len</span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(e1)&#123; <span class="comment">// cs2.lp, action21</span></span><br><span class="line">        </span><br><span class="line">    &#125;<span class="keyword">catch</span>(e2) &#123; <span class="comment">// action22</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了以上信息之后，可以使用unwind库来获取以上定义的信息以帮助执行exception handling</p>
+<p>unwind库是用于操作程序的调用链（call chain），通常用于exception handling和debug等。提供了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">_Unwind_GetIP <span class="comment">// 获取当前帧即将调用下一帧之前的执行地址+1</span></span><br><span class="line">_Unwind_GetRegionStart <span class="comment">// 获取调用帧对应的函数的开头地址</span></span><br><span class="line">_Unwind_GetLanguageSpecificData <span class="comment">// 获取LSDA数据</span></span><br><span class="line">_Unwind_RaiseException <span class="comment">// 遍历调用帧执行personality函数</span></span><br><span class="line">_Unwind_SetGR	<span class="comment">// 设定unwind重新执行时候的通用寄存器内容</span></span><br><span class="line">_Unwind_SetIP	<span class="comment">// 设定unwind重新执行时候的ip地址</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>等函数。</p>
+<p>下面详细说具体的流程</p>
+<h2 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h2><ol>
+<li><p>throw被翻译成cxa_allocate与cxa_throw。cxa_allocate分配exception对象的内存空间，cxa_throw调用unwind_raiseException函数。</p>
+</li>
+<li><p>unwind_raiseException遍历调用栈上的调用帧，对每一个调用帧分两阶段调用personality_v0函数。</p>
+<p>2.1 第一阶段执行search，判断该调用帧是否能handle指定的exception，判断的方法是根据call site table判定发生exception的指令是否处于该函数的任意try块（start + len &gt; exception_ip &gt; start）中，如果是则返回_URC_HANDLER_FOUND，否则查找下一个调用帧。如果在某一个调用帧中找到能处理exception的函数，执行第二阶段，否则执行terminate。</p>
+<p>2.2 第二阶段执行cleanup，再次重复执行第一个阶段的判定，对所有不符合的调用帧执行cleanup code，即清理栈上静态分配的函数，调用析构函数，这确保了RAII正确的工作。对能处理的调用帧，找到对应的action，返回_URC_INSTALL_CONTEXT跳转到对应的landing pad。unwind函数库会根据匹配的exception type和landing pad地址执行对应的catch block。</p>
+<p>分成两阶段的原因是希望在没有找到能处理exception的帧的情况下能保留栈帧给terminate。</p>
+</li>
+</ol>
+<p>上述提到的函数都是在libc++里定义好。如果不借助libc++自己实现一个exception handling，则需要提供上面提到的所有函数…</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://github.com/nicolasbrailo/cpp_exception_handling_abi" target="_blank" rel="noopener">https://github.com/nicolasbrailo/cpp_exception_handling_abi</a></li>
+<li><a href="https://monoinfinito.wordpress.com/series/exception-handling-in-c/" target="_blank" rel="noopener">https://monoinfinito.wordpress.com/series/exception-handling-in-c/</a></li>
+<li><a href="https://itanium-cxx-abi.github.io/cxx-abi/exceptions.pdf" target="_blank" rel="noopener">https://itanium-cxx-abi.github.io/cxx-abi/exceptions.pdf</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/15/llvm-linux/" rel="next" title="llvm-linux">
+                <i class="fa fa-chevron-left"></i> llvm-linux
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Cjkkkk</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Cjkkkk" title="GitHub &rarr; https://github.com/Cjkkkk" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:656569648@qq.com" title="E-Mail &rarr; mailto:656569648@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compiler-support"><span class="nav-text">Compiler support</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Details"><span class="nav-text">Details</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cjkkkk</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

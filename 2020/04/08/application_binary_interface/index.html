@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="ABI(application binary interface)包括很多方面的内容">
+  <meta name="description" content="ABI(application binary interface)">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ABI">
 <meta property="og:url" content="http://cjkkkk.github.io/2020/04/08/application_binary_interface/index.html">
 <meta property="og:site_name" content="Cjkkkk">
-<meta property="og:description" content="ABI(application binary interface)包括很多方面的内容">
+<meta property="og:description" content="ABI(application binary interface)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T19:25:26.383Z">
+<meta property="og:updated_time" content="2020-06-15T17:04:04.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ABI">
-<meta name="twitter:description" content="ABI(application binary interface)包括很多方面的内容">
+<meta name="twitter:description" content="ABI(application binary interface)">
 
 
 
@@ -373,7 +373,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-04-10 03:25:26" itemprop="dateModified" datetime="2020-04-10T03:25:26+08:00">2020-04-10</time>
+                <time title="修改时间：2020-06-16 01:04:04" itemprop="dateModified" datetime="2020-06-16T01:04:04+08:00">2020-06-16</time>
               
             
           </span>
@@ -407,7 +407,7 @@
       
 
       
-        <p>ABI(application binary interface)包括很多方面的内容<br> <a id="more"></a></p>
+        <p>ABI(application binary interface)<br> <a id="more"></a><br>包括</p>
 <ul>
 <li>calling convention</li>
 <li>type representation</li>
@@ -415,6 +415,7 @@
 <li>executable format</li>
 <li>…</li>
 </ul>
+<p>我个人理解ABI从二进制层面约束了二进制代码的格式应该是什么样的，比如可执行文件的格式啦，使用的指令集啦，calling convention，寄存器使用啦之类的。不同的硬件的指令集不同，不同操作系统使用的calling convention可能不太一样，不同语言的编译器也有自己的一些设定。所以ABI可以看作（编译器 <em> 操作系统 </em> 硬件）。如果需要链接多个二进制代码文件，就需要确保这些二进制代码文件都遵循相同（兼容）的ABI，否则轻则链接错误，重则运行错误。比如calling convention不同的程序是可以链接在一起的，但是执行的时候就会爆炸。下面举个calling convention的例子，因为我只了解calling convention…</p>
 <h2 id="calling-convention"><a href="#calling-convention" class="headerlink" title="calling convention"></a>calling convention</h2><h3 id="x86-32bits"><a href="#x86-32bits" class="headerlink" title="x86 32bits"></a>x86 32bits</h3><h4 id="cdecl"><a href="#cdecl" class="headerlink" title="cdecl"></a>cdecl</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c = f(<span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">f:</span><br><span class="line">  pushl %ebp</span><br><span class="line">  movl %esp,%ebp</span><br><span class="line">  movl 8(%ebp),%eax</span><br><span class="line">  addl 12(%ebp),%eax</span><br><span class="line">  jmp .L1</span><br><span class="line">.L1:</span><br><span class="line">  leave</span><br><span class="line">  ret</span><br><span class="line">main:</span><br><span class="line">  pushl %ebp</span><br><span class="line">  movl %esp,%ebp</span><br><span class="line">  subl $4,%esp</span><br><span class="line">  pushl $5</span><br><span class="line">  pushl $4</span><br><span class="line">  call f</span><br><span class="line">  movl %eax,-4(%ebp)</span><br><span class="line">  leave</span><br><span class="line">  ret</span><br></pre></td></tr></table></figure>
 <h4 id="stdcall"><a href="#stdcall" class="headerlink" title="stdcall"></a>stdcall</h4><h4 id="thiscall"><a href="#thiscall" class="headerlink" title="thiscall"></a>thiscall</h4><p>是c++ non static member function的calling conventions<br>在linux平台上几乎和cdecl相等，除了隐式传递一个this指针参数作为第一个参数<br>在windows上this指针放在ecx之中</p>

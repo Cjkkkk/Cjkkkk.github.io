@@ -100,22 +100,22 @@
 
 
 
-  <meta name="description" content="3D旋转公式Rodrigues&amp;#39;s Rotation Formula 3D旋转公式$v^{‘} = cos(\theta)v + ( 1 - cos(\theta))(u\cdot v)u + sin(\theta)(u\times v)$">
-<meta name="keywords" content="Computer Graphics">
+  <meta name="description" content="记录CUDA面试基础">
+<meta name="keywords" content="CUDA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="四元数 quaternion">
-<meta property="og:url" content="http://cjkkkk.github.io/2019/03/13/quaternion/index.html">
+<meta property="og:title" content="CUDA">
+<meta property="og:url" content="http://cjkkkk.github.io/2020/08/08/cuda/index.html">
 <meta property="og:site_name" content="Cjkkkk">
-<meta property="og:description" content="3D旋转公式Rodrigues&amp;#39;s Rotation Formula 3D旋转公式$v^{‘} = cos(\theta)v + ( 1 - cos(\theta))(u\cdot v)u + sin(\theta)(u\times v)$">
+<meta property="og:description" content="记录CUDA面试基础">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://cjkkkk.github.io/assets/1.PNG">
-<meta property="og:image" content="http://cjkkkk.github.io/assets/2.PNG">
-<meta property="og:image" content="http://cjkkkk.github.io/assets/5.png">
-<meta property="og:updated_time" content="2019-05-01T09:15:10.905Z">
+<meta property="og:image" content="http://cjkkkk.github.io/images/cuda1.jpg">
+<meta property="og:image" content="http://cjkkkk.github.io/images/cuda2.jpg">
+<meta property="og:image" content="http://cjkkkk.github.io/images/cuda3.png">
+<meta property="og:updated_time" content="2020-08-07T16:47:34.165Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="四元数 quaternion">
-<meta name="twitter:description" content="3D旋转公式Rodrigues&amp;#39;s Rotation Formula 3D旋转公式$v^{‘} = cos(\theta)v + ( 1 - cos(\theta))(u\cdot v)u + sin(\theta)(u\times v)$">
-<meta name="twitter:image" content="http://cjkkkk.github.io/assets/1.PNG">
+<meta name="twitter:title" content="CUDA">
+<meta name="twitter:description" content="记录CUDA面试基础">
+<meta name="twitter:image" content="http://cjkkkk.github.io/images/cuda1.jpg">
 
 
 
@@ -125,7 +125,7 @@
 
   
   
-  <link rel="canonical" href="http://cjkkkk.github.io/2019/03/13/quaternion/">
+  <link rel="canonical" href="http://cjkkkk.github.io/2020/08/08/cuda/">
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>四元数 quaternion | Cjkkkk</title>
+  <title>CUDA | Cjkkkk</title>
   
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2019/03/13/quaternion/">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2020/08/08/cuda/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cjkkkk">
@@ -334,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">四元数 quaternion
+          <h1 class="post-title" itemprop="name headline">CUDA
 
               
             
@@ -360,24 +360,12 @@
                 
               
 
-              <time title="创建时间：2019-03-13 13:23:13" itemprop="dateCreated datePublished" datetime="2019-03-13T13:23:13+08:00">2019-03-13</time>
+              <time title="创建时间：2020-08-08 00:30:38 / 修改时间：00:47:34" itemprop="dateCreated datePublished" datetime="2020-08-08T00:30:38+08:00">2020-08-08</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-01 17:15:10" itemprop="dateModified" datetime="2019-05-01T17:15:10+08:00">2019-05-01</time>
               
             
           </span>
@@ -411,44 +399,49 @@
       
 
       
-        <h1 id="3D旋转公式"><a href="#3D旋转公式" class="headerlink" title="3D旋转公式"></a>3D旋转公式</h1><p><img src="/assets/1.PNG" alt=""><br><code>Rodrigues&#39;s Rotation Formula</code> 3D旋转公式<br>$v^{‘} = cos(\theta)v + ( 1 - cos(\theta))(u\cdot v)u + sin(\theta)(u\times v)$<br> <a id="more"></a></p>
-<h1 id="四元数"><a href="#四元数" class="headerlink" title="四元数"></a>四元数</h1><p>四元数与复数十分类似， 不同之处为四元数有3个虚部而复数只有1个虚部<br>所有四元数$q \in H, q = a + bi + cj + dk， i^2 + j^2 = k^2 = ijk = -1$</p>
-<h2 id="向量形式"><a href="#向量形式" class="headerlink" title="向量形式"></a>向量形式</h2><script type="math/tex; mode=display">
- q = \left[
- \begin{matrix}
-   a\\
-   b\\
-   c\\
-   d
-  \end{matrix}
-  \right] \tag{4}</script><p>或者将四元数的实部与虚部分开表示</p>
-<script type="math/tex; mode=display">
- q = \left[
- \begin{matrix}
-   s & v
-  \end{matrix}
-  \right] \tag{5}</script><script type="math/tex; mode=display">
- v = \left[
- \begin{matrix}
-   x\\
-   y\\
-   z
-  \end{matrix}
-  \right] \tag{4}</script><h1 id="四元数运算"><a href="#四元数运算" class="headerlink" title="四元数运算"></a>四元数运算</h1><p>加减法/与标量乘法类比向量</p>
-<p>乘法不支持交换律</p>
-<p><img src="\assets\2.PNG" alt=""></p>
-<h2 id="Grasmann-Product"><a href="#Grasmann-Product" class="headerlink" title="Graßmann Product"></a>Graßmann Product</h2><p>$q_1 = [s, v] , q_2 = [t, u]$<br>$q_1q_2 = [st - v\cdot u, su + tv + v\times u]$</p>
-<h2 id="共轭"><a href="#共轭" class="headerlink" title="共轭"></a>共轭</h2><p>$q^* = [s, -v]$<br>$qq^* = q^*q = ||q||^2$<br>满足交换律</p>
-<h2 id="四元数的逆"><a href="#四元数的逆" class="headerlink" title="四元数的逆"></a>四元数的逆</h2><p>定义$qq^{-1} = 1$<br>同时左乘$q^*$得$q^*qq^{-1} = q^*$<br>$||q||^2q^{-1} = q^*$<br>$q^{-1} = \frac{q^*}{||q||^2}$</p>
-<h2 id="用四元数表示旋转"><a href="#用四元数表示旋转" class="headerlink" title="用四元数表示旋转"></a>用四元数表示旋转</h2><p>设三维点$p = [x, y, z]$, 进行由轴角$n, \theta$指定的旋转，旋转之后得到的点为$p^r$</p>
-<p>首先将$p$用四元数$ [0, x, y, z]$表示, 用四元数$q = [cos\frac{\theta}{2}, nsin\frac{\theta}{2}]$表示旋转</p>
-<p>则 $p^r = q p q^{-1}$</p>
-<h1 id="表示旋转的方式"><a href="#表示旋转的方式" class="headerlink" title="表示旋转的方式"></a>表示旋转的方式</h1><ul>
-<li>四元数(opencv中用以表现旋转)</li>
-<li>轴角 $n \theta$</li>
-<li>旋转矩阵</li>
+        <p>记录CUDA面试基础<br> <a id="more"></a></p>
+<h1 id="CUDA面试"><a href="#CUDA面试" class="headerlink" title="CUDA面试"></a>CUDA面试</h1><h2 id="1-硬件概念"><a href="#1-硬件概念" class="headerlink" title="1. 硬件概念"></a>1. 硬件概念</h2><p>SP (cuda core （ALU + FLU）) )  SFU LD/ST<br>SM (多个SP + warp scheduler + register + memory)<br>通过多个线程切换隐藏IO延迟，线程切换开销小因为所需资源已经分配<br><img src="/images/cuda1.jpg" alt="图片名称"></p>
+<h3 id="1-1-IO"><a href="#1-1-IO" class="headerlink" title="1.1 IO"></a>1.1 IO</h3><ol>
+<li>register file （in chip 仅对thread可见）<ol>
+<li>register数目不够会spill到local memory</li>
+</ol>
+</li>
+<li>shared memory (in chip 对block可见)<ol>
+<li>可以设置shared memory大小，剩下的自动成为L1 cache</li>
+</ol>
+</li>
+<li>constant memory ( 仅对特定场景有用)</li>
+<li>texture memory ( 仅对特定场景有用)</li>
+<li>local  memory （off chip 仅对thread可见）/ global  memory (off chip全局可见)</li>
+</ol>
+<h3 id="1-2-compute-capabality"><a href="#1-2-compute-capabality" class="headerlink" title="1.2 compute capabality"></a>1.2 compute capabality</h3><p>compute capabality代表gpu card支持的feature数目<br>参考链接 ：<a href="https://en.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/CUDA</a></p>
+<h3 id="1-3-GPU架构变化："><a href="#1-3-GPU架构变化：" class="headerlink" title="1.3 GPU架构变化："></a>1.3 GPU架构变化：</h3><ul>
+<li>telsa </li>
+<li>Fermi </li>
+<li>kepler </li>
+<li>maxwell </li>
+<li>turing </li>
 </ul>
-<h2 id="万向节锁"><a href="#万向节锁" class="headerlink" title="万向节锁"></a>万向节锁</h2><p><img src="/assets/5.png" alt=""><br><a href="https://en.wikipedia.org/wiki/Gimbal_lock" target="_blank" rel="noopener">参考链接</a></p>
+<h2 id="2-软件概念"><a href="#2-软件概念" class="headerlink" title="2. 软件概念"></a>2. 软件概念</h2><ul>
+<li>thread是基本执行单元</li>
+<li>block -&gt; SM （__syncthreads()可以用于同步block）</li>
+<li>grid -&gt; device</li>
+</ul>
+<h3 id="2-1-SIMT"><a href="#2-1-SIMT" class="headerlink" title="2.1 SIMT"></a>2.1 SIMT</h3><p>CUDA employs a Single Instruction Multiple Thread (SIMT) architecture to manage and execute threads in groups of 32 called warps. All threads in a warp execute the same instruction at the same time. Each thread has its own instruction address counter and register state, and carries out the current instruction on its own data</p>
+<h3 id="2-2-分支"><a href="#2-2-分支" class="headerlink" title="2.2 分支"></a>2.2 分支</h3><h2 id="3-计算性能"><a href="#3-计算性能" class="headerlink" title="3. 计算性能"></a>3. 计算性能</h2><ul>
+<li>斜率 byte/s 带宽</li>
+<li>横轴 flop/byte 计算密度</li>
+<li>纵轴 flop/s  计算性能</li>
+</ul>
+<p><img src="/images/cuda2.jpg" alt="img"></p>
+<h2 id="4-CUDA运行性能分析"><a href="#4-CUDA运行性能分析" class="headerlink" title="4. CUDA运行性能分析"></a>4. CUDA运行性能分析</h2><h3 id="4-1-bank-conflict（shared-memory）"><a href="#4-1-bank-conflict（shared-memory）" class="headerlink" title="4.1 bank conflict（shared memory）"></a>4.1 bank conflict（shared memory）</h3><p>分割为bank, 一个bank有4个字节（可以设置），一个bank在一个时钟周期只能访问一次，如果warp所有线程访问同一个bank会引发bank conflict</p>
+<p><img src="/images/cuda3.png" alt="Diagram of NVIDIA Kepler GPU architecture Shared Memory and L1 Cache Memory"></p>
+<p>参考链接 ： <a href="https://www.microway.com/hpc-tech-tips/gpu-memory-types-performance-comparison/" target="_blank" rel="noopener">https://www.microway.com/hpc-tech-tips/gpu-memory-types-performance-comparison/</a></p>
+<p>特殊情况：所有线程访问同一个位置会broadcast而不会conflict</p>
+<h3 id="4-2-memory-coaleasing-global-memory"><a href="#4-2-memory-coaleasing-global-memory" class="headerlink" title="4.2 memory coaleasing (global memory)"></a>4.2 memory coaleasing (global memory)</h3><p>memory coalescing (<em>compute capabality 1.x</em> cuda 2.0)</p>
+<p>线程访问相邻的global memory可以产生memory coalescing，比如线程1，2，3访问global memory中的1，2， 3</p>
+<h3 id="4-3-warp-occupancy"><a href="#4-3-warp-occupancy" class="headerlink" title="4.3  warp occupancy"></a>4.3  warp occupancy</h3><p>warp occupancy = warps per block / max warps per block</p>
+<h3 id="4-4-CUDA流"><a href="#4-4-CUDA流" class="headerlink" title="4.4 CUDA流"></a>4.4 CUDA流</h3><p>支持DeviceOverlap的可以使用cuda流</p>
 
       
     </div>
@@ -472,7 +465,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Computer-Graphics/" rel="tag"># Computer Graphics</a>
+            <a href="/tags/CUDA/" rel="tag"># CUDA</a>
           
         </div>
       
@@ -485,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/12/generics/" rel="next" title="c++ generic">
-                <i class="fa fa-chevron-left"></i> c++ generic
+              <a href="/2020/06/16/exception-handling/" rel="next" title="exception handling">
+                <i class="fa fa-chevron-left"></i> exception handling
               </a>
             
           </div>
@@ -494,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/13/camera-calibration-using-chessboard/" rel="prev" title="相机标定 camera calibration">
-                相机标定 camera calibration <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -690,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3D旋转公式"><span class="nav-text">3D旋转公式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四元数"><span class="nav-text">四元数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#向量形式"><span class="nav-text">向量形式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四元数运算"><span class="nav-text">四元数运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Grasmann-Product"><span class="nav-text">Graßmann Product</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共轭"><span class="nav-text">共轭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四元数的逆"><span class="nav-text">四元数的逆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用四元数表示旋转"><span class="nav-text">用四元数表示旋转</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表示旋转的方式"><span class="nav-text">表示旋转的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#万向节锁"><span class="nav-text">万向节锁</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CUDA面试"><span class="nav-text">CUDA面试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-硬件概念"><span class="nav-text">1. 硬件概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-IO"><span class="nav-text">1.1 IO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-compute-capabality"><span class="nav-text">1.2 compute capabality</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-GPU架构变化："><span class="nav-text">1.3 GPU架构变化：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-软件概念"><span class="nav-text">2. 软件概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-SIMT"><span class="nav-text">2.1 SIMT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-分支"><span class="nav-text">2.2 分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-计算性能"><span class="nav-text">3. 计算性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-CUDA运行性能分析"><span class="nav-text">4. CUDA运行性能分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-bank-conflict（shared-memory）"><span class="nav-text">4.1 bank conflict（shared memory）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-memory-coaleasing-global-memory"><span class="nav-text">4.2 memory coaleasing (global memory)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-warp-occupancy"><span class="nav-text">4.3  warp occupancy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-CUDA流"><span class="nav-text">4.4 CUDA流</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -867,46 +856,6 @@
   
   
 
-  
-    
-      <script type="text/x-mathjax-config">
-  
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
-        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
-      }
-    });
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
-    }
-  });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
   
 
 

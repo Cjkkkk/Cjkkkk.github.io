@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2020-06-15T16:54:35.673Z</updated>
+  <updated>2020-08-07T16:47:34.165Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CUDA</title>
+    <link href="http://cjkkkk.github.io/2020/08/08/cuda/"/>
+    <id>http://cjkkkk.github.io/2020/08/08/cuda/</id>
+    <published>2020-08-07T16:30:38.000Z</published>
+    <updated>2020-08-07T16:47:34.165Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录CUDA面试基础&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="CUDA" scheme="http://cjkkkk.github.io/tags/CUDA/"/>
+    
+  </entry>
   
   <entry>
     <title>exception handling</title>
@@ -365,24 +383,6 @@
     <summary type="html">
     
       &lt;p&gt;总结关于x86物理内存布局和real mode/protect mode相关的基本知识&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="operating system" scheme="http://cjkkkk.github.io/tags/operating-system/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ELF</title>
-    <link href="http://cjkkkk.github.io/2019/05/22/ELF/"/>
-    <id>http://cjkkkk.github.io/2019/05/22/ELF/</id>
-    <published>2019-05-22T07:56:37.000Z</published>
-    <updated>2020-03-03T04:18:56.507Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;ELF (Executable and Linking Format).&lt;br&gt;
     
     </summary>
     

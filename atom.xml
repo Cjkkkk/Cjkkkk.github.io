@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cjkkkk.github.io/"/>
-  <updated>2020-08-07T16:47:34.165Z</updated>
+  <updated>2020-10-28T17:21:10.839Z</updated>
   <id>http://cjkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>uv</title>
+    <link href="http://cjkkkk.github.io/2020/10/29/uv/"/>
+    <id>http://cjkkkk.github.io/2020/10/29/uv/</id>
+    <published>2020-10-28T17:16:35.000Z</published>
+    <updated>2020-10-28T17:21:10.839Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很久之前看的libuv源码的时候记录的一些乱七八糟的东西ORZ。 强烈推荐直接看参考链接搞清楚文件IO和网络IO怎么实现的就行，我的记录大概只有我自己能看懂。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="I/O" scheme="http://cjkkkk.github.io/tags/I-O/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>scope_and_lifetime</title>
+    <link href="http://cjkkkk.github.io/2020/10/28/scope-and-lifetime/"/>
+    <id>http://cjkkkk.github.io/2020/10/28/scope-and-lifetime/</id>
+    <published>2020-10-28T15:27:50.000Z</published>
+    <updated>2020-10-28T15:31:06.897Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Scope-vs-Lifetime&quot;&gt;&lt;a href=&quot;#Scope-vs-Lifetime&quot; class=&quot;headerlink&quot; title=&quot;Scope vs Lifetime&quot;&gt;&lt;/a&gt;Scope vs Lifetime&lt;/h1&gt;&lt;h2 id=&quot;前因&quot;&gt;&lt;a href=&quot;#前因&quot; class=&quot;headerlink&quot; title=&quot;前因&quot;&gt;&lt;/a&gt;前因&lt;/h2&gt;&lt;p&gt;最近突发奇想看了一下rust的教程发现Scope和lifetime两个词经常出现，在看rust之前我忽视了lifetime或者说我把二者等价为一个意思，其实在写C++的时候也已经有意识的注意到悬挂指针和悬挂引用的存在了，不过从来没有用lifetime来解释。以下的例子全部用c++来举，因为我并不会rust，但是会涉及到rust的一些概念。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Programming" scheme="http://cjkkkk.github.io/tags/Programming/"/>
+    
+  </entry>
   
   <entry>
     <title>CUDA</title>
@@ -346,48 +382,6 @@
     
     
       <category term="python" scheme="http://cjkkkk.github.io/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BIOS_and_bootLoader</title>
-    <link href="http://cjkkkk.github.io/2019/05/23/BIOS-and-bootLoader/"/>
-    <id>http://cjkkkk.github.io/2019/05/23/BIOS-and-bootLoader/</id>
-    <published>2019-05-23T05:38:30.000Z</published>
-    <updated>2019-05-23T13:06:36.499Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-    
-      <category term="operating system" scheme="http://cjkkkk.github.io/tags/operating-system/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>x86_physical_layout</title>
-    <link href="http://cjkkkk.github.io/2019/05/22/x86-physical-layout/"/>
-    <id>http://cjkkkk.github.io/2019/05/22/x86-physical-layout/</id>
-    <published>2019-05-22T13:03:18.000Z</published>
-    <updated>2019-05-25T05:46:39.590Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;总结关于x86物理内存布局和real mode/protect mode相关的基本知识&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="operating system" scheme="http://cjkkkk.github.io/tags/operating-system/"/>
     
   </entry>
   

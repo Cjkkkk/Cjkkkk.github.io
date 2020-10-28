@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Scope vs Lifetime前因最近突发奇想看了一下rust的教程发现Scope和lifetime两个词经常出现，在看rust之前我忽视了lifetime或者说我把二者等价为一个意思，其实在写C++的时候也已经有意识的注意到悬挂指针和悬挂引用的存在了，不过从来没有用lifetime来解释。以下的例子全部用c++来举，因为我并不会rust，但是会涉及到rust的一些概念。">
+<meta name="keywords" content="Programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scope_and_lifetime">
+<meta property="og:url" content="http://cjkkkk.github.io/2020/10/28/scope-and-lifetime/index.html">
+<meta property="og:site_name" content="Cjkkkk">
+<meta property="og:description" content="Scope vs Lifetime前因最近突发奇想看了一下rust的教程发现Scope和lifetime两个词经常出现，在看rust之前我忽视了lifetime或者说我把二者等价为一个意思，其实在写C++的时候也已经有意识的注意到悬挂指针和悬挂引用的存在了，不过从来没有用lifetime来解释。以下的例子全部用c++来举，因为我并不会rust，但是会涉及到rust的一些概念。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-10-28T15:31:06.897Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scope_and_lifetime">
+<meta name="twitter:description" content="Scope vs Lifetime前因最近突发奇想看了一下rust的教程发现Scope和lifetime两个词经常出现，在看rust之前我忽视了lifetime或者说我把二者等价为一个意思，其实在写C++的时候也已经有意识的注意到悬挂指针和悬挂引用的存在了，不过从来没有用lifetime来解释。以下的例子全部用c++来举，因为我并不会rust，但是会涉及到rust的一些概念。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Cjkkkk" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://cjkkkk.github.io/2020/10/28/scope-and-lifetime/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>scope_and_lifetime | Cjkkkk</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cjkkkk</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cjkkkk.github.io/2020/10/28/scope-and-lifetime/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cjkkkk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cjkkkk">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">scope_and_lifetime
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-10-28 23:27:50 / 修改时间：23:31:06" itemprop="dateCreated datePublished" datetime="2020-10-28T23:27:50+08:00">2020-10-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Scope-vs-Lifetime"><a href="#Scope-vs-Lifetime" class="headerlink" title="Scope vs Lifetime"></a>Scope vs Lifetime</h1><h2 id="前因"><a href="#前因" class="headerlink" title="前因"></a>前因</h2><p>最近突发奇想看了一下rust的教程发现Scope和lifetime两个词经常出现，在看rust之前我忽视了lifetime或者说我把二者等价为一个意思，其实在写C++的时候也已经有意识的注意到悬挂指针和悬挂引用的存在了，不过从来没有用lifetime来解释。以下的例子全部用c++来举，因为我并不会rust，但是会涉及到rust的一些概念。<br><a id="more"></a></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>二者正式的定义如下</p>
+<p><strong><em>Scope</em></strong> is the region or section of code where a variable can be accessed.</p>
+<p><strong><em>Lifetime</em></strong> is the time duration where an object/variable is in a valid state.</p>
+<h2 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h2><p>翻译一下就是Scope是指变量可以被访问的代码区间，这是一种静态的意思，也就是说我们只要看code就能看出哪些变量是可以访问的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example 1</span></span><br><span class="line">&#123; <span class="comment">// a</span></span><br><span class="line">	&#123; <span class="comment">// b</span></span><br><span class="line">		<span class="keyword">int</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到a的scope是在注释b所在的大括号和小括号之间，这指定了a变量可以被访问的区间。所以a=1是不合法的，因为这个访问不在scope之内。</p>
+<h2 id="Lifetime"><a href="#Lifetime" class="headerlink" title="Lifetime"></a>Lifetime</h2><p>lifetime的定义翻译一下就是指变量处于<strong><em>合法状态</em></strong>的时间区间，这里要注意的是合法状态的意思，在没有引用或者指针之前，这是一个静态的概念，因为变量只要能被访问就是合法的，也就是说lifetime就是scope的区间。但是有了指针和引用的概念后，这其实是一个动态的概念，因为指针和引用的合法性不仅取决于它们的scope，更取决于它们指向的变量的scope，之所以说是动态的概念是因为指向性有时是只有运行时才能确定的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example 2</span></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">int</span> b;</span><br><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line"><span class="keyword">if</span> ( some_condition ) &#123;</span><br><span class="line">	p = &amp;a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	p = &amp;b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PS: 也就是说对于非引用/指针的变量来说scope其实和lifetime是相同的概念，但是对于引用/指针变量，其lifetime不等于其scope，而等于其指向变量的lifetime，如果一个引用/指针变量的lifetime小于其scope，意味着在它可以被访问的区间内，它不一定是合法的，也就是悬挂引用/指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example 3</span></span><br><span class="line"><span class="keyword">int</span>* p;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    p = &amp;a;</span><br><span class="line">&#125;</span><br><span class="line">f(*p);</span><br></pre></td></tr></table></figure>
+<p>another example</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example 4</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">f1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">return</span> &amp;a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *p = f1();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面两个例子中指针p的lifetime都等于变量a的lifetime，小于p的scope，这意味着p是不合法的。</p>
+<p>一般rust可以检测出像上面两个例子的不合法性，但是下面这个例子就不行了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">f</span><span class="params">(<span class="keyword">int</span>* a, <span class="keyword">int</span>* b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (some_condition) &#123;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a, b;</span><br><span class="line"><span class="keyword">int</span> *p = f(&amp;a, &amp;b);</span><br></pre></td></tr></table></figure>
+<p>指针p的lifetime是动态确定的，编译器无法确认p的lifetime，也就无法确认p是否是合法的指针。</p>
+<h2 id="处理合法性"><a href="#处理合法性" class="headerlink" title="处理合法性"></a>处理合法性</h2><p>之前也提到对于简单的情况下（example 3,4），rust可以直接判断引用的lifetime，对于复杂的情形（example 5），rust有引入人工标记的方式指明引用的lifetime的限制用于判断合法性。</p>
+<p>至于c++呢，c++直接裸奔管都不管你是不是合法的，直接UB。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <a href="https://stackoverflow.com/questions/11137516/scope-vs-lifetime-of-variable" target="_blank" rel="noopener">https://stackoverflow.com/questions/11137516/scope-vs-lifetime-of-variable</a><br>[2] <a href="https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html" target="_blank" rel="noopener">https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html</a><br>[3] <a href="https://zhuanlan.zhihu.com/p/27571264?group_id=862978524611497984" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27571264?group_id=862978524611497984</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Programming/" rel="tag"># Programming</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/08/cuda/" rel="next" title="CUDA">
+                <i class="fa fa-chevron-left"></i> CUDA
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/29/uv/" rel="prev" title="uv">
+                uv <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Cjkkkk</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Cjkkkk" title="GitHub &rarr; https://github.com/Cjkkkk" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:656569648@qq.com" title="E-Mail &rarr; mailto:656569648@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Scope-vs-Lifetime"><span class="nav-text">Scope vs Lifetime</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前因"><span class="nav-text">前因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scope"><span class="nav-text">Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lifetime"><span class="nav-text">Lifetime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理合法性"><span class="nav-text">处理合法性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cjkkkk</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
